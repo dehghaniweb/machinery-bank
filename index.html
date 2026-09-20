@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
-
 <title>بانک ماشین‌آلات شرکت</title>
 
 <style>
@@ -17,19 +16,16 @@ html,body{
   padding:0;
   width:100%;
   min-height:100%;
-  font-family:Tahoma,Arial,sans-serif;
-  background:#f3f7f4;
-  color:#173c2c;
 }
 
 body{
-  padding:18px 12px 40px;
+  font-family:Tahoma,Arial,sans-serif;
+  background:#f3f7f4;
+  color:#173c2c;
+  direction:rtl;
 }
 
-button,
-input,
-select,
-textarea{
+button,input,select,textarea{
   font-family:inherit;
 }
 
@@ -38,136 +34,26 @@ button{
 }
 
 .hidden{
-  display:none !important;
+  display:none!important;
 }
 
-/* =========================
-   LOGIN
-========================= */
-
-.login-page{
-  min-height:calc(100vh - 40px);
-  display:flex;
-  align-items:center;
-  justify-content:center;
+.container{
+  width:min(1100px,calc(100% - 24px));
+  margin:0 auto;
 }
 
-.login-box{
-  width:min(430px,100%);
-  background:#fff;
-  border-radius:24px;
-  padding:28px 22px;
-  box-shadow:0 12px 40px rgba(20,70,45,.12);
-  border:1px solid #dcebe2;
-}
+/* ================= HEADER ================= */
 
-.login-logo{
-  width:78px;
-  height:78px;
-  margin:0 auto 15px;
-  border-radius:22px;
-  background:linear-gradient(145deg,#0b4b35,#27845a);
-  color:#fff;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:36px;
-  box-shadow:0 8px 20px rgba(11,75,53,.25);
-}
-
-.login-title{
-  text-align:center;
-  font-size:22px;
-  font-weight:bold;
-  color:#0b4b35;
-  margin-bottom:7px;
-}
-
-.login-subtitle{
-  text-align:center;
-  color:#708277;
-  font-size:13px;
-  margin-bottom:24px;
-}
-
-.form-group{
-  margin-bottom:15px;
-}
-
-.form-group label{
-  display:block;
-  font-size:13px;
-  font-weight:bold;
-  margin-bottom:7px;
-  color:#315444;
-}
-
-.form-control{
-  width:100%;
-  height:46px;
-  border:1px solid #d5e3db;
-  border-radius:13px;
-  background:#f8fbf9;
-  padding:0 13px;
-  outline:none;
-  color:#173c2c;
-  font-size:14px;
-  transition:.2s;
-}
-
-.form-control:focus{
-  border-color:#27845a;
-  background:#fff;
-  box-shadow:0 0 0 3px rgba(39,132,90,.1);
-}
-
-.login-btn{
-  width:100%;
-  height:48px;
-  border:0;
-  border-radius:14px;
-  background:linear-gradient(135deg,#0b4b35,#27845a);
-  color:#fff;
-  font-size:15px;
-  font-weight:bold;
-  margin-top:5px;
-  box-shadow:0 7px 18px rgba(11,75,53,.2);
-}
-
-.login-btn:active{
-  transform:scale(.98);
-}
-
-.login-error{
-  background:#fff0f0;
-  border:1px solid #ffd0d0;
-  color:#b52b2b;
-  border-radius:12px;
-  padding:10px 12px;
-  font-size:12px;
-  margin-bottom:14px;
-  line-height:1.8;
-}
-
-/* =========================
-   APP
-========================= */
-
-.app{
-  width:min(1100px,100%);
-  margin:auto;
-}
-
-.header{
+.app-header{
   background:linear-gradient(135deg,#0b4b35,#176c49);
   color:#fff;
-  border-radius:20px;
-  padding:18px;
-  box-shadow:0 10px 28px rgba(11,75,53,.18);
-  margin-bottom:14px;
+  padding:16px 0;
+  box-shadow:0 3px 12px rgba(0,0,0,.12);
 }
 
-.header-top{
+.header-inner{
+  width:min(1100px,calc(100% - 24px));
+  margin:auto;
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -175,177 +61,432 @@ button{
 }
 
 .header-title{
-  font-size:21px;
+  font-size:20px;
   font-weight:bold;
 }
 
 .header-user{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.user-name{
+  font-size:13px;
+}
+
+.admin-badge{
+  background:#f4c542;
+  color:#4a3800;
+  border-radius:20px;
+  padding:4px 9px;
   font-size:11px;
-  opacity:.88;
-  margin-top:6px;
+  font-weight:bold;
 }
 
 .header-actions{
   display:flex;
   gap:7px;
-  flex-wrap:wrap;
-  justify-content:flex-end;
 }
 
 .header-btn{
-  border:1px solid rgba(255,255,255,.25);
-  background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.35);
+  background:rgba(255,255,255,.12);
   color:#fff;
-  border-radius:10px;
+  border-radius:9px;
+  padding:8px 11px;
+  font-size:12px;
+}
+
+.header-btn:hover{
+  background:rgba(255,255,255,.2);
+}
+
+/* ================= MAIN ================= */
+
+main{
+  padding:18px 0 35px;
+}
+
+/* ================= LOGIN ================= */
+
+.login-page{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:linear-gradient(145deg,#eaf3ee,#f7faf8);
+}
+
+.login-card{
+  width:min(420px,100%);
+  background:#fff;
+  border-radius:18px;
+  padding:28px 24px;
+  box-shadow:0 10px 35px rgba(0,0,0,.1);
+}
+
+.login-logo{
+  width:70px;
+  height:70px;
+  margin:0 auto 15px;
+  border-radius:20px;
+  background:linear-gradient(135deg,#0b4b35,#27845a);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  font-size:31px;
+}
+
+.login-title{
+  text-align:center;
+  margin:0 0 7px;
+  font-size:22px;
+  color:#0b4b35;
+}
+
+.login-subtitle{
+  text-align:center;
+  color:#718278;
+  font-size:12px;
+  margin-bottom:22px;
+}
+
+/* ================= FORMS ================= */
+
+.form-group{
+  margin-bottom:13px;
+}
+
+.form-label{
+  display:block;
+  font-size:12px;
+  margin-bottom:6px;
+  color:#315646;
+  font-weight:bold;
+}
+
+.form-control{
+  width:100%;
+  border:1px solid #d6e3dc;
+  background:#fff;
+  border-radius:9px;
+  padding:11px 12px;
+  outline:none;
+  color:#173c2c;
+  font-size:13px;
+}
+
+.form-control:focus{
+  border-color:#27845a;
+  box-shadow:0 0 0 3px rgba(39,132,90,.1);
+}
+
+textarea.form-control{
+  resize:vertical;
+  min-height:90px;
+}
+
+.primary-btn{
+  border:0;
+  background:linear-gradient(135deg,#176c49,#27845a);
+  color:#fff;
+  border-radius:9px;
+  padding:11px 16px;
+  font-size:13px;
+  font-weight:bold;
+  box-shadow:0 4px 10px rgba(23,108,73,.15);
+}
+
+.primary-btn:hover{
+  filter:brightness(1.04);
+}
+
+.secondary-btn{
+  border:1px solid #d0ded7;
+  background:#fff;
+  color:#315646;
+  border-radius:9px;
+  padding:10px 15px;
+  font-size:13px;
+}
+
+.danger-btn{
+  border:0;
+  background:#c94a4a;
+  color:#fff;
+  border-radius:8px;
   padding:8px 11px;
   font-size:11px;
 }
 
-.header-btn:hover{
-  background:rgba(255,255,255,.18);
+.small-btn{
+  padding:7px 10px;
+  font-size:11px;
 }
 
-/* =========================
-   STATS
-========================= */
+/* ================= STATS ================= */
 
-.stats{
+.stats-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:10px;
-  margin-bottom:14px;
+  gap:12px;
+  margin-bottom:15px;
 }
 
-.stat{
+.stat-card{
   background:#fff;
-  border:1px solid #dfebe4;
-  border-radius:16px;
-  padding:14px 10px;
-  text-align:center;
-  box-shadow:0 4px 15px rgba(20,70,45,.05);
+  border:1px solid #e0ebe5;
+  border-radius:13px;
+  padding:15px;
+  box-shadow:0 3px 10px rgba(0,0,0,.04);
 }
 
-.stat-number{
+.stat-title{
+  color:#718278;
+  font-size:11px;
+  margin-bottom:5px;
+}
+
+.stat-value{
+  color:#0b4b35;
   font-size:22px;
   font-weight:bold;
-  color:#0b4b35;
 }
 
-.stat-label{
-  font-size:11px;
-  color:#78897f;
-  margin-top:4px;
-}
+/* ================= SEARCH ================= */
 
-/* =========================
-   TOOLBAR
-========================= */
-
-.toolbar{
+.search-box{
   background:#fff;
-  border:1px solid #dfebe4;
-  border-radius:18px;
+  border:1px solid #e0ebe5;
+  border-radius:13px;
   padding:13px;
-  margin-bottom:14px;
-  box-shadow:0 4px 15px rgba(20,70,45,.05);
+  margin-bottom:15px;
+  box-shadow:0 3px 10px rgba(0,0,0,.04);
 }
 
 .search-row{
   display:grid;
-  grid-template-columns:1fr 210px;
+  grid-template-columns:1fr 220px;
   gap:10px;
 }
 
-.search-box{
-  position:relative;
-}
-
-.search-box input{
+.search-input{
   width:100%;
-  height:45px;
-  border:1px solid #d8e5de;
-  border-radius:13px;
-  background:#f8fbf9;
-  padding:0 42px 0 12px;
+  border:1px solid #d6e3dc;
+  border-radius:9px;
+  padding:11px 13px;
   outline:none;
   font-size:13px;
-  color:#173c2c;
 }
 
-.search-box input:focus{
+.search-input:focus{
   border-color:#27845a;
-  background:#fff;
 }
 
-.search-icon{
-  position:absolute;
-  right:13px;
-  top:50%;
-  transform:translateY(-50%);
-  font-size:18px;
-  color:#7a8c82;
-}
-
-.select-box{
-  position:relative;
-}
-
-.select-box select{
+.select-control{
   width:100%;
-  height:45px;
-  border:1px solid #d8e5de;
-  border-radius:13px;
-  background:#f8fbf9;
-  padding:0 12px;
+  border:1px solid #d6e3dc;
+  border-radius:9px;
+  padding:10px;
+  background:#fff;
+  color:#173c2c;
   outline:none;
-  color:#315444;
-  font-size:12px;
 }
 
-.filter-info{
+/* ================= SECTION ================= */
+
+.section-title{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:8px;
-  margin-top:10px;
-  color:#708277;
+  margin:16px 0 10px;
+}
+
+.section-title h2{
+  margin:0;
+  font-size:16px;
+  color:#0b4b35;
+}
+
+.section-count{
+  color:#718278;
   font-size:11px;
 }
 
-.admin-badge{
-  background:#fff3cd;
-  color:#896b00;
-  border:1px solid #f0d878;
-  border-radius:20px;
-  padding:5px 9px;
-  font-size:10px;
-  font-weight:bold;
+/* ================= MACHINES ================= */
+
+.machine-list{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:10px;
 }
 
-/* =========================
-   ADMIN PANEL
-========================= */
-
-.admin-panel{
+.machine-card{
   background:#fff;
-  border:1px solid #d9e9df;
-  border-radius:18px;
+  border:1px solid #e0ebe5;
+  border-radius:13px;
   padding:14px;
-  margin-bottom:14px;
-  box-shadow:0 4px 15px rgba(20,70,45,.05);
+  box-shadow:0 3px 10px rgba(0,0,0,.04);
 }
 
-.section-title{
+.machine-top{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:10px;
+}
+
+.machine-type{
+  font-weight:bold;
   color:#0b4b35;
   font-size:15px;
+}
+
+.machine-company{
+  margin-top:5px;
+  font-size:12px;
+  color:#536a5e;
+}
+
+.machine-company strong{
+  color:#173c2c;
+}
+
+.machine-info{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin-top:12px;
+}
+
+.info-pill{
+  background:#f1f7f3;
+  border:1px solid #dcebe2;
+  color:#315646;
+  padding:6px 9px;
+  border-radius:20px;
+  font-size:11px;
+}
+
+.machine-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin-top:12px;
+}
+
+.note-btn{
+  border:0;
+  background:#e8f4ed;
+  color:#176c49;
+  border-radius:8px;
+  padding:7px 10px;
+  font-size:11px;
+}
+
+.edit-btn{
+  border:0;
+  background:#eef3f7;
+  color:#486274;
+  border-radius:8px;
+  padding:7px 10px;
+  font-size:11px;
+}
+
+.empty-state{
+  background:#fff;
+  border:1px dashed #cfded6;
+  border-radius:13px;
+  padding:30px 15px;
+  text-align:center;
+  color:#718278;
+  font-size:13px;
+}
+
+.loading-state{
+  text-align:center;
+  padding:30px;
+  color:#718278;
+  font-size:13px;
+}
+
+/* ================= ADMIN PANEL ================= */
+
+#adminPanel{
+  background:#fff;
+  border:1px solid #dce9e2;
+  border-radius:14px;
+  margin-top:22px;
+  margin-bottom:15px;
+  box-shadow:0 4px 13px rgba(0,0,0,.05);
+  padding:0;
+  overflow:hidden;
+}
+
+#adminPanel .admin-panel-header{
+  width:100%;
+  border:0;
+  background:#fff;
+  color:#0b4b35;
+  padding:14px 16px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  cursor:pointer;
+  text-align:right;
+}
+
+#adminPanel .admin-panel-header:hover{
+  background:#f8fbf9;
+}
+
+.admin-panel-header-title{
+  display:flex;
+  align-items:center;
+  gap:9px;
   font-weight:bold;
-  margin-bottom:12px;
+  font-size:14px;
+}
+
+.admin-panel-header-icon{
+  width:30px;
+  height:30px;
+  border-radius:9px;
+  background:#e8f4ed;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:16px;
+}
+
+.admin-panel-arrow{
+  transition:.2s;
+  font-size:15px;
+  color:#718278;
+}
+
+#adminPanel.open .admin-panel-arrow{
+  transform:rotate(180deg);
+}
+
+#adminPanel .admin-panel-content{
+  display:none;
+  border-top:1px solid #edf2ef;
+  padding:16px;
+}
+
+#adminPanel.open .admin-panel-content{
+  display:block;
 }
 
 .admin-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:10px;
+  gap:11px;
 }
 
 .admin-grid .full{
@@ -355,356 +496,265 @@ button{
 .admin-actions{
   display:flex;
   gap:8px;
-  flex-wrap:wrap;
   margin-top:5px;
 }
 
-.btn{
-  border:0;
+/* Generic admin-panel for notes etc. */
+.admin-panel{
+  background:#f8fbf9;
+  border:1px solid #dce9e2;
   border-radius:11px;
-  padding:10px 14px;
-  font-size:12px;
-  font-weight:bold;
+  padding:14px;
 }
 
-.btn-primary{
-  background:#0b4b35;
-  color:#fff;
+/* ================= DATE PICKER ================= */
+
+.date-picker-wrap{
+  position:relative;
+  width:100%;
 }
 
-.btn-secondary{
-  background:#e9f2ed;
-  color:#0b4b35;
-}
-
-.btn-danger{
-  background:#ffe9e9;
-  color:#b52b2b;
-}
-
-.btn-warning{
-  background:#fff3cd;
-  color:#856404;
-}
-
-/* =========================
-   MACHINES
-========================= */
-
-.machine-list{
+.date-display{
+  min-height:58px;
+  width:100%;
+  border:1px solid #d6e3dc;
+  background:#fff;
+  border-radius:9px;
+  padding:8px 42px 8px 12px;
   display:flex;
   flex-direction:column;
-  gap:10px;
+  justify-content:center;
+  cursor:pointer;
+  position:relative;
 }
 
-.machine-card{
-  background:#fff;
-  border:1px solid #dfebe4;
-  border-radius:17px;
-  padding:14px;
-  box-shadow:0 4px 15px rgba(20,70,45,.045);
-  transition:.18s;
+.date-display:hover{
+  border-color:#27845a;
 }
 
-.machine-card:hover{
-  border-color:#bdd8ca;
-}
-
-.machine-top{
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-start;
-  gap:10px;
-}
-
-.machine-type{
-  font-size:16px;
-  font-weight:bold;
-  color:#0b4b35;
-}
-
-.machine-company{
-  margin-top:5px;
-  font-size:12px;
-  color:#708277;
-}
-
-.machine-company strong{
-  color:#315444;
-}
-
-.machine-yard{
-  display:inline-flex;
-  align-items:center;
-  background:#edf7f1;
+.date-jalali{
+  font-size:13px;
   color:#176c49;
-  border-radius:20px;
-  padding:6px 9px;
+  font-weight:bold;
+  line-height:1.7;
+}
+
+.date-gregorian{
   font-size:10px;
-  white-space:nowrap;
+  color:#7b8b83;
+  direction:ltr;
+  text-align:left;
+  line-height:1.5;
 }
 
-.machine-details{
+.native-date-input{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  opacity:0;
+  cursor:pointer;
+  z-index:2;
+}
+
+.date-calendar-icon{
+  position:absolute;
+  right:13px;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:18px;
+  color:#27845a;
+  pointer-events:none;
+  z-index:3;
+}
+
+/* ================= REPORT ================= */
+
+.report-controls{
   display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:8px;
-  margin-top:12px;
+  grid-template-columns:1fr 1fr auto;
+  gap:9px;
+  align-items:end;
 }
 
-.detail-box{
-  background:#f7faf8;
-  border-radius:11px;
-  padding:9px 10px;
+.report-date-box{
+  min-width:0;
 }
 
-.detail-label{
-  color:#8a9991;
-  font-size:9px;
-  margin-bottom:4px;
-}
-
-.detail-value{
-  color:#315444;
-  font-size:12px;
+.report-date-box label{
+  display:block;
+  margin-bottom:6px;
+  font-size:11px;
+  color:#315646;
   font-weight:bold;
 }
 
-.machine-actions{
-  display:flex;
-  gap:7px;
-  flex-wrap:wrap;
-  margin-top:12px;
-  padding-top:11px;
-  border-top:1px solid #edf1ee;
+.report-list{
+  margin-top:15px;
+  display:grid;
+  gap:8px;
 }
 
-.machine-actions button{
-  border:0;
-  border-radius:9px;
-  padding:7px 10px;
-  font-size:10px;
-}
-
-.notes-btn{
-  background:#edf4ff;
-  color:#315e99;
-}
-
-.edit-btn{
-  background:#fff3cd;
-  color:#856404;
-}
-
-.delete-btn{
-  background:#ffe9e9;
-  color:#b52b2b;
-}
-
-/* =========================
-   EMPTY / LOADING
-========================= */
-
-.state-box{
+.report-item{
   background:#fff;
-  border:1px solid #dfebe4;
-  border-radius:18px;
-  padding:35px 15px;
-  text-align:center;
-  color:#809087;
+  border:1px solid #e0ebe5;
+  border-radius:10px;
+  padding:11px;
 }
 
-.loading-spinner{
-  width:30px;
-  height:30px;
-  border:3px solid #dcebe2;
-  border-top-color:#27845a;
-  border-radius:50%;
-  animation:spin .8s linear infinite;
-  margin:0 auto 12px;
+.report-date{
+  color:#176c49;
+  font-size:11px;
+  font-weight:bold;
 }
 
-@keyframes spin{
-  to{
-    transform:rotate(360deg);
-  }
+.report-title{
+  margin-top:5px;
+  font-size:13px;
+  font-weight:bold;
+  color:#173c2c;
 }
 
-/* =========================
-   MODAL
-========================= */
+.report-meta{
+  margin-top:5px;
+  color:#718278;
+  font-size:11px;
+}
 
-.modal-overlay{
+.report-note{
+  margin-top:8px;
+  color:#3d5147;
+  font-size:12px;
+  line-height:1.8;
+  white-space:pre-wrap;
+}
+
+/* ================= MODAL ================= */
+
+.modal{
   position:fixed;
   inset:0;
-  background:rgba(5,25,17,.58);
-  backdrop-filter:blur(4px);
+  background:rgba(0,0,0,.48);
   z-index:1000;
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:15px;
+  padding:12px;
 }
 
-.modal{
-  width:min(650px,100%);
-  max-height:92vh;
+.modal-card{
+  width:min(1000px,100%);
+  max-height:calc(100vh - 24px);
   overflow:auto;
   background:#fff;
-  border-radius:22px;
-  box-shadow:0 20px 60px rgba(0,0,0,.25);
+  border-radius:16px;
+  box-shadow:0 15px 50px rgba(0,0,0,.25);
 }
 
 .modal-header{
   position:sticky;
   top:0;
-  z-index:2;
+  z-index:5;
+  background:linear-gradient(135deg,#0b4b35,#176c49);
+  color:#fff;
+  padding:13px 15px;
   display:flex;
   align-items:center;
   justify-content:space-between;
   gap:10px;
-  background:linear-gradient(135deg,#0b4b35,#176c49);
-  color:#fff;
-  padding:15px 17px;
 }
 
 .modal-title{
-  font-weight:bold;
   font-size:15px;
+  font-weight:bold;
 }
 
 .modal-close{
+  border:0;
+  background:rgba(255,255,255,.14);
+  color:#fff;
   width:34px;
   height:34px;
-  border:0;
-  border-radius:10px;
-  background:rgba(255,255,255,.13);
-  color:#fff;
+  border-radius:9px;
   font-size:20px;
+  line-height:1;
 }
 
 .modal-body{
   padding:16px;
 }
 
-/* =========================
-   NOTES
-========================= */
-
 .notes-list{
-  display:flex;
-  flex-direction:column;
+  display:grid;
   gap:9px;
+  margin-bottom:15px;
 }
 
 .note-item{
   border:1px solid #e0ebe5;
-  background:#f9fbfa;
-  border-radius:13px;
+  border-radius:11px;
   padding:11px;
+  background:#fff;
+}
+
+.note-item-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
 }
 
 .note-date{
   color:#176c49;
   font-size:11px;
   font-weight:bold;
-  margin-bottom:6px;
+}
+
+.note-delete{
+  border:0;
+  background:#fff0f0;
+  color:#c94a4a;
+  border-radius:7px;
+  padding:5px 8px;
+  font-size:10px;
 }
 
 .note-text{
-  color:#315444;
+  margin-top:7px;
+  color:#42584c;
   font-size:12px;
-  line-height:2;
+  line-height:1.8;
   white-space:pre-wrap;
 }
 
-.note-author{
-  margin-top:7px;
-  color:#8a9991;
-  font-size:9px;
-}
-
-/* =========================
-   REPORT
-========================= */
-
-.report-controls{
-  display:grid;
-  grid-template-columns:1fr 1fr auto;
-  gap:8px;
-  margin-bottom:15px;
-}
-
-.report-controls input{
-  height:42px;
-  border:1px solid #d8e5de;
-  border-radius:11px;
-  padding:0 10px;
-  outline:none;
-  font-size:11px;
-}
-
-.report-result{
+.modal-footer{
   display:flex;
-  flex-direction:column;
   gap:8px;
+  justify-content:flex-start;
+  margin-top:15px;
 }
 
-.report-item{
-  border:1px solid #dfebe4;
-  border-radius:13px;
-  padding:11px;
-  background:#fafcfb;
-}
-
-.report-item-head{
-  display:flex;
-  justify-content:space-between;
-  gap:8px;
-  font-size:11px;
-  font-weight:bold;
-  color:#0b4b35;
-}
-
-.report-machine{
-  margin-top:5px;
-  font-size:11px;
-  color:#53695d;
-}
-
-.report-note{
-  margin-top:7px;
-  font-size:11px;
-  color:#315444;
-  line-height:1.9;
-}
-
-/* =========================
-   TOAST
-========================= */
+/* ================= TOAST ================= */
 
 .toast-container{
   position:fixed;
   left:15px;
-  right:15px;
-  bottom:18px;
+  bottom:15px;
   z-index:3000;
   display:flex;
   flex-direction:column;
-  align-items:center;
-  gap:8px;
-  pointer-events:none;
+  gap:7px;
 }
 
 .toast{
-  width:min(430px,100%);
-  padding:11px 14px;
-  border-radius:13px;
   background:#173c2c;
   color:#fff;
-  font-size:11px;
-  box-shadow:0 10px 30px rgba(0,0,0,.18);
-  animation:toastIn .2s ease;
-  text-align:center;
+  border-radius:10px;
+  padding:10px 14px;
+  box-shadow:0 6px 20px rgba(0,0,0,.2);
+  font-size:12px;
+  animation:toastIn .25s ease;
+  max-width:320px;
 }
 
 .toast.success{
@@ -712,60 +762,45 @@ button{
 }
 
 .toast.error{
-  background:#b52b2b;
+  background:#a63e3e;
 }
 
 @keyframes toastIn{
   from{
-    opacity:0;
     transform:translateY(10px);
+    opacity:0;
   }
   to{
-    opacity:1;
     transform:translateY(0);
+    opacity:1;
   }
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
+/* ================= RESPONSIVE ================= */
 
-@media(max-width:650px){
+@media(max-width:700px){
 
-  body{
-    padding:10px 9px 30px;
-  }
-
-  .header{
-    border-radius:16px;
-    padding:14px;
-  }
-
-  .header-top{
+  .header-inner{
     align-items:flex-start;
   }
 
   .header-title{
-    font-size:17px;
+    font-size:16px;
   }
 
-  .header-actions{
-    flex-direction:column;
+  .header-user{
+    justify-content:flex-end;
   }
 
-  .header-btn{
-    padding:7px 9px;
-  }
-
-  .stats{
+  .stats-grid{
     gap:7px;
   }
 
-  .stat{
-    padding:11px 5px;
+  .stat-card{
+    padding:11px 8px;
   }
 
-  .stat-number{
+  .stat-value{
     font-size:18px;
   }
 
@@ -781,10 +816,6 @@ button{
     grid-column:auto;
   }
 
-  .machine-details{
-    grid-template-columns:1fr 1fr;
-  }
-
   .report-controls{
     grid-template-columns:1fr 1fr;
   }
@@ -792,20 +823,62 @@ button{
   .report-controls button{
     grid-column:1/-1;
   }
+
+  .modal{
+    padding:0;
+    align-items:flex-end;
+  }
+
+  .modal-card{
+    max-height:94vh;
+    border-radius:16px 16px 0 0;
+  }
 }
 
-@media(max-width:380px){
+@media(max-width:480px){
 
-  .machine-details{
+  .header-inner{
+    flex-direction:column;
+  }
+
+  .header-actions{
+    width:100%;
+  }
+
+  .header-btn{
+    flex:1;
+  }
+
+  .stats-grid{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .stat-title{
+    font-size:9px;
+  }
+
+  .stat-value{
+    font-size:16px;
+  }
+
+  .machine-card{
+    padding:12px;
+  }
+
+  .machine-top{
+    flex-direction:column;
+  }
+
+  .report-controls{
     grid-template-columns:1fr;
   }
 
-  .stats{
-    grid-template-columns:1fr 1fr 1fr;
+  .report-controls button{
+    grid-column:auto;
   }
 
-  .stat-label{
-    font-size:9px;
+  .modal-body{
+    padding:12px;
   }
 }
 </style>
@@ -813,110 +886,97 @@ button{
 
 <body>
 
-<!-- =====================================================
-     LOGIN
-===================================================== -->
+<!-- ================= LOGIN ================= -->
 
 <div id="loginPage" class="login-page">
 
-  <div class="login-box">
+  <div class="login-card">
 
-    <div class="login-logo">
-      🚜
-    </div>
+    <div class="login-logo">🚜</div>
 
-    <div class="login-title">
-      بانک ماشین‌آلات شرکت
-    </div>
+    <h1 class="login-title">بانک ماشین‌آلات شرکت</h1>
 
     <div class="login-subtitle">
       ورود به سامانه مدیریت ماشین‌آلات
     </div>
 
-    <div id="loginError"
-         class="login-error hidden">
-    </div>
+    <form id="loginForm">
 
-    <div class="form-group">
+      <div class="form-group">
+        <label class="form-label">نام کاربری</label>
+        <input
+          id="loginUsername"
+          class="form-control"
+          type="text"
+          autocomplete="username"
+          required
+        >
+      </div>
 
-      <label>
-        نام کاربری
-      </label>
+      <div class="form-group">
+        <label class="form-label">رمز عبور</label>
+        <input
+          id="loginPassword"
+          class="form-control"
+          type="password"
+          autocomplete="current-password"
+          required
+        >
+      </div>
 
-      <input
-        id="loginUsername"
-        class="form-control"
-        type="text"
-        autocomplete="username"
-        placeholder="نام کاربری"
+      <button
+        id="loginButton"
+        class="primary-btn"
+        type="submit"
+        style="width:100%;margin-top:5px;"
       >
+        ورود
+      </button>
 
-    </div>
-
-    <div class="form-group">
-
-      <label>
-        رمز عبور
-      </label>
-
-      <input
-        id="loginPassword"
-        class="form-control"
-        type="password"
-        autocomplete="current-password"
-        placeholder="رمز عبور"
-      >
-
-    </div>
-
-    <button
-      id="loginBtn"
-      class="login-btn"
-      type="button"
-    >
-      ورود
-    </button>
+    </form>
 
   </div>
 
 </div>
 
 
-<!-- =====================================================
-     APP
-===================================================== -->
+<!-- ================= APP ================= -->
 
-<div id="app"
-     class="app hidden">
+<div id="appPage" class="hidden">
 
-  <div class="header">
+  <header class="app-header">
 
-    <div class="header-top">
+    <div class="header-inner">
 
       <div>
+        <div class="header-title">بانک ماشین‌آلات شرکت</div>
 
-        <div class="header-title">
-          بانک ماشین‌آلات شرکت
+        <div class="header-user">
+          <span id="userName" class="user-name"></span>
+
+          <span
+            id="adminBadge"
+            class="admin-badge hidden"
+          >
+            مدیر
+          </span>
         </div>
-
-        <div id="headerUser"
-             class="header-user">
-        </div>
-
       </div>
 
       <div class="header-actions">
 
         <button
-          id="reportBtn"
+          id="reportButton"
           class="header-btn"
+          type="button"
         >
-          📊 گزارش
+          📊 گزارش‌گیری
         </button>
 
         <button
-          id="logoutBtn"
+          id="logoutButton"
           class="header-btn"
+          type="button"
         >
           خروج
         </button>
@@ -925,224 +985,226 @@ button{
 
     </div>
 
-  </div>
+  </header>
 
 
-  <!-- STATS -->
+  <main>
 
-  <div class="stats">
+    <div class="container">
 
-    <div class="stat">
-      <div id="totalCount"
-           class="stat-number">
-        ۰
+      <!-- ================= STATS ================= -->
+
+      <div class="stats-grid">
+
+        <div class="stat-card">
+          <div class="stat-title">کل ماشین‌آلات</div>
+          <div id="totalMachines" class="stat-value">0</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-title">نمایش داده‌شده</div>
+          <div id="filteredMachines" class="stat-value">0</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-title">تعداد یارد</div>
+          <div id="yardCount" class="stat-value">0</div>
+        </div>
+
       </div>
 
-      <div class="stat-label">
-        کل ماشین‌آلات
-      </div>
-    </div>
 
-    <div class="stat">
-      <div id="filteredCount"
-           class="stat-number">
-        ۰
-      </div>
-
-      <div class="stat-label">
-        نمایش داده شده
-      </div>
-    </div>
-
-    <div class="stat">
-      <div id="yardCount"
-           class="stat-number">
-        ۶
-      </div>
-
-      <div class="stat-label">
-        محل استقرار
-      </div>
-    </div>
-
-  </div>
-
-
-  <!-- SEARCH -->
-
-  <div class="toolbar">
-
-    <div class="search-row">
+      <!-- ================= SEARCH ================= -->
 
       <div class="search-box">
 
-        <span class="search-icon">
-          🔎
-        </span>
+        <div class="search-row">
 
-        <input
-          id="searchInput"
-          type="text"
-          placeholder="جستجو بر اساس نوع، شماره شرکت یا پلاک..."
+          <input
+            id="searchInput"
+            class="search-input"
+            type="search"
+            placeholder="جستجو بر اساس نوع، شماره شرکت یا پلاک..."
+          >
+
+          <select
+            id="yardFilter"
+            class="select-control"
+          >
+            <option value="">همه یاردها</option>
+          </select>
+
+        </div>
+
+      </div>
+
+
+      <!-- ================= MACHINE LIST ================= -->
+
+      <div class="section-title">
+
+        <h2>لیست ماشین‌آلات</h2>
+
+        <div
+          id="machineCountText"
+          class="section-count"
         >
+          ۰ ماشین
+        </div>
 
       </div>
 
-      <div class="select-box">
-
-        <select id="yardFilter">
-
-          <option value="">
-            همه محل‌ها
-          </option>
-
-        </select>
-
-      </div>
-
-    </div>
-
-    <div class="filter-info">
-
-      <span id="filterText">
-        همه ماشین‌آلات
-      </span>
-
-      <span
-        id="adminBadge"
-        class="admin-badge hidden"
+      <div
+        id="machineList"
+        class="machine-list"
       >
-        👑 مدیر سیستم
-      </span>
-
-    </div>
-
-  </div>
-
-
-  <!-- ADMIN PANEL -->
-
-  <div
-    id="adminPanel"
-    class="admin-panel hidden"
-  >
-
-    <div class="section-title">
-      ⚙️ مدیریت ماشین‌آلات
-    </div>
-
-    <div class="admin-grid">
-
-      <div class="form-group">
-
-        <label>
-          نوع ماشین
-        </label>
-
-        <input
-          id="machineType"
-          class="form-control"
-          type="text"
-          placeholder="مثلاً لودر"
-        >
-
+        <div class="loading-state">
+          در حال بارگذاری...
+        </div>
       </div>
 
-      <div class="form-group">
 
-        <label>
-          شماره شرکت
-        </label>
+      <!-- ================= ADMIN PANEL ================= -->
 
-        <input
-          id="machineCompany"
-          class="form-control"
-          type="text"
-          placeholder="شماره شرکت"
-        >
-
-      </div>
-
-      <div class="form-group">
-
-        <label>
-          پلاک
-        </label>
-
-        <input
-          id="machinePlate"
-          class="form-control"
-          type="text"
-          placeholder="پلاک"
-        >
-
-      </div>
-
-      <div class="form-group">
-
-        <label>
-          محل استقرار
-        </label>
-
-        <select
-          id="machineYard"
-          class="form-control"
-        >
-        </select>
-
-      </div>
-
-      <div class="admin-actions full">
+      <div
+        id="adminPanel"
+        class="hidden"
+      >
 
         <button
-          id="saveMachineBtn"
-          class="btn btn-primary"
+          id="adminPanelHeader"
+          class="admin-panel-header"
+          type="button"
         >
-          ➕ افزودن ماشین
+
+          <span class="admin-panel-header-title">
+
+            <span class="admin-panel-header-icon">
+              ⚙️
+            </span>
+
+            <span id="adminPanelTitle">
+              افزودن ماشین
+            </span>
+
+          </span>
+
+          <span class="admin-panel-arrow">
+            ▼
+          </span>
+
         </button>
 
-        <button
-          id="cancelEditBtn"
-          class="btn btn-secondary hidden"
-        >
-          انصراف از ویرایش
-        </button>
+
+        <div class="admin-panel-content">
+
+          <div class="admin-grid">
+
+            <div class="form-group">
+
+              <label class="form-label">
+                نوع ماشین
+              </label>
+
+              <input
+                id="machineType"
+                class="form-control"
+                type="text"
+                placeholder="مثلاً بیل مکانیکی"
+              >
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label class="form-label">
+                شماره شرکت
+              </label>
+
+              <input
+                id="companyNumber"
+                class="form-control"
+                type="text"
+                placeholder="شماره شرکت"
+              >
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label class="form-label">
+                یارد
+              </label>
+
+              <select
+                id="machineYard"
+                class="select-control"
+              >
+                <option value="">انتخاب یارد</option>
+              </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label class="form-label">
+                پلاک
+              </label>
+
+              <input
+                id="machinePlate"
+                class="form-control"
+                type="text"
+                placeholder="پلاک ماشین"
+              >
+
+            </div>
+
+
+            <div class="admin-actions full">
+
+              <button
+                id="saveMachine"
+                class="primary-btn"
+                type="button"
+              >
+                افزودن ماشین
+              </button>
+
+              <button
+                id="cancelEdit"
+                class="secondary-btn hidden"
+                type="button"
+              >
+                انصراف
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
 
       </div>
 
     </div>
 
-  </div>
-
-
-  <!-- MACHINE LIST -->
-
-  <div id="machineList"
-       class="machine-list">
-
-    <div class="state-box">
-
-      <div class="loading-spinner"></div>
-
-      در حال دریافت اطلاعات...
-
-    </div>
-
-  </div>
+  </main>
 
 </div>
 
 
-<!-- =====================================================
-     MODAL
-===================================================== -->
+<!-- ================= MODAL ================= -->
 
 <div
-  id="modalOverlay"
-  class="modal-overlay hidden"
+  id="modal"
+  class="modal hidden"
 >
 
-  <div class="modal">
+  <div class="modal-card">
 
     <div class="modal-header">
 
@@ -1156,6 +1218,7 @@ button{
       <button
         id="modalClose"
         class="modal-close"
+        type="button"
       >
         ×
       </button>
@@ -1165,17 +1228,14 @@ button{
     <div
       id="modalBody"
       class="modal-body"
-    >
-    </div>
+    ></div>
 
   </div>
 
 </div>
 
 
-<!-- =====================================================
-     TOAST
-===================================================== -->
+<!-- ================= TOAST ================= -->
 
 <div
   id="toastContainer"
@@ -1184,12 +1244,11 @@ button{
 
 
 <script>
-
 /* =========================================================
    CONFIG
 ========================================================= */
 
-const WORKER_URL =
+const API_BASE =
   "https://machinery-bank-api.dehghaniweb.workers.dev";
 
 
@@ -1197,233 +1256,604 @@ const WORKER_URL =
    STATE
 ========================================================= */
 
-let sessionToken =
-  localStorage.getItem(
-    "machinery_session"
-  ) || "";
-
 let currentUser = null;
+let sessionToken = localStorage.getItem("machinery_session") || "";
 
 let machines = [];
-
 let yards = [];
 
 let editingMachineId = null;
+let currentNotesMachineId = null;
 
 
 /* =========================================================
-   ELEMENTS
+   DOM
 ========================================================= */
 
 const loginPage =
-  document.getElementById(
-    "loginPage"
-  );
+  document.getElementById("loginPage");
 
-const app =
-  document.getElementById(
-    "app"
-  );
+const appPage =
+  document.getElementById("appPage");
+
+const loginForm =
+  document.getElementById("loginForm");
+
+const loginButton =
+  document.getElementById("loginButton");
 
 const loginUsername =
-  document.getElementById(
-    "loginUsername"
-  );
+  document.getElementById("loginUsername");
 
 const loginPassword =
-  document.getElementById(
-    "loginPassword"
-  );
+  document.getElementById("loginPassword");
 
-const loginBtn =
-  document.getElementById(
-    "loginBtn"
-  );
+const logoutButton =
+  document.getElementById("logoutButton");
 
-const loginError =
-  document.getElementById(
-    "loginError"
-  );
+const reportButton =
+  document.getElementById("reportButton");
 
-const headerUser =
-  document.getElementById(
-    "headerUser"
-  );
-
-const adminPanel =
-  document.getElementById(
-    "adminPanel"
-  );
+const userName =
+  document.getElementById("userName");
 
 const adminBadge =
-  document.getElementById(
-    "adminBadge"
-  );
+  document.getElementById("adminBadge");
 
-const searchInput =
-  document.getElementById(
-    "searchInput"
-  );
+const adminPanel =
+  document.getElementById("adminPanel");
 
-const yardFilter =
-  document.getElementById(
-    "yardFilter"
-  );
+const adminPanelHeader =
+  document.getElementById("adminPanelHeader");
 
-const machineList =
-  document.getElementById(
-    "machineList"
-  );
-
-const totalCount =
-  document.getElementById(
-    "totalCount"
-  );
-
-const filteredCount =
-  document.getElementById(
-    "filteredCount"
-  );
-
-const yardCount =
-  document.getElementById(
-    "yardCount"
-  );
-
-const filterText =
-  document.getElementById(
-    "filterText"
-  );
+const adminPanelTitle =
+  document.getElementById("adminPanelTitle");
 
 const machineType =
-  document.getElementById(
-    "machineType"
-  );
+  document.getElementById("machineType");
 
-const machineCompany =
-  document.getElementById(
-    "machineCompany"
-  );
-
-const machinePlate =
-  document.getElementById(
-    "machinePlate"
-  );
+const companyNumber =
+  document.getElementById("companyNumber");
 
 const machineYard =
-  document.getElementById(
-    "machineYard"
-  );
+  document.getElementById("machineYard");
 
-const saveMachineBtn =
-  document.getElementById(
-    "saveMachineBtn"
-  );
+const machinePlate =
+  document.getElementById("machinePlate");
 
-const cancelEditBtn =
-  document.getElementById(
-    "cancelEditBtn"
-  );
+const saveMachine =
+  document.getElementById("saveMachine");
 
-const logoutBtn =
-  document.getElementById(
-    "logoutBtn"
-  );
+const cancelEdit =
+  document.getElementById("cancelEdit");
 
-const reportBtn =
-  document.getElementById(
-    "reportBtn"
-  );
+const searchInput =
+  document.getElementById("searchInput");
 
-const modalOverlay =
-  document.getElementById(
-    "modalOverlay"
-  );
+const yardFilter =
+  document.getElementById("yardFilter");
+
+const machineList =
+  document.getElementById("machineList");
+
+const totalMachines =
+  document.getElementById("totalMachines");
+
+const filteredMachines =
+  document.getElementById("filteredMachines");
+
+const yardCount =
+  document.getElementById("yardCount");
+
+const machineCountText =
+  document.getElementById("machineCountText");
+
+const modal =
+  document.getElementById("modal");
 
 const modalTitle =
-  document.getElementById(
-    "modalTitle"
-  );
+  document.getElementById("modalTitle");
 
 const modalBody =
-  document.getElementById(
-    "modalBody"
-  );
+  document.getElementById("modalBody");
 
 const modalClose =
-  document.getElementById(
-    "modalClose"
-  );
+  document.getElementById("modalClose");
 
 const toastContainer =
-  document.getElementById(
-    "toastContainer"
-  );
+  document.getElementById("toastContainer");
 
 
 /* =========================================================
    API
 ========================================================= */
 
-async function api(
-  path,
-  options = {}
-) {
+async function apiFetch(path, options = {}){
 
   const headers = {
-    "Content-Type":
-      "application/json",
-
-    ...(options.headers || {}),
+    "Content-Type":"application/json",
+    ...(options.headers || {})
   };
 
-
-  if (sessionToken) {
-
+  if(sessionToken){
     headers.Authorization =
-      `Bearer ${sessionToken}`;
+      "Bearer " + sessionToken;
   }
 
-
   const response =
-    await fetch(
-      WORKER_URL + path,
-      {
-        ...options,
-        headers,
-      }
-    );
-
+    await fetch(API_BASE + path,{
+      ...options,
+      headers
+    });
 
   let data = null;
 
-  const text =
-    await response.text();
-
-
-  try {
-
-    data =
-      text
-        ? JSON.parse(text)
-        : {};
-
-  } catch {
-
-    data = {
-      ok: false,
-      error:
-        "invalid_server_response",
-
-      raw:
-        text,
-    };
+  try{
+    data = await response.json();
+  }catch{
+    data = {};
   }
 
+  if(!response.ok){
 
-  if (
-    response.status === 401
-  ) {
+    const error =
+      new Error(
+        data?.error ||
+        data?.message ||
+        "خطا در ارتباط با سرور"
+      );
+
+    error.status = response.status;
+
+    throw error;
+  }
+
+  return data;
+}
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+function translateError(error){
+
+  const message =
+    String(error?.message || error || "");
+
+  if(
+    message.includes("Invalid credentials") ||
+    message.includes("invalid credentials")
+  ){
+    return "نام کاربری یا رمز عبور اشتباه است.";
+  }
+
+  if(
+    message.includes("Unauthorized") ||
+    message.includes("unauthorized")
+  ){
+    return "نشست شما منقضی شده است. دوباره وارد شوید.";
+  }
+
+  if(
+    message.includes("already exists")
+  ){
+    return "این اطلاعات قبلاً ثبت شده است.";
+  }
+
+  if(
+    message.includes("not found")
+  ){
+    return "رکورد موردنظر پیدا نشد.";
+  }
+
+  return message || "خطای نامشخص";
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+function toast(
+  message,
+  type = "success"
+){
+
+  const item =
+    document.createElement("div");
+
+  item.className =
+    "toast " + type;
+
+  item.textContent = message;
+
+  toastContainer.appendChild(item);
+
+  setTimeout(()=>{
+    item.remove();
+  },3500);
+}
+
+
+/* =========================================================
+   NUMBER
+========================================================= */
+
+function toPersianNumber(value){
+
+  return String(value).replace(
+    /\d/g,
+    d => "۰۱۲۳۴۵۶۷۸۹"[d]
+  );
+}
+
+
+/* =========================================================
+   DATE
+========================================================= */
+
+function todayISO(){
+
+  const d = new Date();
+
+  const y =
+    d.getFullYear();
+
+  const m =
+    String(d.getMonth()+1).padStart(2,"0");
+
+  const day =
+    String(d.getDate()).padStart(2,"0");
+
+  return `${y}-${m}-${day}`;
+}
+
+
+function formatDate(value){
+
+  if(!value) return "-";
+
+  const parts =
+    String(value).split("-");
+
+  if(parts.length !== 3){
+    return value;
+  }
+
+  return toPersianNumber(
+    `${parts[2]}/${parts[1]}/${parts[0]}`
+  );
+}
+
+
+/* =========================================================
+   GREGORIAN -> JALALI
+========================================================= */
+
+function gregorianToJalali(
+  gy,
+  gm,
+  gd
+){
+
+  const gdm = [
+    0,
+    31,
+    59,
+    90,
+    120,
+    151,
+    181,
+    212,
+    243,
+    273,
+    304,
+    334
+  ];
+
+  let jy;
+
+  if(gy > 1600){
+
+    jy = 979;
+    gy -= 1600;
+
+  }else{
+
+    jy = 0;
+    gy -= 621;
+  }
+
+  const gy2 =
+    gm > 2
+      ? gy + 1
+      : gy;
+
+  let days =
+      365 * gy
+    + Math.floor((gy2 + 3) / 4)
+    - Math.floor((gy2 + 99) / 100)
+    + Math.floor((gy2 + 399) / 400)
+    - 80
+    + gd
+    + gdm[gm - 1];
+
+  jy +=
+    33 * Math.floor(days / 12053);
+
+  days %= 12053;
+
+  jy +=
+    4 * Math.floor(days / 1461);
+
+  days %= 1461;
+
+  if(days > 365){
+
+    jy +=
+      Math.floor((days - 1) / 365);
+
+    days =
+      (days - 1) % 365;
+  }
+
+  let jm;
+
+  if(days < 186){
+
+    jm =
+      1 + Math.floor(days / 31);
+
+  }else{
+
+    jm =
+      7 +
+      Math.floor((days - 186) / 30);
+  }
+
+  const jd =
+    1 +
+    (
+      days < 186
+        ? days % 31
+        : (days - 186) % 30
+    );
+
+  return [
+    jy,
+    jm,
+    jd
+  ];
+}
+
+
+function formatJalaliDate(
+  isoDate
+){
+
+  if(!isoDate) return "-";
+
+  const parts =
+    String(isoDate).split("-");
+
+  if(parts.length !== 3){
+    return "-";
+  }
+
+  const gy =
+    Number(parts[0]);
+
+  const gm =
+    Number(parts[1]);
+
+  const gd =
+    Number(parts[2]);
+
+  if(
+    !gy ||
+    !gm ||
+    !gd
+  ){
+    return "-";
+  }
+
+  const [
+    jy,
+    jm,
+    jd
+  ] =
+    gregorianToJalali(
+      gy,
+      gm,
+      gd
+    );
+
+  return toPersianNumber(
+    `${jy}/${String(jm).padStart(2,"0")}/${String(jd).padStart(2,"0")}`
+  );
+}
+
+
+function updateDateDisplay(
+  inputId,
+  jalaliId,
+  gregorianId
+){
+
+  const input =
+    document.getElementById(inputId);
+
+  const jalali =
+    document.getElementById(jalaliId);
+
+  const gregorian =
+    document.getElementById(gregorianId);
+
+  if(!input) return;
+
+  const value =
+    input.value;
+
+  if(!value){
+
+    if(jalali){
+      jalali.textContent =
+        "انتخاب تاریخ";
+    }
+
+    if(gregorian){
+      gregorian.textContent =
+        "";
+    }
+
+    return;
+  }
+
+  if(jalali){
+
+    jalali.textContent =
+      formatJalaliDate(value);
+  }
+
+  if(gregorian){
+
+    gregorian.textContent =
+      formatDate(value);
+  }
+}
+
+
+function bindDatePicker(
+  inputId,
+  jalaliId,
+  gregorianId
+){
+
+  const input =
+    document.getElementById(inputId);
+
+  if(!input) return;
+
+  const handler =
+    () =>
+      updateDateDisplay(
+        inputId,
+        jalaliId,
+        gregorianId
+      );
+
+  input.addEventListener(
+    "change",
+    handler
+  );
+
+  input.addEventListener(
+    "input",
+    handler
+  );
+
+  handler();
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+function openModal(
+  title,
+  body
+){
+
+  modalTitle.textContent =
+    title;
+
+  modalBody.innerHTML =
+    body;
+
+  modal.classList.remove(
+    "hidden"
+  );
+}
+
+
+function closeModal(){
+
+  modal.classList.add(
+    "hidden"
+  );
+
+  modalBody.innerHTML =
+    "";
+
+  currentNotesMachineId =
+    null;
+}
+
+
+/* =========================================================
+   AUTH
+========================================================= */
+
+async function login(
+  username,
+  password
+){
+
+  const data =
+    await apiFetch(
+      "/api/auth/login",
+      {
+        method:"POST",
+        body:JSON.stringify({
+          username,
+          password
+        })
+      }
+    );
+
+  sessionToken =
+    data.token ||
+    data.session_token;
+
+  localStorage.setItem(
+    "machinery_session",
+    sessionToken
+  );
+
+  currentUser =
+    data.user;
+
+  showApp();
+
+  await loadData();
+}
+
+
+async function checkSession(){
+
+  if(!sessionToken){
+
+    showLogin();
+    return;
+  }
+
+  try{
+
+    const data =
+      await apiFetch(
+        "/api/auth/me"
+      );
+
+    currentUser =
+      data.user;
+
+    showApp();
+
+    await loadData();
+
+  }catch{
 
     sessionToken = "";
 
@@ -1432,212 +1862,75 @@ async function api(
     );
 
     showLogin();
-
   }
-
-
-  if (!response.ok) {
-
-    const message =
-      data.message ||
-      data.error ||
-      "خطا در ارتباط با سرور";
-
-    throw new Error(
-      message
-    );
-  }
-
-
-  return data;
 }
 
 
-/* =========================================================
-   LOGIN
-========================================================= */
+async function logout(){
 
-async function login() {
+  try{
 
-  const username =
-    loginUsername.value.trim();
+    await apiFetch(
+      "/api/auth/logout",
+      {
+        method:"POST"
+      }
+    );
 
-  const password =
-    loginPassword.value;
+  }catch{}
 
+  sessionToken = "";
 
-  loginError.classList.add(
-    "hidden"
+  currentUser = null;
+
+  localStorage.removeItem(
+    "machinery_session"
   );
 
-
-  if (!username || !password) {
-
-    showLoginError(
-      "نام کاربری و رمز عبور را وارد کنید."
-    );
-
-    return;
-  }
-
-
-  loginBtn.disabled = true;
-
-  loginBtn.textContent =
-    "در حال ورود...";
-
-
-  try {
-
-    const result =
-      await api(
-        "/api/auth/login",
-        {
-          method: "POST",
-
-          body:
-            JSON.stringify({
-              username,
-              password,
-            }),
-        }
-      );
-
-
-    sessionToken =
-      result.session_token;
-
-
-    localStorage.setItem(
-      "machinery_session",
-      sessionToken
-    );
-
-
-    currentUser =
-      result.user;
-
-
-    await showApp();
-
-
-  } catch (error) {
-
-    showLoginError(
-      translateError(
-        error.message
-      )
-    );
-
-  } finally {
-
-    loginBtn.disabled = false;
-
-    loginBtn.textContent =
-      "ورود";
-  }
+  showLogin();
 }
 
 
-function showLoginError(
-  message
-) {
-
-  loginError.textContent =
-    message;
-
-  loginError.classList.remove(
-    "hidden"
-  );
-}
-
-
-/* =========================================================
-   SESSION
-========================================================= */
-
-async function checkSession() {
-
-  if (!sessionToken) {
-
-    showLogin();
-
-    return;
-  }
-
-
-  try {
-
-    const result =
-      await api(
-        "/api/auth/me"
-      );
-
-
-    currentUser =
-      result.user;
-
-
-    await showApp();
-
-
-  } catch {
-
-    showLogin();
-  }
-}
-
-
-/* =========================================================
-   SHOW LOGIN / APP
-========================================================= */
-
-function showLogin() {
-
-  app.classList.add(
-    "hidden"
-  );
+function showLogin(){
 
   loginPage.classList.remove(
     "hidden"
   );
 
-  loginUsername.focus();
+  appPage.classList.add(
+    "hidden"
+  );
 }
 
 
-async function showApp() {
+function showApp(){
 
   loginPage.classList.add(
     "hidden"
   );
 
-  app.classList.remove(
+  appPage.classList.remove(
     "hidden"
   );
 
+  if(currentUser){
 
-  const fullName =
-    [
-      currentUser?.first_name,
-      currentUser?.last_name
-    ]
-    .filter(Boolean)
-    .join(" ");
+    userName.textContent =
+      [
+        currentUser.first_name,
+        currentUser.last_name
+      ]
+      .filter(Boolean)
+      .join(" ")
+      ||
+      currentUser.username
+      ||
+      currentUser.web_username
+      ||
+      "";
+  }
 
-
-  headerUser.textContent =
-    `کاربر: ${
-      fullName ||
-      currentUser?.web_username ||
-      "کاربر"
-    }`;
-
-
-  if (
-    currentUser?.role ===
-    "admin"
-  ) {
+  if(currentUser?.role === "admin"){
 
     adminPanel.classList.remove(
       "hidden"
@@ -1647,7 +1940,12 @@ async function showApp() {
       "hidden"
     );
 
-  } else {
+    /* پنل ادمین در شروع بسته باشد */
+    adminPanel.classList.remove(
+      "open"
+    );
+
+  }else{
 
     adminPanel.classList.add(
       "hidden"
@@ -1657,149 +1955,132 @@ async function showApp() {
       "hidden"
     );
   }
-
-
-  await loadYards();
-
-  await loadMachines();
 }
 
 
 /* =========================================================
-   LOAD YARDS
+   LOAD DATA
 ========================================================= */
 
-async function loadYards() {
+async function loadData(){
 
-  const result =
-    await api(
-      "/api/yards"
+  try{
+
+    const [
+      machinesData,
+      yardsData
+    ] =
+      await Promise.all([
+        apiFetch("/api/machines"),
+        apiFetch("/api/yards")
+      ]);
+
+    machines =
+      Array.isArray(machinesData)
+        ? machinesData
+        : (
+          machinesData?.machines ||
+          machinesData?.data ||
+          []
+        );
+
+    yards =
+      Array.isArray(yardsData)
+        ? yardsData
+        : (
+          yardsData?.yards ||
+          yardsData?.data ||
+          []
+        );
+
+    renderYards();
+
+    renderMachines();
+
+  }catch(error){
+
+    machineList.innerHTML =
+      `<div class="empty-state">
+        ${escapeHtml(
+          translateError(error)
+        )}
+      </div>`;
+
+    toast(
+      translateError(error),
+      "error"
+    );
+  }
+}
+
+
+/* =========================================================
+   YARDS
+========================================================= */
+
+function renderYards(){
+
+  yardFilter.innerHTML =
+    `<option value="">همه یاردها</option>`;
+
+  machineYard.innerHTML =
+    `<option value="">انتخاب یارد</option>`;
+
+  yards.forEach(yard=>{
+
+    const id =
+      yard.id;
+
+    const name =
+      yard.name || "";
+
+    yardFilter.insertAdjacentHTML(
+      "beforeend",
+      `
+      <option value="${escapeAttr(id)}">
+        ${escapeHtml(name)}
+      </option>
+      `
     );
 
-
-  yards =
-    result.yards || [];
-
+    machineYard.insertAdjacentHTML(
+      "beforeend",
+      `
+      <option value="${escapeAttr(id)}">
+        ${escapeHtml(name)}
+      </option>
+      `
+    );
+  });
 
   yardCount.textContent =
     toPersianNumber(
       yards.length
     );
-
-
-  renderYardFilters();
-
-  renderAdminYards();
 }
 
 
 /* =========================================================
-   YARD FILTERS
+   FIND YARD
 ========================================================= */
 
-function renderYardFilters() {
+function getYardName(
+  yardId,
+  fallback
+){
 
-  const current =
-    yardFilter.value;
+  const yard =
+    yards.find(
+      y =>
+        String(y.id) ===
+        String(yardId)
+    );
 
-
-  yardFilter.innerHTML = "";
-
-  yardFilter.appendChild(
-    new Option(
-      "همه محل‌ها",
-      ""
-    )
+  return (
+    yard?.name ||
+    fallback ||
+    "-"
   );
-
-
-  yards.forEach(
-    yard => {
-
-      yardFilter.appendChild(
-        new Option(
-          yard.name,
-          yard.id
-        )
-      );
-
-    }
-  );
-
-
-  yardFilter.value =
-    current;
-}
-
-
-function renderAdminYards() {
-
-  machineYard.innerHTML = "";
-
-  yards.forEach(
-    yard => {
-
-      machineYard.appendChild(
-        new Option(
-          yard.name,
-          yard.id
-        )
-      );
-
-    }
-  );
-}
-
-
-/* =========================================================
-   LOAD MACHINES
-========================================================= */
-
-async function loadMachines() {
-
-  machineList.innerHTML = `
-    <div class="state-box">
-      <div class="loading-spinner"></div>
-      در حال دریافت اطلاعات...
-    </div>
-  `;
-
-
-  try {
-
-    const result =
-      await api(
-        "/api/machines"
-      );
-
-
-    machines =
-      result.machines || [];
-
-
-    totalCount.textContent =
-      toPersianNumber(
-        machines.length
-      );
-
-
-    renderMachines();
-
-
-  } catch (error) {
-
-    machineList.innerHTML = `
-      <div class="state-box">
-        ❌ خطا در دریافت اطلاعات
-        <br><br>
-        ${escapeHtml(
-          translateError(
-            error.message
-          )
-        )}
-      </div>
-    `;
-  }
 }
 
 
@@ -1807,98 +2088,93 @@ async function loadMachines() {
    RENDER MACHINES
 ========================================================= */
 
-function renderMachines() {
+function renderMachines(){
 
   const search =
-    searchInput.value
-      .trim()
-      .toLowerCase();
-
+    String(
+      searchInput.value || ""
+    )
+    .trim()
+    .toLowerCase();
 
   const selectedYard =
     yardFilter.value;
 
-
   const filtered =
-    machines.filter(
-      machine => {
+    machines.filter(machine=>{
 
-        const text =
-          [
-            machine.type,
-            machine.company_number,
-            machine.plate,
-            machine.yards?.name
-          ]
-          .filter(Boolean)
-          .join(" ")
-          .toLowerCase();
+      const type =
+        String(
+          machine.type || ""
+        ).toLowerCase();
 
+      const company =
+        String(
+          machine.company_number || ""
+        ).toLowerCase();
 
-        const searchOk =
-          !search ||
-          text.includes(search);
+      const plate =
+        String(
+          machine.plate || ""
+        ).toLowerCase();
 
+      const yardName =
+        String(
+          machine.yard_name ||
+          getYardName(
+            machine.yard_id
+          ) ||
+          ""
+        ).toLowerCase();
 
-        const yardOk =
-          !selectedYard ||
-          machine.yard_id ===
-            selectedYard;
+      const searchMatch =
+        !search ||
+        type.includes(search) ||
+        company.includes(search) ||
+        plate.includes(search) ||
+        yardName.includes(search);
 
+      const yardMatch =
+        !selectedYard ||
+        String(machine.yard_id) ===
+        String(selectedYard);
 
-        return (
-          searchOk &&
-          yardOk
-        );
-      }
+      return (
+        searchMatch &&
+        yardMatch
+      );
+    });
+
+  totalMachines.textContent =
+    toPersianNumber(
+      machines.length
     );
 
-
-  filteredCount.textContent =
+  filteredMachines.textContent =
     toPersianNumber(
       filtered.length
     );
 
+  machineCountText.textContent =
+    toPersianNumber(
+      `${filtered.length} ماشین`
+    );
 
-  if (
-    !search &&
-    !selectedYard
-  ) {
+  if(!filtered.length){
 
-    filterText.textContent =
-      "همه ماشین‌آلات";
-
-  } else {
-
-    filterText.textContent =
-      `${toPersianNumber(
-        filtered.length
-      )} مورد یافت شد`;
-  }
-
-
-  if (!filtered.length) {
-
-    machineList.innerHTML = `
-      <div class="state-box">
-        🔍
-        <br><br>
-        موردی پیدا نشد.
+    machineList.innerHTML =
+      `
+      <div class="empty-state">
+        ماشینی با این مشخصات پیدا نشد.
       </div>
-    `;
+      `;
 
     return;
   }
 
-
   machineList.innerHTML =
     filtered
-      .map(
-        machine =>
-          machineCard(
-            machine
-          )
-      )
+      .map(renderMachineCard)
       .join("");
 }
 
@@ -1907,29 +2183,48 @@ function renderMachines() {
    MACHINE CARD
 ========================================================= */
 
-function machineCard(
+function renderMachineCard(
   machine
-) {
+){
 
-  const yardName =
-    machine.yards?.name ||
-    "بدون محل";
+  const id =
+    machine.id;
 
+  const type =
+    machine.type || "-";
 
   const company =
-    machine.company_number ||
-    "ثبت نشده";
+    machine.company_number || "-";
 
+  const yard =
+    machine.yard_name ||
+    getYardName(
+      machine.yard_id
+    );
 
   const plate =
-    machine.plate ||
-    "ثبت نشده";
+    machine.plate || "-";
 
+  const adminButtons =
+    currentUser?.role === "admin"
+      ? `
+        <button
+          class="edit-btn"
+          type="button"
+          onclick="editMachine('${escapeAttr(id)}')"
+        >
+          ✏️ ویرایش
+        </button>
 
-  const admin =
-    currentUser?.role ===
-    "admin";
-
+        <button
+          class="danger-btn"
+          type="button"
+          onclick="deleteMachine('${escapeAttr(id)}')"
+        >
+          🗑 حذف
+        </button>
+      `
+      : "";
 
   return `
     <div class="machine-card">
@@ -1939,64 +2234,31 @@ function machineCard(
         <div>
 
           <div class="machine-type">
-            ${escapeHtml(
-              machine.type ||
-              "بدون نوع"
-            )}
+            ${escapeHtml(type)}
           </div>
 
           <div class="machine-company">
             شماره شرکت:
             <strong>
-              ${escapeHtml(
-                company
-              )}
+              ${escapeHtml(company)}
             </strong>
           </div>
 
         </div>
 
-        <div class="machine-yard">
-          📍
-          ${escapeHtml(
-            yardName
-          )}
-        </div>
-
       </div>
 
 
-      <div class="machine-details">
+      <div class="machine-info">
 
-        <div class="detail-box">
+        <span class="info-pill">
+          📍 ${escapeHtml(yard)}
+        </span>
 
-          <div class="detail-label">
-            نوع ماشین
-          </div>
-
-          <div class="detail-value">
-            ${escapeHtml(
-              machine.type ||
-              "-"
-            )}
-          </div>
-
-        </div>
-
-
-        <div class="detail-box">
-
-          <div class="detail-label">
-            پلاک
-          </div>
-
-          <div class="detail-value">
-            ${escapeHtml(
-              plate
-            )}
-          </div>
-
-        </div>
+        <span class="info-pill">
+          🚘 پلاک:
+          ${escapeHtml(plate)}
+        </span>
 
       </div>
 
@@ -2004,31 +2266,14 @@ function machineCard(
       <div class="machine-actions">
 
         <button
-          class="notes-btn"
-          onclick="showMachineNotes('${machine.id}')"
+          class="note-btn"
+          type="button"
+          onclick="showMachineNotes('${escapeAttr(id)}')"
         >
-          📝 سوابق
+          📝 ثبت سابقه
         </button>
 
-        ${
-          admin
-          ? `
-            <button
-              class="edit-btn"
-              onclick="editMachine('${machine.id}')"
-            >
-              ✏️ ویرایش
-            </button>
-
-            <button
-              class="delete-btn"
-              onclick="deleteMachine('${machine.id}')"
-            >
-              🗑 حذف
-            </button>
-          `
-          : ""
-        }
+        ${adminButtons}
 
       </div>
 
@@ -2041,121 +2286,103 @@ function machineCard(
    ADD / EDIT MACHINE
 ========================================================= */
 
-async function saveMachine() {
+async function saveMachineData(){
 
-  if (
-    currentUser?.role !==
-    "admin"
-  ) {
-
+  if(currentUser?.role !== "admin"){
     return;
   }
-
 
   const type =
     machineType.value.trim();
 
   const company =
-    machineCompany.value.trim();
-
-  const plate =
-    machinePlate.value.trim();
+    companyNumber.value.trim();
 
   const yardId =
     machineYard.value;
 
+  const plate =
+    machinePlate.value.trim();
 
-  if (!type) {
+  if(!type){
 
     toast(
       "نوع ماشین را وارد کنید.",
       "error"
     );
 
+    machineType.focus();
+
     return;
   }
 
-
-  if (!yardId) {
+  if(!company){
 
     toast(
-      "محل استقرار را انتخاب کنید.",
+      "شماره شرکت را وارد کنید.",
       "error"
     );
 
+    companyNumber.focus();
+
     return;
   }
 
+  if(!yardId){
 
-  saveMachineBtn.disabled =
-    true;
+    toast(
+      "یارد را انتخاب کنید.",
+      "error"
+    );
 
+    machineYard.focus();
 
-  try {
+    return;
+  }
 
-    let result;
+  const payload = {
+    type,
+    company_number:company,
+    yard_id:yardId,
+    plate
+  };
 
+  try{
 
-    if (editingMachineId) {
+    saveMachine.disabled =
+      true;
 
-      result =
-        await api(
-          `/api/machines/${encodeURIComponent(
-            editingMachineId
-          )}`,
-          {
-            method:
-              "PATCH",
+    if(editingMachineId){
 
-            body:
-              JSON.stringify({
-                type,
-                company_number:
-                  company ||
-                  null,
-
-                plate:
-                  plate ||
-                  null,
-
-                yard_id:
-                  yardId,
-              }),
-          }
-        );
-
+      await apiFetch(
+        "/api/machines/" +
+        encodeURIComponent(
+          editingMachineId
+        ),
+        {
+          method:"PATCH",
+          body:JSON.stringify(
+            payload
+          )
+        }
+      );
 
       toast(
-        "ماشین با موفقیت ویرایش شد.",
+        "اطلاعات ماشین با موفقیت ویرایش شد.",
         "success"
       );
 
-    } else {
+    }else{
 
-      result =
-        await api(
-          "/api/machines",
-          {
-            method:
-              "POST",
-
-            body:
-              JSON.stringify({
-                type,
-                company_number:
-                  company ||
-                  null,
-
-                plate:
-                  plate ||
-                  null,
-
-                yard_id:
-                  yardId,
-              }),
-          }
-        );
-
+      await apiFetch(
+        "/api/machines",
+        {
+          method:"POST",
+          body:JSON.stringify(
+            payload
+          )
+        }
+      );
 
       toast(
         "ماشین با موفقیت اضافه شد.",
@@ -2163,193 +2390,173 @@ async function saveMachine() {
       );
     }
 
-
     clearMachineForm();
 
-    await loadMachines();
+    await loadData();
 
-
-  } catch (error) {
+  }catch(error){
 
     toast(
-      translateError(
-        error.message
-      ),
+      translateError(error),
       "error"
     );
 
-  } finally {
+  }finally{
 
-    saveMachineBtn.disabled =
+    saveMachine.disabled =
       false;
   }
 }
 
 
-/* =========================================================
-   EDIT
-========================================================= */
+function editMachine(id){
 
-function editMachine(
-  id
-) {
-
-  const machine =
-    machines.find(
-      item =>
-        item.id === id
-    );
-
-
-  if (!machine) {
+  if(currentUser?.role !== "admin"){
     return;
   }
 
+  const machine =
+    machines.find(
+      m =>
+        String(m.id) ===
+        String(id)
+    );
+
+  if(!machine){
+
+    toast(
+      "ماشین پیدا نشد.",
+      "error"
+    );
+
+    return;
+  }
 
   editingMachineId =
     id;
 
-
   machineType.value =
     machine.type || "";
 
-
-  machineCompany.value =
-    machine.company_number ||
-    "";
-
-
-  machinePlate.value =
-    machine.plate || "";
-
+  companyNumber.value =
+    machine.company_number || "";
 
   machineYard.value =
     machine.yard_id || "";
 
+  machinePlate.value =
+    machine.plate || "";
 
-  saveMachineBtn.textContent =
-    "💾 ذخیره تغییرات";
+  adminPanelTitle.textContent =
+    "ویرایش ماشین";
 
+  saveMachine.textContent =
+    "ذخیره تغییرات";
 
-  cancelEditBtn.classList.remove(
+  cancelEdit.classList.remove(
     "hidden"
   );
 
+  /* پنل خودکار باز شود */
+  adminPanel.classList.add(
+    "open"
+  );
 
-  adminPanel.scrollIntoView({
-    behavior:"smooth",
-    block:"start"
-  });
+  /* و سپس به آن اسکرول شود */
+  setTimeout(()=>{
+
+    adminPanel.scrollIntoView({
+      behavior:"smooth",
+      block:"start"
+    });
+
+  },50);
 }
 
 
-function clearMachineForm() {
+function clearMachineForm(){
 
   editingMachineId =
     null;
 
-
   machineType.value =
     "";
 
-  machineCompany.value =
+  companyNumber.value =
+    "";
+
+  machineYard.value =
     "";
 
   machinePlate.value =
     "";
 
+  adminPanelTitle.textContent =
+    "افزودن ماشین";
 
-  if (yards.length) {
+  saveMachine.textContent =
+    "افزودن ماشین";
 
-    machineYard.value =
-      yards[0].id;
-  }
-
-
-  saveMachineBtn.textContent =
-    "➕ افزودن ماشین";
-
-
-  cancelEditBtn.classList.add(
+  cancelEdit.classList.add(
     "hidden"
   );
 }
 
 
-/* =========================================================
-   DELETE
-========================================================= */
+async function deleteMachine(id){
 
-async function deleteMachine(
-  id
-) {
-
-  if (
-    currentUser?.role !==
-    "admin"
-  ) {
-
+  if(currentUser?.role !== "admin"){
     return;
   }
-
 
   const machine =
     machines.find(
-      item =>
-        item.id === id
+      m =>
+        String(m.id) ===
+        String(id)
     );
 
-
-  if (!machine) {
+  if(!machine){
     return;
   }
 
-
-  const ok =
+  const confirmed =
     confirm(
-      `آیا از حذف ماشین «${
-        machine.type ||
-        ""
-      }» با شماره شرکت «${
-        machine.company_number ||
-        "ثبت نشده"
-      }» مطمئن هستید؟`
+      `آیا از حذف ماشین «${machine.type || ""} - ${machine.company_number || ""}» مطمئن هستید؟`
     );
 
-
-  if (!ok) {
+  if(!confirmed){
     return;
   }
 
+  try{
 
-  try {
-
-    await api(
-      `/api/machines/${encodeURIComponent(
-        id
-      )}`,
+    await apiFetch(
+      "/api/machines/" +
+      encodeURIComponent(id),
       {
-        method:
-          "DELETE",
+        method:"DELETE"
       }
     );
-
 
     toast(
       "ماشین با موفقیت حذف شد.",
       "success"
     );
 
+    if(
+      String(editingMachineId) ===
+      String(id)
+    ){
+      clearMachineForm();
+    }
 
-    await loadMachines();
+    await loadData();
 
-
-  } catch (error) {
+  }catch(error){
 
     toast(
-      translateError(
-        error.message
-      ),
+      translateError(error),
       "error"
     );
   }
@@ -2362,104 +2569,205 @@ async function deleteMachine(
 
 async function showMachineNotes(
   machineId
-) {
+){
 
   const machine =
     machines.find(
-      item =>
-        item.id ===
-        machineId
+      m =>
+        String(m.id) ===
+        String(machineId)
     );
 
+  if(!machine){
 
-  if (!machine) {
+    toast(
+      "ماشین پیدا نشد.",
+      "error"
+    );
+
     return;
   }
 
+  currentNotesMachineId =
+    machineId;
 
-  modalTitle.textContent =
-    `📝 سوابق ${
-      machine.type ||
-      "ماشین"
-    }`;
+  openModal(
+    `سوابق ${machine.type || ""} - ${machine.company_number || ""}`,
+    `
+      <div
+        id="notesLoading"
+        class="loading-state"
+      >
+        در حال بارگذاری سوابق...
+      </div>
+    `
+  );
 
+  try{
 
-  modalBody.innerHTML = `
-    <div class="state-box">
-      <div class="loading-spinner"></div>
-      در حال دریافت سوابق...
-    </div>
-  `;
-
-
-  openModal();
-
-
-  try {
-
-    const result =
-      await api(
-        `/api/notes?machine_id=${encodeURIComponent(
+    const data =
+      await apiFetch(
+        "/api/notes?machine_id=" +
+        encodeURIComponent(
           machineId
-        )}`
+        )
       );
 
-
     const notes =
-      result.notes || [];
+      Array.isArray(data)
+        ? data
+        : (
+          data?.notes ||
+          data?.data ||
+          []
+        );
 
+    const isAdmin =
+      currentUser?.role === "admin";
 
-    let addForm = "";
+    let html = "";
 
+    if(!notes.length){
 
-    if (
-      currentUser?.role ===
-      "admin"
-    ) {
+      html += `
+        <div class="empty-state">
+          برای این ماشین سابقه‌ای ثبت نشده است.
+        </div>
+      `;
 
-      addForm = `
-        <div class="admin-panel"
-             style="margin-bottom:15px;">
+    }else{
 
-          <div class="section-title">
-            ➕ ثبت سابقه جدید
+      html += `
+        <div class="notes-list">
+      `;
+
+      notes.forEach(note=>{
+
+        html += `
+          <div class="note-item">
+
+            <div class="note-item-top">
+
+              <div class="note-date">
+                📅 ${formatDate(note.note_date)}
+              </div>
+
+              ${
+                isAdmin
+                  ? `
+                    <button
+                      class="note-delete"
+                      type="button"
+                      onclick="deleteNote('${escapeAttr(note.id)}')"
+                    >
+                      حذف
+                    </button>
+                  `
+                  : ""
+              }
+
+            </div>
+
+            <div class="note-text">
+              ${escapeHtml(
+                note.note || ""
+              )}
+            </div>
+
           </div>
+        `;
+      });
+
+      html += `
+        </div>
+      `;
+    }
+
+
+    if(isAdmin){
+
+      html += `
+        <div
+          class="admin-panel"
+          style="margin-bottom:15px;"
+        >
+
+          <div
+            style="
+              font-weight:bold;
+              color:#176c49;
+              margin-bottom:12px;
+              font-size:13px;
+            "
+          >
+            ثبت سابقه جدید
+          </div>
+
 
           <div class="form-group">
 
-            <label>
+            <label class="form-label">
               تاریخ
             </label>
 
-            <input
-              id="noteDate"
-              class="form-control"
-              type="date"
-              value="${todayISO()}"
-            >
+            <div class="date-picker-wrap">
+
+              <div
+                id="noteDateDisplay"
+                class="date-display"
+              >
+
+                <span
+                  id="noteDateJalali"
+                  class="date-jalali"
+                >
+                  انتخاب تاریخ
+                </span>
+
+                <span
+                  id="noteDateGregorian"
+                  class="date-gregorian"
+                ></span>
+
+              </div>
+
+              <span class="date-calendar-icon">
+                📅
+              </span>
+
+              <input
+                id="noteDate"
+                class="native-date-input"
+                type="date"
+                value="${todayISO()}"
+              >
+
+            </div>
 
           </div>
 
+
           <div class="form-group">
 
-            <label>
-              توضیحات
+            <label class="form-label">
+              توضیحات سابقه
             </label>
 
             <textarea
               id="noteText"
               class="form-control"
-              style="height:100px;padding-top:10px;resize:vertical;"
-              placeholder="شرح وضعیت، تعمیرات، انتقال، خرابی و..."
+              placeholder="توضیحات مربوط به سرویس، تعمیر، جابه‌جایی، خرابی و..."
             ></textarea>
 
           </div>
 
+
           <button
-            class="btn btn-primary"
-            onclick="addNote('${machineId}')"
+            id="saveNote"
+            class="primary-btn"
+            type="button"
           >
-            💾 ثبت سابقه
+            ثبت سابقه
           </button>
 
         </div>
@@ -2467,156 +2775,89 @@ async function showMachineNotes(
     }
 
 
-    if (!notes.length) {
+    html += `
+      <div class="modal-footer">
 
-      modalBody.innerHTML =
-        addForm +
-        `
-          <div class="state-box">
-            هنوز سابقه‌ای برای این ماشین ثبت نشده است.
-          </div>
-        `;
+        <button
+          class="secondary-btn"
+          type="button"
+          onclick="closeModal()"
+        >
+          بستن
+        </button>
 
-      return;
-    }
-
-
-    const notesHtml =
-      notes
-        .map(
-          note => {
-
-            const author =
-              note.app_users
-                ?.web_username ||
-              [
-                note.app_users
-                  ?.first_name,
-
-                note.app_users
-                  ?.last_name
-              ]
-              .filter(Boolean)
-              .join(" ") ||
-              "کاربر";
-
-
-            return `
-              <div class="note-item">
-
-                <div class="note-date">
-                  📅
-                  ${formatDate(
-                    note.note_date
-                  )}
-                </div>
-
-                <div class="note-text">
-                  ${escapeHtml(
-                    note.note
-                  )}
-                </div>
-
-                <div class="note-author">
-                  ثبت توسط:
-                  ${escapeHtml(
-                    author
-                  )}
-
-                  ${
-                    currentUser?.role ===
-                    "admin"
-                    ? `
-                      <button
-                        onclick="deleteNote('${note.id}')"
-                        style="
-                          float:left;
-                          border:0;
-                          background:#ffe9e9;
-                          color:#b52b2b;
-                          border-radius:7px;
-                          padding:4px 7px;
-                          font-size:9px;
-                        "
-                      >
-                        حذف
-                      </button>
-                    `
-                    : ""
-                  }
-
-                </div>
-
-              </div>
-            `;
-          }
-        )
-        .join("");
-
-
-    modalBody.innerHTML =
-      addForm +
-      `
-        <div class="notes-list">
-          ${notesHtml}
-        </div>
-      `;
-
-
-  } catch (error) {
-
-    modalBody.innerHTML = `
-      <div class="state-box">
-        ❌ خطا در دریافت سوابق
-        <br><br>
-        ${escapeHtml(
-          translateError(
-            error.message
-          )
-        )}
       </div>
     `;
+
+    modalBody.innerHTML =
+      html;
+
+
+    if(isAdmin){
+
+      bindDatePicker(
+        "noteDate",
+        "noteDateJalali",
+        "noteDateGregorian"
+      );
+
+      document
+        .getElementById("saveNote")
+        .addEventListener(
+          "click",
+          saveNote
+        );
+    }
+
+  }catch(error){
+
+    modalBody.innerHTML =
+      `
+      <div class="empty-state">
+        ${escapeHtml(
+          translateError(error)
+        )}
+      </div>
+      `;
+
+    toast(
+      translateError(error),
+      "error"
+    );
   }
 }
 
 
-/* =========================================================
-   ADD NOTE
-========================================================= */
+async function saveNote(){
 
-async function addNote(
-  machineId
-) {
+  if(currentUser?.role !== "admin"){
+    return;
+  }
 
-  if (
-    currentUser?.role !==
-    "admin"
-  ) {
+  const machineId =
+    currentNotesMachineId;
+
+  const noteDate =
+    document.getElementById(
+      "noteDate"
+    )?.value;
+
+  const noteText =
+    document.getElementById(
+      "noteText"
+    )?.value.trim();
+
+  if(!machineId){
+
+    toast(
+      "ماشین مشخص نیست.",
+      "error"
+    );
 
     return;
   }
 
-
-  const dateInput =
-    document.getElementById(
-      "noteDate"
-    );
-
-  const textInput =
-    document.getElementById(
-      "noteText"
-    );
-
-
-  const noteDate =
-    dateInput?.value || "";
-
-  const note =
-    textInput?.value.trim() ||
-    "";
-
-
-  if (!noteDate) {
+  if(!noteDate){
 
     toast(
       "تاریخ را انتخاب کنید.",
@@ -2626,8 +2867,7 @@ async function addNote(
     return;
   }
 
-
-  if (!note) {
+  if(!noteText){
 
     toast(
       "توضیحات سابقه را وارد کنید.",
@@ -2637,122 +2877,104 @@ async function addNote(
     return;
   }
 
-
-  try {
-
-    await api(
-      "/api/notes",
-      {
-        method:
-          "POST",
-
-        body:
-          JSON.stringify({
-            machine_id:
-              machineId,
-
-            note_date:
-              noteDate,
-
-            note:
-              note,
-          }),
-      }
+  const button =
+    document.getElementById(
+      "saveNote"
     );
 
+  try{
+
+    if(button){
+      button.disabled = true;
+    }
+
+    await apiFetch(
+      "/api/notes",
+      {
+        method:"POST",
+        body:JSON.stringify({
+          machine_id:machineId,
+          note_date:noteDate,
+          note:noteText
+        })
+      }
+    );
 
     toast(
       "سابقه با موفقیت ثبت شد.",
       "success"
     );
 
-
     await showMachineNotes(
       machineId
     );
 
-
-  } catch (error) {
+  }catch(error){
 
     toast(
-      translateError(
-        error.message
-      ),
+      translateError(error),
       "error"
     );
+
+  }finally{
+
+    if(button){
+      button.disabled = false;
+    }
   }
 }
 
 
-/* =========================================================
-   DELETE NOTE
-========================================================= */
-
 async function deleteNote(
   noteId
-) {
+){
 
-  if (
-    currentUser?.role !==
-    "admin"
-  ) {
-
+  if(currentUser?.role !== "admin"){
     return;
   }
 
-
-  if (
-    !confirm(
+  const confirmed =
+    confirm(
       "آیا از حذف این سابقه مطمئن هستید؟"
-    )
-  ) {
-
-    return;
-  }
-
-
-  try {
-
-    await api(
-      `/api/notes?id=${encodeURIComponent(
-        noteId
-      )}`,
-      {
-        method:
-          "DELETE",
-      }
     );
 
+  if(!confirmed){
+    return;
+  }
+
+  const machineId =
+    currentNotesMachineId;
+
+  try{
+
+    await apiFetch(
+      "/api/notes/" +
+      encodeURIComponent(noteId),
+      {
+        method:"DELETE"
+      }
+    );
 
     toast(
       "سابقه حذف شد.",
       "success"
     );
 
-
-    /*
-      چون modal باز است،
-      دوباره سوابق را می‌گیریم.
-    */
-
-    const machineId =
-      findCurrentMachineFromModal();
-
-
-    if (machineId) {
+    if(machineId){
 
       await showMachineNotes(
         machineId
       );
+
+    }else{
+
+      closeModal();
     }
 
-
-  } catch (error) {
+  }catch(error){
 
     toast(
-      translateError(
-        error.message
-      ),
+      translateError(error),
       "error"
     );
   }
@@ -2763,454 +2985,331 @@ async function deleteNote(
    REPORT
 ========================================================= */
 
-async function showReport() {
+async function showReport(){
 
-  modalTitle.textContent =
-    "📊 گزارش سوابق";
+  openModal(
+    "گزارش‌گیری سوابق",
+    `
+      <div class="report-controls">
+
+        <div class="report-date-box">
+
+          <label>
+            از تاریخ
+          </label>
+
+          <div class="date-picker-wrap">
+
+            <div
+              id="reportFromDisplay"
+              class="date-display"
+            >
+
+              <span
+                id="reportFromJalali"
+                class="date-jalali"
+              >
+                انتخاب تاریخ
+              </span>
+
+              <span
+                id="reportFromGregorian"
+                class="date-gregorian"
+              ></span>
+
+            </div>
+
+            <span class="date-calendar-icon">
+              📅
+            </span>
+
+            <input
+              id="reportFrom"
+              class="native-date-input"
+              type="date"
+              value="${todayISO()}"
+            >
+
+          </div>
+
+        </div>
 
 
-  modalBody.innerHTML = `
+        <div class="report-date-box">
 
-    <div class="report-controls">
+          <label>
+            تا تاریخ
+          </label>
 
-      <input
-        id="reportFrom"
-        type="date"
-        value="${todayISO()}"
-      >
+          <div class="date-picker-wrap">
 
-      <input
-        id="reportTo"
-        type="date"
-        value="${todayISO()}"
-      >
+            <div
+              id="reportToDisplay"
+              class="date-display"
+            >
 
-      <button
-        id="loadReportBtn"
-        class="btn btn-primary"
-        onclick="loadReport()"
-      >
-        نمایش گزارش
-      </button>
+              <span
+                id="reportToJalali"
+                class="date-jalali"
+              >
+                انتخاب تاریخ
+              </span>
 
-    </div>
+              <span
+                id="reportToGregorian"
+                class="date-gregorian"
+              ></span>
 
-    <div
-      id="reportResult"
-      class="report-result"
-    >
+            </div>
 
-      <div class="state-box">
-        تاریخ را انتخاب کنید و
-        «نمایش گزارش» را بزنید.
+            <span class="date-calendar-icon">
+              📅
+            </span>
+
+            <input
+              id="reportTo"
+              class="native-date-input"
+              type="date"
+              value="${todayISO()}"
+            >
+
+          </div>
+
+        </div>
+
+
+        <button
+          id="loadReport"
+          class="primary-btn"
+          type="button"
+        >
+          نمایش گزارش
+        </button>
+
       </div>
 
-    </div>
 
-  `;
+      <div
+        id="reportResults"
+        class="report-list"
+      >
+      </div>
 
 
-  openModal();
+      <div class="modal-footer">
+
+        <button
+          class="secondary-btn"
+          type="button"
+          onclick="closeModal()"
+        >
+          بستن
+        </button>
+
+      </div>
+    `
+  );
+
+
+  bindDatePicker(
+    "reportFrom",
+    "reportFromJalali",
+    "reportFromGregorian"
+  );
+
+  bindDatePicker(
+    "reportTo",
+    "reportToJalali",
+    "reportToGregorian"
+  );
+
+
+  document
+    .getElementById("loadReport")
+    .addEventListener(
+      "click",
+      loadReport
+    );
 
 
   await loadReport();
 }
 
 
-async function loadReport() {
+async function loadReport(){
 
   const from =
     document.getElementById(
       "reportFrom"
-    )?.value || "";
-
+    )?.value;
 
   const to =
     document.getElementById(
       "reportTo"
-    )?.value || "";
+    )?.value;
 
-
-  const resultBox =
+  const result =
     document.getElementById(
-      "reportResult"
+      "reportResults"
     );
 
-
-  if (!resultBox) {
+  if(!result){
     return;
   }
 
+  if(!from || !to){
 
-  resultBox.innerHTML = `
-    <div class="state-box">
-      <div class="loading-spinner"></div>
-      در حال آماده‌سازی گزارش...
+    result.innerHTML =
+      `
+      <div class="empty-state">
+        تاریخ شروع و پایان را انتخاب کنید.
+      </div>
+      `;
+
+    return;
+  }
+
+  if(from > to){
+
+    result.innerHTML =
+      `
+      <div class="empty-state">
+        تاریخ شروع نمی‌تواند بعد از تاریخ پایان باشد.
+      </div>
+      `;
+
+    return;
+  }
+
+  result.innerHTML =
+    `
+    <div class="loading-state">
+      در حال دریافت گزارش...
     </div>
-  `;
+    `;
 
+  try{
 
-  try {
-
-    let url =
-      "/api/notes";
-
-
-    const params = [];
-
-
-    if (from) {
-
-      params.push(
-        `from=${encodeURIComponent(
-          from
-        )}`
+    const data =
+      await apiFetch(
+        "/api/notes?from=" +
+        encodeURIComponent(from) +
+        "&to=" +
+        encodeURIComponent(to)
       );
-    }
-
-
-    if (to) {
-
-      params.push(
-        `to=${encodeURIComponent(
-          to
-        )}`
-      );
-    }
-
-
-    if (params.length) {
-
-      url +=
-        "?" +
-        params.join("&");
-    }
-
-
-    const result =
-      await api(url);
-
 
     const notes =
-      result.notes || [];
+      Array.isArray(data)
+        ? data
+        : (
+          data?.notes ||
+          data?.data ||
+          []
+        );
 
+    if(!notes.length){
 
-    if (!notes.length) {
-
-      resultBox.innerHTML = `
-        <div class="state-box">
-          📭
-          <br><br>
+      result.innerHTML =
+        `
+        <div class="empty-state">
           در این بازه سابقه‌ای ثبت نشده است.
         </div>
-      `;
+        `;
 
       return;
     }
 
 
-    resultBox.innerHTML =
+    result.innerHTML =
       notes
-        .map(
-          note => {
+        .map(note=>{
 
-            const machine =
-              machines.find(
-                item =>
-                  item.id ===
-                  note.machine_id
-              );
+          const machine =
+            machines.find(
+              m =>
+                String(m.id) ===
+                String(note.machine_id)
+            );
+
+          const machineTypeValue =
+            note.machine_type ||
+            machine?.type ||
+            "-";
+
+          const company =
+            note.company_number ||
+            machine?.company_number ||
+            "-";
+
+          const yard =
+            note.yard_name ||
+            getYardName(
+              note.yard_id ||
+              machine?.yard_id
+            );
 
 
-            const machineName =
-              machine?.type ||
-              "ماشین";
+          return `
+            <div class="report-item">
 
-
-            const company =
-              machine?.company_number ||
-              "بدون شماره";
-
-
-            const yard =
-              machine?.yards?.name ||
-              "";
-
-
-            return `
-              <div class="report-item">
-
-                <div class="report-item-head">
-
-                  <span>
-                    📅
-                    ${formatDate(
-                      note.note_date
-                    )}
-                  </span>
-
-                  <span>
-                    ${escapeHtml(
-                      yard
-                    )}
-                  </span>
-
-                </div>
-
-                <div class="report-machine">
-                  🚜
-                  ${escapeHtml(
-                    machineName
-                  )}
-
-                  —
-                  شماره شرکت:
-                  ${escapeHtml(
-                    company
-                  )}
-                </div>
-
-                <div class="report-note">
-                  ${escapeHtml(
-                    note.note
-                  )}
-                </div>
-
+              <div class="report-date">
+                📅 ${formatDate(
+                  note.note_date
+                )}
               </div>
-            `;
-          }
-        )
+
+              <div class="report-title">
+                ${escapeHtml(
+                  machineTypeValue
+                )}
+              </div>
+
+              <div class="report-meta">
+                شماره شرکت:
+                ${escapeHtml(company)}
+                &nbsp; | &nbsp;
+                یارد:
+                ${escapeHtml(yard)}
+              </div>
+
+              <div class="report-note">
+                ${escapeHtml(
+                  note.note || ""
+                )}
+              </div>
+
+            </div>
+          `;
+
+        })
         .join("");
 
+  }catch(error){
 
-  } catch (error) {
-
-    resultBox.innerHTML = `
-      <div class="state-box">
-        ❌ خطا در دریافت گزارش
-        <br><br>
+    result.innerHTML =
+      `
+      <div class="empty-state">
         ${escapeHtml(
-          translateError(
-            error.message
-          )
+          translateError(error)
         )}
       </div>
-    `;
-  }
-}
+      `;
 
-
-/* =========================================================
-   MODAL
-========================================================= */
-
-function openModal() {
-
-  modalOverlay.classList.remove(
-    "hidden"
-  );
-
-  document.body.style.overflow =
-    "hidden";
-}
-
-
-function closeModal() {
-
-  modalOverlay.classList.add(
-    "hidden"
-  );
-
-  document.body.style.overflow =
-    "";
-}
-
-
-modalClose.addEventListener(
-  "click",
-  closeModal
-);
-
-
-modalOverlay.addEventListener(
-  "click",
-  event => {
-
-    if (
-      event.target ===
-      modalOverlay
-    ) {
-
-      closeModal();
-    }
-  }
-);
-
-
-/* =========================================================
-   FIND CURRENT MACHINE
-========================================================= */
-
-function findCurrentMachineFromModal() {
-
-  const title =
-    modalTitle.textContent;
-
-
-  for (
-    const machine of machines
-  ) {
-
-    if (
-      title.includes(
-        machine.type || ""
-      )
-    ) {
-
-      return machine.id;
-    }
-  }
-
-
-  return null;
-}
-
-
-/* =========================================================
-   LOGOUT
-========================================================= */
-
-async function logout() {
-
-  try {
-
-    await api(
-      "/api/auth/logout",
-      {
-        method:
-          "POST",
-      }
+    toast(
+      translateError(error),
+      "error"
     );
-
-  } catch {
-    // خروج محلی حتی در صورت خطای سرور
   }
-
-
-  sessionToken =
-    "";
-
-  currentUser =
-    null;
-
-
-  localStorage.removeItem(
-    "machinery_session"
-  );
-
-
-  machines =
-    [];
-
-
-  clearMachineForm();
-
-
-  closeModal();
-
-
-  showLogin();
-
-
-  loginPassword.value =
-    "";
-
 }
 
 
 /* =========================================================
-   EVENTS
-========================================================= */
-
-loginBtn.addEventListener(
-  "click",
-  login
-);
-
-
-loginPassword.addEventListener(
-  "keydown",
-  event => {
-
-    if (
-      event.key ===
-      "Enter"
-    ) {
-
-      login();
-    }
-  }
-);
-
-
-loginUsername.addEventListener(
-  "keydown",
-  event => {
-
-    if (
-      event.key ===
-      "Enter"
-    ) {
-
-      login();
-    }
-  }
-);
-
-
-logoutBtn.addEventListener(
-  "click",
-  logout
-);
-
-
-searchInput.addEventListener(
-  "input",
-  renderMachines
-);
-
-
-yardFilter.addEventListener(
-  "change",
-  renderMachines
-);
-
-
-saveMachineBtn.addEventListener(
-  "click",
-  saveMachine
-);
-
-
-cancelEditBtn.addEventListener(
-  "click",
-  clearMachineForm
-);
-
-
-reportBtn.addEventListener(
-  "click",
-  showReport
-);
-
-
-/* =========================================================
-   HELPERS
+   ESCAPE
 ========================================================= */
 
 function escapeHtml(
   value
-) {
+){
 
   return String(
     value ?? ""
@@ -3238,207 +3337,138 @@ function escapeHtml(
 }
 
 
-function toPersianNumber(
+function escapeAttr(
   value
-) {
+){
 
-  return String(
+  return escapeHtml(
     value
-  )
-  .replace(
-    /\d/g,
-    d =>
-      "۰۱۲۳۴۵۶۷۸۹"[d]
   );
 }
 
 
-function todayISO() {
+/* =========================================================
+   EVENTS
+========================================================= */
 
-  const now =
-    new Date();
+loginForm.addEventListener(
+  "submit",
+  async event=>{
 
+    event.preventDefault();
 
-  const year =
-    now.getFullYear();
+    const username =
+      loginUsername.value.trim();
 
+    const password =
+      loginPassword.value;
 
-  const month =
-    String(
-      now.getMonth() + 1
-    )
-    .padStart(
-      2,
-      "0"
-    );
+    if(!username || !password){
 
-
-  const day =
-    String(
-      now.getDate()
-    )
-    .padStart(
-      2,
-      "0"
-    );
-
-
-  return `${year}-${month}-${day}`;
-}
-
-
-function formatDate(
-  value
-) {
-
-  if (!value) {
-    return "-";
-  }
-
-
-  const parts =
-    String(
-      value
-    ).split("-");
-
-
-  if (
-    parts.length !== 3
-  ) {
-
-    return value;
-  }
-
-
-  return toPersianNumber(
-    `${parts[2]}/${parts[1]}/${parts[0]}`
-  );
-}
-
-
-function translateError(
-  message
-) {
-
-  const text =
-    String(
-      message || ""
-    );
-
-
-  const map = {
-
-    "invalid_credentials":
-      "نام کاربری یا رمز عبور اشتباه است.",
-
-    "invalid_or_expired_session":
-      "نشست شما منقضی شده است. دوباره وارد شوید.",
-
-    "unauthorized":
-      "دسترسی غیرمجاز.",
-
-    "admin_required":
-      "این عملیات فقط برای مدیر سیستم مجاز است.",
-
-    "username_password_required":
-      "نام کاربری و رمز عبور الزامی است.",
-
-    "password_not_configured":
-      "برای این حساب رمز عبور تنظیم نشده است.",
-
-    "type_and_yard_required":
-      "نوع ماشین و محل استقرار الزامی است.",
-
-    "machine_date_note_required":
-      "ماشین، تاریخ و متن سابقه الزامی است.",
-
-    "note_id_required":
-      "شناسه سابقه مشخص نشده است.",
-
-    "username_already_exists":
-      "این نام کاربری قبلاً استفاده شده است.",
-
-    "admin_already_exists":
-      "حساب مدیر قبلاً ساخته شده است.",
-  };
-
-
-  if (
-    map[text]
-  ) {
-
-    return map[text];
-  }
-
-
-  if (
-    text.includes(
-      "duplicate"
-    )
-  ) {
-
-    return "این اطلاعات قبلاً در سامانه ثبت شده است.";
-  }
-
-
-  if (
-    text.includes(
-      "invalid input syntax"
-    )
-  ) {
-
-    return "اطلاعات وارد شده معتبر نیست.";
-  }
-
-
-  return text ||
-    "خطای نامشخص در سرور.";
-}
-
-
-function toast(
-  message,
-  type = ""
-) {
-
-  const item =
-    document.createElement(
-      "div"
-    );
-
-
-  item.className =
-    `toast ${type}`;
-
-
-  item.textContent =
-    message;
-
-
-  toastContainer.appendChild(
-    item
-  );
-
-
-  setTimeout(
-    () => {
-
-      item.style.opacity =
-        "0";
-
-      item.style.transform =
-        "translateY(8px)";
-
-      setTimeout(
-        () =>
-          item.remove(),
-        250
+      toast(
+        "نام کاربری و رمز عبور را وارد کنید.",
+        "error"
       );
 
-    },
-    2800
-  );
-}
+      return;
+    }
+
+    try{
+
+      loginButton.disabled =
+        true;
+
+      loginButton.textContent =
+        "در حال ورود...";
+
+      await login(
+        username,
+        password
+      );
+
+    }catch(error){
+
+      toast(
+        translateError(error),
+        "error"
+      );
+
+    }finally{
+
+      loginButton.disabled =
+        false;
+
+      loginButton.textContent =
+        "ورود";
+    }
+  }
+);
+
+
+logoutButton.addEventListener(
+  "click",
+  logout
+);
+
+
+reportButton.addEventListener(
+  "click",
+  showReport
+);
+
+
+searchInput.addEventListener(
+  "input",
+  renderMachines
+);
+
+
+yardFilter.addEventListener(
+  "change",
+  renderMachines
+);
+
+
+saveMachine.addEventListener(
+  "click",
+  saveMachineData
+);
+
+
+cancelEdit.addEventListener(
+  "click",
+  clearMachineForm
+);
+
+
+/* باز و بسته کردن پنل افزودن ماشین */
+adminPanelHeader.addEventListener(
+  "click",
+  ()=>{
+
+    adminPanel.classList.toggle(
+      "open"
+    );
+  }
+);
+
+
+modalClose.addEventListener(
+  "click",
+  closeModal
+);
+
+
+modal.addEventListener(
+  "click",
+  event=>{
+
+    if(event.target === modal){
+
+      closeModal();
+    }
+  }
+);
 
 
 /* =========================================================
@@ -3450,4 +3480,4 @@ checkSession();
 </script>
 
 </body>
-</html>
+  </html>
