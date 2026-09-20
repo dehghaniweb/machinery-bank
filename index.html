@@ -359,19 +359,22 @@ textarea.form-control{
 }
 
 .machine-type{
-  font-weight:bold;
+  font-weight:800;
   color:#0b4b35;
-  font-size:15px;
+  font-size:16px;
 }
 
 .machine-company{
-  margin-top:5px;
-  font-size:12px;
+  margin-top:6px;
+  font-size:14px;
   color:#536a5e;
+  font-weight:bold;
 }
 
 .machine-company strong{
   color:#173c2c;
+  font-size:16px;
+  font-weight:800;
 }
 
 .machine-info{
@@ -516,6 +519,7 @@ textarea.form-control{
   display:flex;
   gap:8px;
   margin-top:5px;
+  flex-wrap:wrap;
 }
 
 .admin-panel{
@@ -563,6 +567,7 @@ textarea.form-control{
   color:#7b8b83;
   direction:ltr;
   text-align:left;
+  unicode-bidi:isolate;
   line-height:1.5;
 }
 
@@ -626,12 +631,15 @@ textarea.form-control{
   color:#176c49;
   font-size:11px;
   font-weight:bold;
+  direction:ltr;
+  text-align:left;
+  unicode-bidi:isolate;
 }
 
 .report-title{
   margin-top:5px;
-  font-size:13px;
-  font-weight:bold;
+  font-size:14px;
+  font-weight:800;
   color:#173c2c;
 }
 
@@ -729,6 +737,9 @@ textarea.form-control{
   color:#176c49;
   font-size:11px;
   font-weight:bold;
+  direction:ltr;
+  text-align:left;
+  unicode-bidi:isolate;
 }
 
 .note-delete{
@@ -897,6 +908,14 @@ textarea.form-control{
     flex-direction:column;
   }
 
+  .machine-company{
+    font-size:13px;
+  }
+
+  .machine-company strong{
+    font-size:15px;
+  }
+
   .report-controls{
     grid-template-columns:1fr;
   }
@@ -907,6 +926,14 @@ textarea.form-control{
 
   .modal-body{
     padding:12px;
+  }
+
+  .admin-actions{
+    flex-direction:column;
+  }
+
+  .admin-actions button{
+    width:100%;
   }
 
 }
@@ -1122,7 +1149,7 @@ textarea.form-control{
             id="searchInput"
             class="search-input"
             type="search"
-            placeholder="جستجو بر اساس نوع، شماره شرکت یا پلاک..."
+            placeholder="جستجو بر اساس نوع، شماره شرکتی یا پلاک..."
           >
 
           <select
@@ -1227,14 +1254,14 @@ textarea.form-control{
             <div class="form-group">
 
               <label class="form-label">
-                شماره شرکت
+                شماره شرکتی
               </label>
 
               <input
                 id="companyNumber"
                 class="form-control"
                 type="text"
-                placeholder="شماره شرکت"
+                placeholder="شماره شرکتی"
               >
 
             </div>
@@ -1292,6 +1319,14 @@ textarea.form-control{
                 type="button"
               >
                 انصراف
+              </button>
+
+              <button
+                id="deleteAdminMachine"
+                class="danger-btn"
+                type="button"
+              >
+                🗑 حذف ماشین
               </button>
 
             </div>
@@ -1549,6 +1584,11 @@ const saveMachine =
 const cancelEdit =
   document.getElementById(
     "cancelEdit"
+  );
+
+const deleteAdminMachine =
+  document.getElementById(
+    "deleteAdminMachine"
   );
 
 const searchInput =
@@ -1979,12 +2019,12 @@ function formatDate(
 
   }
 
-  return toPersianNumber(
-    parts[2] +
+  return (
+    parts[0] +
     "/" +
     parts[1] +
     "/" +
-    parts[0]
+    parts[2]
   );
 
 }
@@ -2854,14 +2894,6 @@ function renderMachineCard(
         >
           ✏️ ویرایش
         </button>
-
-        <button
-          class="danger-btn"
-          type="button"
-          onclick="deleteMachine('${escapeAttr(id)}')"
-        >
-          🗑 حذف
-        </button>
       `
       : "";
 
@@ -2877,7 +2909,7 @@ function renderMachineCard(
           </div>
 
           <div class="machine-company">
-            شماره شرکت:
+            شماره شرکتی:
             <strong>
               ${escapeHtml(company)}
             </strong>
@@ -2965,7 +2997,7 @@ async function saveMachineData(){
   if(!company){
 
     toast(
-      "شماره شرکت را وارد کنید.",
+      "شماره شرکتی را وارد کنید.",
       "error"
     );
 
@@ -3178,6 +3210,10 @@ function clearMachineForm(){
 }
 
 
+/* =========================================================
+   DELETE MACHINE
+========================================================= */
+
 async function deleteMachine(
   id
 ){
@@ -3199,6 +3235,11 @@ async function deleteMachine(
     );
 
   if(!machine){
+
+    toast(
+      "ماشین پیدا نشد.",
+      "error"
+    );
 
     return;
 
@@ -3253,6 +3294,99 @@ async function deleteMachine(
     );
 
   }
+
+}
+
+
+/* =========================================================
+   DELETE FROM ADMIN PANEL
+========================================================= */
+
+async function deleteMachineFromAdmin(){
+
+  if(
+    currentUser?.role !==
+    "admin"
+  ){
+
+    return;
+
+  }
+
+  let targetId =
+    editingMachineId;
+
+  /*
+    اگر در حالت ویرایش باشیم،
+    همان ماشین در حال ویرایش حذف می‌شود.
+  */
+
+  if(!targetId){
+
+    const company =
+      prompt(
+        "شماره شرکتی ماشین موردنظر برای حذف را وارد کنید:"
+      );
+
+    if(company === null){
+
+      return;
+
+    }
+
+    const normalizedCompany =
+      company.trim();
+
+    if(!normalizedCompany){
+
+      toast(
+        "شماره شرکتی وارد نشده است.",
+        "error"
+      );
+
+      return;
+
+    }
+
+    const matches =
+      machines.filter(
+        machine =>
+          String(
+            machine.company_number || ""
+          ).trim() ===
+          normalizedCompany
+      );
+
+    if(!matches.length){
+
+      toast(
+        "ماشینی با این شماره شرکتی پیدا نشد.",
+        "error"
+      );
+
+      return;
+
+    }
+
+    if(matches.length > 1){
+
+      toast(
+        "چند ماشین با این شماره شرکتی پیدا شد. ابتدا یکی را ویرایش کنید و سپس حذف را بزنید.",
+        "error"
+      );
+
+      return;
+
+    }
+
+    targetId =
+      matches[0].id;
+
+  }
+
+  await deleteMachine(
+    targetId
+  );
 
 }
 
@@ -3941,8 +4075,6 @@ async function loadReport(){
   }
 
 
-  /* FIXED SYNTAX */
-
   result.innerHTML =
     `
     <div class="loading-state">
@@ -4041,7 +4173,7 @@ async function loadReport(){
                 </div>
 
                 <div class="report-meta">
-                  شماره شرکت:
+                  شماره شرکتی:
                   ${escapeHtml(company)}
                   &nbsp; | &nbsp;
                   یارد:
@@ -4230,6 +4362,12 @@ saveMachine.addEventListener(
 cancelEdit.addEventListener(
   "click",
   clearMachineForm
+);
+
+
+deleteAdminMachine.addEventListener(
+  "click",
+  deleteMachineFromAdmin
 );
 
 
