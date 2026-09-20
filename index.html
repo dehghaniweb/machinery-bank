@@ -67,24 +67,34 @@ button{
   margin:auto;
   display:flex;
   align-items:center;
-  justify-content:space-between;
+  justify-content:center;
   gap:12px;
+  position:relative;
+  min-height:48px;
+}
+
+.header-main{
+  text-align:center;
 }
 
 .header-title{
   font-size:20px;
   font-weight:bold;
+  text-align:center;
 }
 
 .header-user{
   display:flex;
   align-items:center;
+  justify-content:center;
   gap:8px;
   flex-wrap:wrap;
+  margin-top:5px;
 }
 
 .user-name{
   font-size:13px;
+  text-align:center;
 }
 
 .admin-badge{
@@ -99,6 +109,10 @@ button{
 .header-actions{
   display:flex;
   gap:7px;
+  position:absolute;
+  left:0;
+  top:50%;
+  transform:translateY(-50%);
 }
 
 .header-btn{
@@ -253,21 +267,21 @@ textarea.form-control{
 }
 
 .stat-card{
-  background:#fff;
-  border:1px solid #e0ebe5;
+  background:#fff4df;
+  border:1px solid #f1d7a7;
   border-radius:13px;
   padding:15px;
-  box-shadow:0 3px 10px rgba(0,0,0,.04);
+  box-shadow:0 3px 10px rgba(214,143,35,.08);
 }
 
 .stat-title{
-  color:#718278;
+  color:#876a3c;
   font-size:11px;
   margin-bottom:5px;
 }
 
 .stat-value{
-  color:#0b4b35;
+  color:#a45d00;
   font-size:22px;
   font-weight:bold;
 }
@@ -276,12 +290,12 @@ textarea.form-control{
 /* ================= SEARCH ================= */
 
 .search-box{
-  background:#fff;
-  border:1px solid #e0ebe5;
+  background:#fff4df;
+  border:1px solid #f1d7a7;
   border-radius:13px;
   padding:13px;
   margin-bottom:15px;
-  box-shadow:0 3px 10px rgba(0,0,0,.04);
+  box-shadow:0 3px 10px rgba(214,143,35,.08);
 }
 
 .search-row{
@@ -297,6 +311,7 @@ textarea.form-control{
   padding:11px 13px;
   outline:none;
   font-size:13px;
+  background:#fff;
 }
 
 .search-input:focus{
@@ -365,10 +380,14 @@ textarea.form-control{
 }
 
 .machine-company{
-  margin-top:6px;
-  font-size:14px;
+  margin-top:7px;
+  font-size:13px;
   color:#536a5e;
   font-weight:bold;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
 }
 
 .machine-company strong{
@@ -380,8 +399,9 @@ textarea.form-control{
 .machine-info{
   display:flex;
   flex-wrap:wrap;
+  align-items:center;
   gap:7px;
-  margin-top:12px;
+  margin-top:0;
 }
 
 .info-pill{
@@ -398,6 +418,8 @@ textarea.form-control{
   flex-wrap:wrap;
   gap:6px;
   margin-top:12px;
+  padding-top:10px;
+  border-top:1px solid #edf2ef;
 }
 
 .note-btn{
@@ -595,6 +617,45 @@ textarea.form-control{
 
 /* ================= REPORT ================= */
 
+.report-company-box{
+  margin-bottom:12px;
+}
+
+.report-company-box label{
+  display:block;
+  margin-bottom:6px;
+  font-size:11px;
+  color:#315646;
+  font-weight:bold;
+}
+
+.report-company-select{
+  width:100%;
+  border:1px solid #d6e3dc;
+  border-radius:9px;
+  padding:11px;
+  background:#fff;
+  color:#173c2c;
+  outline:none;
+  font-size:13px;
+}
+
+.report-company-select:focus{
+  border-color:#27845a;
+  box-shadow:0 0 0 3px rgba(39,132,90,.08);
+}
+
+.report-selected-info{
+  margin-top:7px;
+  padding:7px 10px;
+  border-radius:8px;
+  background:#fff8df;
+  border:1px solid #f0df9b;
+  color:#80651c;
+  font-size:11px;
+  line-height:1.7;
+}
+
 .report-controls{
   display:grid;
   grid-template-columns:1fr 1fr auto;
@@ -621,8 +682,8 @@ textarea.form-control{
 }
 
 .report-item{
-  background:#fff;
-  border:1px solid #e0ebe5;
+  background:#fffbea;
+  border:1px solid #eadb9f;
   border-radius:10px;
   padding:11px;
 }
@@ -818,15 +879,26 @@ textarea.form-control{
 @media(max-width:700px){
 
   .header-inner{
-    align-items:flex-start;
+    align-items:center;
+    min-height:auto;
+    padding-left:0;
+    padding-right:0;
   }
 
   .header-title{
     font-size:16px;
   }
 
-  .header-user{
-    justify-content:flex-end;
+  .header-actions{
+    position:static;
+    transform:none;
+    width:100%;
+    justify-content:center;
+    margin-top:10px;
+  }
+
+  .header-inner{
+    flex-direction:column;
   }
 
   .stats-grid{
@@ -904,16 +976,22 @@ textarea.form-control{
     padding:12px;
   }
 
-  .machine-top{
-    flex-direction:column;
-  }
-
   .machine-company{
-    font-size:13px;
+    font-size:12px;
+    gap:6px;
   }
 
   .machine-company strong{
     font-size:15px;
+  }
+
+  .machine-info{
+    gap:5px;
+  }
+
+  .info-pill{
+    font-size:10px;
+    padding:5px 8px;
   }
 
   .report-controls{
@@ -1030,7 +1108,7 @@ textarea.form-control{
 
     <div class="header-inner">
 
-      <div>
+      <div class="header-main">
 
         <div class="header-title">
           بانک ماشین‌آلات شرکت
@@ -2902,34 +2980,34 @@ function renderMachineCard(
 
       <div class="machine-top">
 
-        <div>
+        <div style="width:100%;">
 
           <div class="machine-type">
             ${escapeHtml(type)}
           </div>
 
+
           <div class="machine-company">
-            شماره شرکتی:
-            <strong>
-              ${escapeHtml(company)}
-            </strong>
+
+            <span>
+              شماره شرکتی:
+              <strong>
+                ${escapeHtml(company)}
+              </strong>
+            </span>
+
+            <span class="info-pill">
+              📍 ${escapeHtml(yard)}
+            </span>
+
+            <span class="info-pill">
+              🚘 پلاک:
+              ${escapeHtml(plate)}
+            </span>
+
           </div>
 
         </div>
-
-      </div>
-
-
-      <div class="machine-info">
-
-        <span class="info-pill">
-          📍 ${escapeHtml(yard)}
-        </span>
-
-        <span class="info-pill">
-          🚘 پلاک:
-          ${escapeHtml(plate)}
-        </span>
 
       </div>
 
@@ -3316,11 +3394,6 @@ async function deleteMachineFromAdmin(){
   let targetId =
     editingMachineId;
 
-  /*
-    اگر در حالت ویرایش باشیم،
-    همان ماشین در حال ویرایش حذف می‌شود.
-  */
-
   if(!targetId){
 
     const company =
@@ -3445,7 +3518,7 @@ async function showMachineNotes(
         )
       );
 
-    const notes =
+    let notes =
       Array.isArray(data)
         ? data
         : (
@@ -3453,6 +3526,18 @@ async function showMachineNotes(
           data?.data ||
           []
         );
+
+    notes =
+      [...notes].sort(
+        (a,b)=>
+          String(
+            b.note_date || ""
+          ).localeCompare(
+            String(
+              a.note_date || ""
+            )
+          )
+      );
 
     const isAdmin =
       currentUser?.role ===
@@ -3870,12 +3955,137 @@ async function deleteNote(
    REPORT
 ========================================================= */
 
+function populateReportCompanies(){
+
+  const select =
+    document.getElementById(
+      "reportCompany"
+    );
+
+  if(!select){
+
+    return;
+
+  }
+
+  const companies =
+    [...new Set(
+      machines
+        .map(
+          machine =>
+            String(
+              machine.company_number || ""
+            ).trim()
+        )
+        .filter(Boolean)
+    )]
+    .sort(
+      (a,b)=>
+        a.localeCompare(
+          b,
+          "fa",
+          {
+            numeric:true
+          }
+        )
+    );
+
+  select.innerHTML =
+    `
+      <option value="">
+        همه ماشین‌ها — گزارش براساس بازه زمانی
+      </option>
+    `;
+
+  companies.forEach(
+    company=>{
+
+      select.insertAdjacentHTML(
+        "beforeend",
+        `
+          <option value="${escapeAttr(company)}">
+            ${escapeHtml(company)}
+          </option>
+        `
+      );
+
+    }
+  );
+
+}
+
+
+function updateReportMode(){
+
+  const select =
+    document.getElementById(
+      "reportCompany"
+    );
+
+  const info =
+    document.getElementById(
+      "reportSelectedInfo"
+    );
+
+  if(!select || !info){
+
+    return;
+
+  }
+
+  if(select.value){
+
+    info.innerHTML =
+      `
+        📋 تمام سوابق شماره شرکتی
+        <strong>
+          ${escapeHtml(select.value)}
+        </strong>
+        نمایش داده می‌شود؛
+        جدیدترین سابقه بالاتر قرار می‌گیرد.
+      `;
+
+  }else{
+
+    info.textContent =
+      "📅 در این حالت گزارش بر اساس بازه زمانی انتخاب‌شده نمایش داده می‌شود.";
+
+  }
+
+}
+
+
 async function showReport(){
 
   openModal(
     "گزارش‌گیری سوابق",
 
     `
+      <div class="report-company-box">
+
+        <label>
+          گزارش براساس شماره شرکتی
+        </label>
+
+        <select
+          id="reportCompany"
+          class="report-company-select"
+        >
+          <option value="">
+            همه ماشین‌ها — گزارش براساس بازه زمانی
+          </option>
+        </select>
+
+        <div
+          id="reportSelectedInfo"
+          class="report-selected-info"
+        >
+          📅 در این حالت گزارش بر اساس بازه زمانی انتخاب‌شده نمایش داده می‌شود.
+        </div>
+
+      </div>
+
+
       <div class="report-controls">
 
         <div class="report-date-box">
@@ -3996,6 +4206,11 @@ async function showReport(){
   );
 
 
+  populateReportCompanies();
+
+  updateReportMode();
+
+
   bindDatePicker(
     "reportFrom",
     "reportFromJalali",
@@ -4008,6 +4223,19 @@ async function showReport(){
     "reportToJalali",
     "reportToGregorian"
   );
+
+
+  document
+    .getElementById(
+      "reportCompany"
+    )
+    .addEventListener(
+      "change",
+      ()=>{
+        updateReportMode();
+        loadReport();
+      }
+    );
 
 
   document
@@ -4037,6 +4265,12 @@ async function loadReport(){
       "reportTo"
     )?.value;
 
+  const selectedCompany =
+    document.getElementById(
+      "reportCompany"
+    )?.value ||
+    "";
+
   const result =
     document.getElementById(
       "reportResults"
@@ -4048,7 +4282,11 @@ async function loadReport(){
 
   }
 
-  if(!from || !to){
+
+  if(
+    !selectedCompany &&
+    (!from || !to)
+  ){
 
     result.innerHTML =
       `
@@ -4061,7 +4299,11 @@ async function loadReport(){
 
   }
 
-  if(from > to){
+
+  if(
+    !selectedCompany &&
+    from > to
+  ){
 
     result.innerHTML =
       `
@@ -4085,20 +4327,40 @@ async function loadReport(){
 
   try{
 
-    const data =
-      await apiFetch(
-        "/api/notes?from=" +
-        encodeURIComponent(
-          from
-        ) +
-        "&to=" +
-        encodeURIComponent(
-          to
-        )
-      );
+    let data;
 
 
-    const notes =
+    /*
+      اگر شماره شرکتی انتخاب شده باشد،
+      کل سوابق دریافت می‌شود و بعداً
+      فقط همان شماره شرکتی فیلتر می‌شود.
+    */
+
+    if(selectedCompany){
+
+      data =
+        await apiFetch(
+          "/api/notes"
+        );
+
+    }else{
+
+      data =
+        await apiFetch(
+          "/api/notes?from=" +
+          encodeURIComponent(
+            from
+          ) +
+          "&to=" +
+          encodeURIComponent(
+            to
+          )
+        );
+
+    }
+
+
+    let notes =
       Array.isArray(data)
         ? data
         : (
@@ -4108,12 +4370,115 @@ async function loadReport(){
         );
 
 
+    /*
+      در حالت شماره شرکتی،
+      تمام سوابق همان شماره شرکتی
+      بدون محدودیت تاریخ انتخاب می‌شوند.
+    */
+
+    if(selectedCompany){
+
+      notes =
+        notes.filter(
+          note=>{
+
+            const machine =
+              machines.find(
+                m =>
+                  String(m.id) ===
+                  String(
+                    note.machine_id
+                  )
+              );
+
+            const company =
+              note.company_number ||
+              machine?.company_number ||
+              "";
+
+            return (
+              String(
+                company
+              ).trim() ===
+              String(
+                selectedCompany
+              ).trim()
+            );
+
+          }
+        );
+
+    }
+
+
+    /*
+      جدیدترین سابقه همیشه بالاتر.
+    */
+
+    notes =
+      [...notes].sort(
+        (a,b)=>{
+
+          const dateA =
+            String(
+              a.note_date || ""
+            );
+
+          const dateB =
+            String(
+              b.note_date || ""
+            );
+
+          if(dateA !== dateB){
+
+            return dateB.localeCompare(
+              dateA
+            );
+
+          }
+
+          const createdA =
+            String(
+              a.created_at ||
+              a.createdAt ||
+              ""
+            );
+
+          const createdB =
+            String(
+              b.created_at ||
+              b.createdAt ||
+              ""
+            );
+
+          return createdB.localeCompare(
+            createdA
+          );
+
+        }
+      );
+
+
     if(!notes.length){
 
       result.innerHTML =
         `
         <div class="empty-state">
-          در این بازه سابقه‌ای ثبت نشده است.
+
+          ${
+            selectedCompany
+              ? `
+                برای شماره شرکتی
+                <strong>
+                  ${escapeHtml(selectedCompany)}
+                </strong>
+                سابقه‌ای ثبت نشده است.
+              `
+              : `
+                در این بازه سابقه‌ای ثبت نشده است.
+              `
+          }
+
         </div>
         `;
 
@@ -4157,6 +4522,12 @@ async function loadReport(){
               );
 
 
+            const plate =
+              note.plate ||
+              machine?.plate ||
+              "-";
+
+
             return `
               <div class="report-item">
 
@@ -4173,11 +4544,22 @@ async function loadReport(){
                 </div>
 
                 <div class="report-meta">
+
                   شماره شرکتی:
-                  ${escapeHtml(company)}
+                  <strong>
+                    ${escapeHtml(company)}
+                  </strong>
+
                   &nbsp; | &nbsp;
+
                   یارد:
                   ${escapeHtml(yard)}
+
+                  &nbsp; | &nbsp;
+
+                  پلاک:
+                  ${escapeHtml(plate)}
+
                 </div>
 
                 <div class="report-note">
@@ -4410,13 +4792,6 @@ modal.addEventListener(
 
 (async function initApp(){
 
-  /*
-    اگر داخل Telegram هستیم:
-    فقط ورود خودکار Telegram
-    و هرگز فرم username/password
-    نمایش داده نمی‌شود.
-  */
-
   if(isTelegramWebApp()){
 
     prepareTelegramWebApp();
@@ -4442,12 +4817,6 @@ modal.addEventListener(
         "Telegram automatic login failed:",
         error
       );
-
-
-      /*
-        داخل Telegram فرم ورود عادی
-        نمایش داده نمی‌شود.
-      */
 
       loginPage.classList.remove(
         "hidden"
@@ -4498,15 +4867,10 @@ modal.addEventListener(
   }
 
 
-  /*
-    مرورگر عادی:
-    Session قبلی بررسی می‌شود.
-  */
-
   await checkSession();
 
 })();
 </script>
 
 </body>
-  </html>
+          </html>
