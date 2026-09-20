@@ -359,8 +359,8 @@ textarea.form-control{
 }
 
 .machine-card{
-  background:#fff;
-  border:1px solid #e0ebe5;
+  background:#fffbea;
+  border:1px solid #eadb9f;
   border-radius:13px;
   padding:14px;
   box-shadow:0 3px 10px rgba(0,0,0,.04);
@@ -394,6 +394,18 @@ textarea.form-control{
   color:#173c2c;
   font-size:16px;
   font-weight:800;
+}
+
+.machine-company-row{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:7px;
+  margin-top:8px;
+}
+
+.machine-company-row > .company-number-box{
+  white-space:nowrap;
 }
 
 .machine-info{
@@ -525,6 +537,54 @@ textarea.form-control{
 
 #adminPanel.open .admin-panel-content{
   display:block;
+}
+
+.admin-section-box{
+  background:#f8fbf9;
+  border:1px solid #dce9e2;
+  border-radius:11px;
+  padding:14px;
+}
+
+.admin-section-box + .admin-section-box{
+  margin-top:14px;
+}
+
+.admin-section-title{
+  color:#176c49;
+  font-size:13px;
+  font-weight:800;
+  margin-bottom:12px;
+}
+
+.delete-machine-box{
+  background:#fffafa;
+  border-color:#efd3d3;
+}
+
+.delete-section-title{
+  color:#a63e3e;
+}
+
+.delete-machine-details{
+  margin:-2px 0 10px;
+  padding:10px 11px;
+  background:#fff;
+  border:1px solid #eadfe0;
+  border-radius:9px;
+  color:#536a5e;
+  font-size:12px;
+  line-height:1.9;
+}
+
+.delete-machine-details strong{
+  color:#173c2c;
+}
+
+.delete-machine-confirm{
+  width:100%;
+  padding:10px 12px;
+  font-size:12px;
 }
 
 .admin-grid{
@@ -688,6 +748,24 @@ textarea.form-control{
   padding:11px;
 }
 
+.report-date-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  direction:rtl;
+  margin-bottom:7px;
+}
+
+.report-date-jalali{
+  color:#8a6a13;
+  font-size:11px;
+  font-weight:bold;
+  direction:rtl;
+  text-align:right;
+  unicode-bidi:isolate;
+}
+
 .report-date{
   color:#176c49;
   font-size:11px;
@@ -712,9 +790,12 @@ textarea.form-control{
 
 .report-note{
   margin-top:8px;
-  color:#3d5147;
-  font-size:12px;
-  line-height:1.8;
+  color:#173c2c;
+  font-size:13px;
+  line-height:1.9;
+  font-weight:800;
+  text-align:right;
+  direction:rtl;
   white-space:pre-wrap;
 }
 
@@ -985,7 +1066,7 @@ textarea.form-control{
     font-size:15px;
   }
 
-  .machine-info{
+  .machine-company-row{
     gap:5px;
   }
 
@@ -1310,104 +1391,95 @@ textarea.form-control{
 
         <div class="admin-panel-content">
 
-          <div class="admin-grid">
+          <div class="admin-section-box">
 
+            <div class="admin-section-title">
+              ➕ افزودن / ویرایش ماشین
+            </div>
 
-            <div class="form-group">
+            <div class="admin-grid">
 
-              <label class="form-label">
-                نوع ماشین
-              </label>
+              <div class="form-group">
+                <label class="form-label">نوع ماشین</label>
+                <input
+                  id="machineType"
+                  class="form-control"
+                  type="text"
+                  placeholder="مثلاً بیل مکانیکی"
+                >
+              </div>
 
-              <input
-                id="machineType"
-                class="form-control"
-                type="text"
-                placeholder="مثلاً بیل مکانیکی"
-              >
+              <div class="form-group">
+                <label class="form-label">شماره شرکتی</label>
+                <input
+                  id="companyNumber"
+                  class="form-control"
+                  type="text"
+                  placeholder="شماره شرکتی"
+                >
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">یارد</label>
+                <select id="machineYard" class="select-control">
+                  <option value="">انتخاب یارد</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">پلاک</label>
+                <input
+                  id="machinePlate"
+                  class="form-control"
+                  type="text"
+                  placeholder="پلاک ماشین"
+                >
+              </div>
+
+              <div class="admin-actions full">
+                <button id="saveMachine" class="primary-btn" type="button">
+                  افزودن ماشین
+                </button>
+                <button id="cancelEdit" class="secondary-btn hidden" type="button">
+                  انصراف
+                </button>
+              </div>
 
             </div>
 
+          </div>
 
-            <div class="form-group">
+          <div class="admin-section-box delete-machine-box">
 
-              <label class="form-label">
-                شماره شرکتی
-              </label>
-
-              <input
-                id="companyNumber"
-                class="form-control"
-                type="text"
-                placeholder="شماره شرکتی"
-              >
-
+            <div class="admin-section-title delete-section-title">
+              🗑 حذف ماشین
             </div>
 
-
             <div class="form-group">
-
-              <label class="form-label">
-                یارد
-              </label>
-
+              <label class="form-label">شماره شرکتی ماشین</label>
               <select
-                id="machineYard"
+                id="deleteMachineSelect"
                 class="select-control"
               >
-
-                <option value="">
-                  انتخاب یارد
-                </option>
-
+                <option value="">انتخاب شماره شرکتی</option>
               </select>
-
             </div>
 
-
-            <div class="form-group">
-
-              <label class="form-label">
-                پلاک
-              </label>
-
-              <input
-                id="machinePlate"
-                class="form-control"
-                type="text"
-                placeholder="پلاک ماشین"
-              >
-
+            <div
+              id="deleteMachineDetails"
+              class="delete-machine-details"
+            >
+              ابتدا یک شماره شرکتی را انتخاب کنید.
             </div>
 
-
-            <div class="admin-actions full">
-
-              <button
-                id="saveMachine"
-                class="primary-btn"
-                type="button"
-              >
-                افزودن ماشین
-              </button>
-
-              <button
-                id="cancelEdit"
-                class="secondary-btn hidden"
-                type="button"
-              >
-                انصراف
-              </button>
-
-              <button
-                id="deleteAdminMachine"
-                class="danger-btn"
-                type="button"
-              >
-                🗑 حذف ماشین
-              </button>
-
-            </div>
+            <button
+              id="deleteAdminMachine"
+              class="danger-btn delete-machine-confirm"
+              type="button"
+              disabled
+            >
+              🗑 حذف ماشین انتخاب‌شده
+            </button>
 
           </div>
 
@@ -1667,6 +1739,16 @@ const cancelEdit =
 const deleteAdminMachine =
   document.getElementById(
     "deleteAdminMachine"
+  );
+
+const deleteMachineSelect =
+  document.getElementById(
+    "deleteMachineSelect"
+  );
+
+const deleteMachineDetails =
+  document.getElementById(
+    "deleteMachineDetails"
   );
 
 const searchInput =
@@ -1974,6 +2056,14 @@ function translateError(
 
   }
 
+  if(
+    lower.includes("note_create_failed")
+  ){
+
+    return "ثبت سابقه انجام نشد. جزئیات خطای دیتابیس: " + message;
+
+  }
+
   return (
     message ||
     "خطای نامشخص"
@@ -2030,6 +2120,22 @@ function toPersianNumber(
     /\d/g,
     d =>
       "۰۱۲۳۴۵۶۷۸۹"[d]
+  );
+
+}
+
+function normalizeDigits(
+  value
+){
+
+  return String(
+    value ?? ""
+  )
+  .replace(/[۰-۹]/g, d =>
+    String("۰۱۲۳۴۵۶۷۸۹".indexOf(d))
+  )
+  .replace(/[٠-٩]/g, d =>
+    String("٠١٢٣٤٥٦٧٨٩".indexOf(d))
   );
 
 }
@@ -2718,6 +2824,8 @@ async function loadData(){
 
     renderYards();
 
+    renderDeleteMachineOptions();
+
     renderMachines();
 
   }catch(error){
@@ -2831,7 +2939,7 @@ function getYardName(
 function renderMachines(){
 
   const search =
-    String(
+    normalizeDigits(
       searchInput.value || ""
     )
     .trim()
@@ -2850,13 +2958,13 @@ function renderMachines(){
           ).toLowerCase();
 
         const company =
-          String(
+          normalizeDigits(
             machine.company_number ||
             ""
           ).toLowerCase();
 
         const plate =
-          String(
+          normalizeDigits(
             machine.plate ||
             ""
           ).toLowerCase();
@@ -2987,9 +3095,9 @@ function renderMachineCard(
           </div>
 
 
-          <div class="machine-company">
+          <div class="machine-company-row">
 
-            <span>
+            <span class="company-number-box machine-company">
               شماره شرکتی:
               <strong>
                 ${escapeHtml(company)}
@@ -3391,75 +3499,138 @@ async function deleteMachineFromAdmin(){
 
   }
 
-  let targetId =
-    editingMachineId;
+  const targetId =
+    deleteMachineSelect?.value ||
+    "";
 
   if(!targetId){
 
-    const company =
-      prompt(
-        "شماره شرکتی ماشین موردنظر برای حذف را وارد کنید:"
-      );
+    toast(
+      "ابتدا یک شماره شرکتی را انتخاب کنید.",
+      "error"
+    );
 
-    if(company === null){
-
-      return;
-
-    }
-
-    const normalizedCompany =
-      company.trim();
-
-    if(!normalizedCompany){
-
-      toast(
-        "شماره شرکتی وارد نشده است.",
-        "error"
-      );
-
-      return;
-
-    }
-
-    const matches =
-      machines.filter(
-        machine =>
-          String(
-            machine.company_number || ""
-          ).trim() ===
-          normalizedCompany
-      );
-
-    if(!matches.length){
-
-      toast(
-        "ماشینی با این شماره شرکتی پیدا نشد.",
-        "error"
-      );
-
-      return;
-
-    }
-
-    if(matches.length > 1){
-
-      toast(
-        "چند ماشین با این شماره شرکتی پیدا شد. ابتدا یکی را ویرایش کنید و سپس حذف را بزنید.",
-        "error"
-      );
-
-      return;
-
-    }
-
-    targetId =
-      matches[0].id;
+    return;
 
   }
 
   await deleteMachine(
     targetId
   );
+
+}
+
+
+function renderDeleteMachineOptions(){
+
+  if(!deleteMachineSelect){
+    return;
+  }
+
+  const selected =
+    deleteMachineSelect.value;
+
+  const sorted =
+    [...machines].sort(
+      (a,b)=>
+        normalizeDigits(
+          a.company_number || ""
+        ).localeCompare(
+          normalizeDigits(
+            b.company_number || ""
+          ),
+          "fa",
+          {numeric:true}
+        )
+    );
+
+  deleteMachineSelect.innerHTML =
+    `
+      <option value="">
+        انتخاب شماره شرکتی
+      </option>
+    `;
+
+  sorted.forEach(
+    machine=>{
+
+      const company =
+        String(
+          machine.company_number || ""
+        ).trim();
+
+      if(!company){
+        return;
+      }
+
+      deleteMachineSelect.insertAdjacentHTML(
+        "beforeend",
+        `
+          <option value="${escapeAttr(machine.id)}">
+            ${escapeHtml(company)} — ${escapeHtml(machine.type || "بدون نوع")}
+          </option>
+        `
+      );
+
+    }
+  );
+
+  if(
+    selected &&
+    machines.some(
+      machine =>
+        String(machine.id) ===
+        String(selected)
+    )
+  ){
+    deleteMachineSelect.value =
+      selected;
+  }
+
+  updateDeleteMachineDetails();
+
+}
+
+
+function updateDeleteMachineDetails(){
+
+  if(!deleteMachineSelect || !deleteMachineDetails){
+    return;
+  }
+
+  const machine =
+    machines.find(
+      item =>
+        String(item.id) ===
+        String(deleteMachineSelect.value)
+    );
+
+  if(!machine){
+
+    deleteMachineDetails.innerHTML =
+      "ابتدا یک شماره شرکتی را انتخاب کنید.";
+
+    deleteAdminMachine.disabled =
+      true;
+
+    return;
+
+  }
+
+  const yard =
+    machine.yard_name ||
+    getYardName(machine.yard_id);
+
+  deleteMachineDetails.innerHTML =
+    `
+      <div>🚜 نوع وسیله: <strong>${escapeHtml(machine.type || "-")}</strong></div>
+      <div>🔢 شماره شرکتی: <strong>${escapeHtml(machine.company_number || "-")}</strong></div>
+      <div>📍 یارد: <strong>${escapeHtml(yard || "-")}</strong></div>
+      <div>🚘 پلاک: <strong>${escapeHtml(machine.plate || "-")}</strong></div>
+    `;
+
+  deleteAdminMachine.disabled =
+    false;
 
 }
 
@@ -3913,7 +4084,7 @@ async function deleteNote(
   try{
 
     await apiFetch(
-      "/api/notes/" +
+      "/api/notes?id=" +
       encodeURIComponent(
         noteId
       ),
@@ -4531,10 +4702,18 @@ async function loadReport(){
             return `
               <div class="report-item">
 
-                <div class="report-date">
-                  📅 ${formatDate(
-                    note.note_date
-                  )}
+                <div class="report-date-row">
+
+                  <div class="report-date-jalali">
+                    ${formatJalaliDate(note.note_date)}
+                  </div>
+
+                  <div class="report-date">
+                    📅 ${formatDate(
+                      note.note_date
+                    )}
+                  </div>
+
                 </div>
 
                 <div class="report-title">
@@ -4750,6 +4929,12 @@ cancelEdit.addEventListener(
 deleteAdminMachine.addEventListener(
   "click",
   deleteMachineFromAdmin
+);
+
+
+deleteMachineSelect.addEventListener(
+  "change",
+  updateDeleteMachineDetails
 );
 
 
