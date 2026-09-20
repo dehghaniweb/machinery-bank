@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<!DOCTYPE html><html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
-<title>بانک ماشین‌آلات شرکت</title>
-
-<style>
+<title>بانک ماشین‌آلات شرکت</title><!-- Telegram Web App --><script src="https://telegram.org/js/telegram-web-app.js"></script><style>
 *{
   box-sizing:border-box;
   -webkit-tap-highlight-color:transparent;
@@ -499,7 +496,6 @@ textarea.form-control{
   margin-top:5px;
 }
 
-/* Generic admin-panel for notes etc. */
 .admin-panel{
   background:#f8fbf9;
   border:1px solid #dce9e2;
@@ -881,369 +877,321 @@ textarea.form-control{
     padding:12px;
   }
 }
-</style>
-</head>
+</style></head><body><!-- ================= LOGIN ================= --><div id="loginPage" class="login-page">  <div class="login-card"><div class="login-logo">🚜</div>
 
-<body>
+<h1 class="login-title">بانک ماشین‌آلات شرکت</h1>
 
-<!-- ================= LOGIN ================= -->
+<div class="login-subtitle">
+  ورود به سامانه مدیریت ماشین‌آلات
+</div>
 
-<div id="loginPage" class="login-page">
+<form id="loginForm">
 
-  <div class="login-card">
+  <div class="form-group">
+    <label class="form-label">نام کاربری</label>
+    <input
+      id="loginUsername"
+      class="form-control"
+      type="text"
+      autocomplete="username"
+      required
+    >
+  </div>
 
-    <div class="login-logo">🚜</div>
+  <div class="form-group">
+    <label class="form-label">رمز عبور</label>
+    <input
+      id="loginPassword"
+      class="form-control"
+      type="password"
+      autocomplete="current-password"
+      required
+    >
+  </div>
 
-    <h1 class="login-title">بانک ماشین‌آلات شرکت</h1>
+  <button
+    id="loginButton"
+    class="primary-btn"
+    type="submit"
+    style="width:100%;margin-top:5px;"
+  >
+    ورود
+  </button>
 
-    <div class="login-subtitle">
-      ورود به سامانه مدیریت ماشین‌آلات
-    </div>
+</form>
 
-    <form id="loginForm">
+  </div></div><!-- ================= APP ================= --><div id="appPage" class="hidden">  <header class="app-header"><div class="header-inner">
 
-      <div class="form-group">
-        <label class="form-label">نام کاربری</label>
-        <input
-          id="loginUsername"
-          class="form-control"
-          type="text"
-          autocomplete="username"
-          required
-        >
-      </div>
+  <div>
+    <div class="header-title">بانک ماشین‌آلات شرکت</div>
 
-      <div class="form-group">
-        <label class="form-label">رمز عبور</label>
-        <input
-          id="loginPassword"
-          class="form-control"
-          type="password"
-          autocomplete="current-password"
-          required
-        >
-      </div>
+    <div class="header-user">
+      <span id="userName" class="user-name"></span>
 
-      <button
-        id="loginButton"
-        class="primary-btn"
-        type="submit"
-        style="width:100%;margin-top:5px;"
+      <span
+        id="adminBadge"
+        class="admin-badge hidden"
       >
-        ورود
-      </button>
+        مدیر
+      </span>
+    </div>
+  </div>
 
-    </form>
+  <div class="header-actions">
+
+    <button
+      id="reportButton"
+      class="header-btn"
+      type="button"
+    >
+      📊 گزارش‌گیری
+    </button>
+
+    <button
+      id="logoutButton"
+      class="header-btn"
+      type="button"
+    >
+      خروج
+    </button>
 
   </div>
 
 </div>
 
+  </header>  <main><div class="container">
 
-<!-- ================= APP ================= -->
+  <!-- ================= STATS ================= -->
 
-<div id="appPage" class="hidden">
+  <div class="stats-grid">
 
-  <header class="app-header">
+    <div class="stat-card">
+      <div class="stat-title">کل ماشین‌آلات</div>
+      <div id="totalMachines" class="stat-value">0</div>
+    </div>
 
-    <div class="header-inner">
+    <div class="stat-card">
+      <div class="stat-title">نمایش داده‌شده</div>
+      <div id="filteredMachines" class="stat-value">0</div>
+    </div>
 
-      <div>
-        <div class="header-title">بانک ماشین‌آلات شرکت</div>
+    <div class="stat-card">
+      <div class="stat-title">تعداد یارد</div>
+      <div id="yardCount" class="stat-value">0</div>
+    </div>
 
-        <div class="header-user">
-          <span id="userName" class="user-name"></span>
+  </div>
 
-          <span
-            id="adminBadge"
-            class="admin-badge hidden"
-          >
-            مدیر
-          </span>
-        </div>
-      </div>
 
-      <div class="header-actions">
+  <!-- ================= SEARCH ================= -->
 
-        <button
-          id="reportButton"
-          class="header-btn"
-          type="button"
-        >
-          📊 گزارش‌گیری
-        </button>
+  <div class="search-box">
 
-        <button
-          id="logoutButton"
-          class="header-btn"
-          type="button"
-        >
-          خروج
-        </button>
+    <div class="search-row">
 
-      </div>
+      <input
+        id="searchInput"
+        class="search-input"
+        type="search"
+        placeholder="جستجو بر اساس نوع، شماره شرکت یا پلاک..."
+      >
+
+      <select
+        id="yardFilter"
+        class="select-control"
+      >
+        <option value="">همه یاردها</option>
+      </select>
 
     </div>
 
-  </header>
+  </div>
 
 
-  <main>
+  <!-- ================= MACHINE LIST ================= -->
 
-    <div class="container">
+  <div class="section-title">
 
-      <!-- ================= STATS ================= -->
+    <h2>لیست ماشین‌آلات</h2>
 
-      <div class="stats-grid">
+    <div
+      id="machineCountText"
+      class="section-count"
+    >
+      ۰ ماشین
+    </div>
 
-        <div class="stat-card">
-          <div class="stat-title">کل ماشین‌آلات</div>
-          <div id="totalMachines" class="stat-value">0</div>
-        </div>
+  </div>
 
-        <div class="stat-card">
-          <div class="stat-title">نمایش داده‌شده</div>
-          <div id="filteredMachines" class="stat-value">0</div>
-        </div>
-
-        <div class="stat-card">
-          <div class="stat-title">تعداد یارد</div>
-          <div id="yardCount" class="stat-value">0</div>
-        </div>
-
-      </div>
+  <div
+    id="machineList"
+    class="machine-list"
+  >
+    <div class="loading-state">
+      در حال بارگذاری...
+    </div>
+  </div>
 
 
-      <!-- ================= SEARCH ================= -->
+  <!-- ================= ADMIN PANEL ================= -->
 
-      <div class="search-box">
+  <div
+    id="adminPanel"
+    class="hidden"
+  >
 
-        <div class="search-row">
+    <button
+      id="adminPanelHeader"
+      class="admin-panel-header"
+      type="button"
+    >
+
+      <span class="admin-panel-header-title">
+
+        <span class="admin-panel-header-icon">
+          ⚙️
+        </span>
+
+        <span id="adminPanelTitle">
+          افزودن ماشین
+        </span>
+
+      </span>
+
+      <span class="admin-panel-arrow">
+        ▼
+      </span>
+
+    </button>
+
+
+    <div class="admin-panel-content">
+
+      <div class="admin-grid">
+
+        <div class="form-group">
+
+          <label class="form-label">
+            نوع ماشین
+          </label>
 
           <input
-            id="searchInput"
-            class="search-input"
-            type="search"
-            placeholder="جستجو بر اساس نوع، شماره شرکت یا پلاک..."
+            id="machineType"
+            class="form-control"
+            type="text"
+            placeholder="مثلاً بیل مکانیکی"
           >
 
+        </div>
+
+
+        <div class="form-group">
+
+          <label class="form-label">
+            شماره شرکت
+          </label>
+
+          <input
+            id="companyNumber"
+            class="form-control"
+            type="text"
+            placeholder="شماره شرکت"
+          >
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label class="form-label">
+            یارد
+          </label>
+
           <select
-            id="yardFilter"
+            id="machineYard"
             class="select-control"
           >
-            <option value="">همه یاردها</option>
+            <option value="">انتخاب یارد</option>
           </select>
 
         </div>
 
-      </div>
 
+        <div class="form-group">
 
-      <!-- ================= MACHINE LIST ================= -->
+          <label class="form-label">
+            پلاک
+          </label>
 
-      <div class="section-title">
+          <input
+            id="machinePlate"
+            class="form-control"
+            type="text"
+            placeholder="پلاک ماشین"
+          >
 
-        <h2>لیست ماشین‌آلات</h2>
-
-        <div
-          id="machineCountText"
-          class="section-count"
-        >
-          ۰ ماشین
         </div>
 
-      </div>
 
-      <div
-        id="machineList"
-        class="machine-list"
-      >
-        <div class="loading-state">
-          در حال بارگذاری...
-        </div>
-      </div>
+        <div class="admin-actions full">
 
+          <button
+            id="saveMachine"
+            class="primary-btn"
+            type="button"
+          >
+            افزودن ماشین
+          </button>
 
-      <!-- ================= ADMIN PANEL ================= -->
-
-      <div
-        id="adminPanel"
-        class="hidden"
-      >
-
-        <button
-          id="adminPanelHeader"
-          class="admin-panel-header"
-          type="button"
-        >
-
-          <span class="admin-panel-header-title">
-
-            <span class="admin-panel-header-icon">
-              ⚙️
-            </span>
-
-            <span id="adminPanelTitle">
-              افزودن ماشین
-            </span>
-
-          </span>
-
-          <span class="admin-panel-arrow">
-            ▼
-          </span>
-
-        </button>
-
-
-        <div class="admin-panel-content">
-
-          <div class="admin-grid">
-
-            <div class="form-group">
-
-              <label class="form-label">
-                نوع ماشین
-              </label>
-
-              <input
-                id="machineType"
-                class="form-control"
-                type="text"
-                placeholder="مثلاً بیل مکانیکی"
-              >
-
-            </div>
-
-
-            <div class="form-group">
-
-              <label class="form-label">
-                شماره شرکت
-              </label>
-
-              <input
-                id="companyNumber"
-                class="form-control"
-                type="text"
-                placeholder="شماره شرکت"
-              >
-
-            </div>
-
-
-            <div class="form-group">
-
-              <label class="form-label">
-                یارد
-              </label>
-
-              <select
-                id="machineYard"
-                class="select-control"
-              >
-                <option value="">انتخاب یارد</option>
-              </select>
-
-            </div>
-
-
-            <div class="form-group">
-
-              <label class="form-label">
-                پلاک
-              </label>
-
-              <input
-                id="machinePlate"
-                class="form-control"
-                type="text"
-                placeholder="پلاک ماشین"
-              >
-
-            </div>
-
-
-            <div class="admin-actions full">
-
-              <button
-                id="saveMachine"
-                class="primary-btn"
-                type="button"
-              >
-                افزودن ماشین
-              </button>
-
-              <button
-                id="cancelEdit"
-                class="secondary-btn hidden"
-                type="button"
-              >
-                انصراف
-              </button>
-
-            </div>
-
-          </div>
+          <button
+            id="cancelEdit"
+            class="secondary-btn hidden"
+            type="button"
+          >
+            انصراف
+          </button>
 
         </div>
 
       </div>
 
     </div>
-
-  </main>
-
-</div>
-
-
-<!-- ================= MODAL ================= -->
-
-<div
-  id="modal"
-  class="modal hidden"
->
-
-  <div class="modal-card">
-
-    <div class="modal-header">
-
-      <div
-        id="modalTitle"
-        class="modal-title"
-      >
-        اطلاعات
-      </div>
-
-      <button
-        id="modalClose"
-        class="modal-close"
-        type="button"
-      >
-        ×
-      </button>
-
-    </div>
-
-    <div
-      id="modalBody"
-      class="modal-body"
-    ></div>
 
   </div>
 
 </div>
 
+  </main></div><!-- ================= MODAL ================= --><div
+  id="modal"
+  class="modal hidden"
+>  <div class="modal-card"><div class="modal-header">
 
-<!-- ================= TOAST ================= -->
+  <div
+    id="modalTitle"
+    class="modal-title"
+  >
+    اطلاعات
+  </div>
+
+  <button
+    id="modalClose"
+    class="modal-close"
+    type="button"
+  >
+    ×
+  </button>
+
+</div>
 
 <div
-  id="toastContainer"
-  class="toast-container"
+  id="modalBody"
+  class="modal-body"
 ></div>
 
-
-<script>
+  </div></div><!-- ================= TOAST ================= --><div
+  id="toastContainer"
+  class="toast-container"
+></div><script>
 /* =========================================================
    CONFIG
 ========================================================= */
@@ -1264,6 +1212,147 @@ let yards = [];
 
 let editingMachineId = null;
 let currentNotesMachineId = null;
+
+
+/* =========================================================
+   TELEGRAM WEB APP
+========================================================= */
+
+function isTelegramWebApp(){
+
+  return !!(
+    window.Telegram &&
+    window.Telegram.WebApp &&
+    window.Telegram.WebApp.initData
+  );
+}
+
+
+function prepareTelegramWebApp(){
+
+  if(!window.Telegram || !window.Telegram.WebApp){
+    return;
+  }
+
+  try{
+
+    Telegram.WebApp.ready();
+    Telegram.WebApp.expand();
+
+    if(Telegram.WebApp.setHeaderColor){
+      Telegram.WebApp.setHeaderColor("#0b4b35");
+    }
+
+    if(Telegram.WebApp.setBackgroundColor){
+      Telegram.WebApp.setBackgroundColor("#f3f7f4");
+    }
+
+  }catch(error){
+
+    console.warn(
+      "Telegram WebApp initialization error:",
+      error
+    );
+  }
+}
+
+
+async function loginWithTelegram(){
+
+  if(!isTelegramWebApp()){
+    return false;
+  }
+
+  try{
+
+    prepareTelegramWebApp();
+
+    const initData =
+      Telegram.WebApp.initData;
+
+    if(!initData){
+
+      throw new Error(
+        "اطلاعات ورود تلگرام دریافت نشد."
+      );
+    }
+
+    const response =
+      await fetch(
+        API_BASE + "/api/auth/telegram",
+        {
+          method:"POST",
+          headers:{
+            "Content-Type":"application/json"
+          },
+          body:JSON.stringify({
+            initData
+          })
+        }
+      );
+
+    let data = {};
+
+    try{
+
+      data =
+        await response.json();
+
+    }catch{
+
+      data = {};
+    }
+
+    if(!response.ok){
+
+      throw new Error(
+        data?.error ||
+        data?.message ||
+        "ورود با تلگرام انجام نشد."
+      );
+    }
+
+    sessionToken =
+      data.session_token ||
+      data.token ||
+      "";
+
+    if(!sessionToken){
+
+      throw new Error(
+        "توکن ورود تلگرام دریافت نشد."
+      );
+    }
+
+    localStorage.setItem(
+      "machinery_session",
+      sessionToken
+    );
+
+    currentUser =
+      data.user || null;
+
+    showApp();
+
+    await loadData();
+
+    return true;
+
+  }catch(error){
+
+    console.error(
+      "Telegram login error:",
+      error
+    );
+
+    toast(
+      translateError(error),
+      "error"
+    );
+
+    return false;
+  }
+}
 
 
 /* =========================================================
@@ -1376,21 +1465,29 @@ async function apiFetch(path, options = {}){
   };
 
   if(sessionToken){
+
     headers.Authorization =
       "Bearer " + sessionToken;
   }
 
   const response =
-    await fetch(API_BASE + path,{
-      ...options,
-      headers
-    });
+    await fetch(
+      API_BASE + path,
+      {
+        ...options,
+        headers
+      }
+    );
 
   let data = null;
 
   try{
-    data = await response.json();
+
+    data =
+      await response.json();
+
   }catch{
+
     data = {};
   }
 
@@ -1403,7 +1500,8 @@ async function apiFetch(path, options = {}){
         "خطا در ارتباط با سرور"
       );
 
-    error.status = response.status;
+    error.status =
+      response.status;
 
     throw error;
   }
@@ -1419,12 +1517,17 @@ async function apiFetch(path, options = {}){
 function translateError(error){
 
   const message =
-    String(error?.message || error || "");
+    String(
+      error?.message ||
+      error ||
+      ""
+    );
 
   if(
     message.includes("Invalid credentials") ||
     message.includes("invalid credentials")
   ){
+
     return "نام کاربری یا رمز عبور اشتباه است.";
   }
 
@@ -1432,18 +1535,21 @@ function translateError(error){
     message.includes("Unauthorized") ||
     message.includes("unauthorized")
   ){
+
     return "نشست شما منقضی شده است. دوباره وارد شوید.";
   }
 
   if(
     message.includes("already exists")
   ){
+
     return "این اطلاعات قبلاً ثبت شده است.";
   }
 
   if(
     message.includes("not found")
   ){
+
     return "رکورد موردنظر پیدا نشد.";
   }
 
@@ -1466,9 +1572,12 @@ function toast(
   item.className =
     "toast " + type;
 
-  item.textContent = message;
+  item.textContent =
+    message;
 
-  toastContainer.appendChild(item);
+  toastContainer.appendChild(
+    item
+  );
 
   setTimeout(()=>{
     item.remove();
@@ -1495,16 +1604,21 @@ function toPersianNumber(value){
 
 function todayISO(){
 
-  const d = new Date();
+  const d =
+    new Date();
 
   const y =
     d.getFullYear();
 
   const m =
-    String(d.getMonth()+1).padStart(2,"0");
+    String(
+      d.getMonth()+1
+    ).padStart(2,"0");
 
   const day =
-    String(d.getDate()).padStart(2,"0");
+    String(
+      d.getDate()
+    ).padStart(2,"0");
 
   return `${y}-${m}-${day}`;
 }
@@ -1580,19 +1694,27 @@ function gregorianToJalali(
     + gdm[gm - 1];
 
   jy +=
-    33 * Math.floor(days / 12053);
+    33 *
+    Math.floor(
+      days / 12053
+    );
 
   days %= 12053;
 
   jy +=
-    4 * Math.floor(days / 1461);
+    4 *
+    Math.floor(
+      days / 1461
+    );
 
   days %= 1461;
 
   if(days > 365){
 
     jy +=
-      Math.floor((days - 1) / 365);
+      Math.floor(
+        (days - 1) / 365
+      );
 
     days =
       (days - 1) % 365;
@@ -1603,13 +1725,18 @@ function gregorianToJalali(
   if(days < 186){
 
     jm =
-      1 + Math.floor(days / 31);
+      1 +
+      Math.floor(
+        days / 31
+      );
 
   }else{
 
     jm =
       7 +
-      Math.floor((days - 186) / 30);
+      Math.floor(
+        (days - 186) / 30
+      );
   }
 
   const jd =
@@ -1655,6 +1782,7 @@ function formatJalaliDate(
     !gm ||
     !gd
   ){
+
     return "-";
   }
 
@@ -1682,13 +1810,19 @@ function updateDateDisplay(
 ){
 
   const input =
-    document.getElementById(inputId);
+    document.getElementById(
+      inputId
+    );
 
   const jalali =
-    document.getElementById(jalaliId);
+    document.getElementById(
+      jalaliId
+    );
 
   const gregorian =
-    document.getElementById(gregorianId);
+    document.getElementById(
+      gregorianId
+    );
 
   if(!input) return;
 
@@ -1698,11 +1832,13 @@ function updateDateDisplay(
   if(!value){
 
     if(jalali){
+
       jalali.textContent =
         "انتخاب تاریخ";
     }
 
     if(gregorian){
+
       gregorian.textContent =
         "";
     }
@@ -1731,7 +1867,9 @@ function bindDatePicker(
 ){
 
   const input =
-    document.getElementById(inputId);
+    document.getElementById(
+      inputId
+    );
 
   if(!input) return;
 
@@ -1940,7 +2078,6 @@ function showApp(){
       "hidden"
     );
 
-    /* پنل ادمین در شروع بسته باشد */
     adminPanel.classList.remove(
       "open"
     );
@@ -2457,12 +2594,10 @@ function editMachine(id){
     "hidden"
   );
 
-  /* پنل خودکار باز شود */
   adminPanel.classList.add(
     "open"
   );
 
-  /* و سپس به آن اسکرول شود */
   setTimeout(()=>{
 
     adminPanel.scrollIntoView({
@@ -2548,6 +2683,7 @@ async function deleteMachine(id){
       String(editingMachineId) ===
       String(id)
     ){
+
       clearMachineForm();
     }
 
@@ -2757,727 +2893,748 @@ async function showMachineNotes(
               id="noteText"
               class="form-control"
               placeholder="توضیحات مربوط به سرویس، تعمیر، جابه‌جایی، خرابی و..."
-            ></textarea>
-
-          </div>
+            ></textarea>      </div>
 
 
-          <button
-            id="saveNote"
-            class="primary-btn"
-            type="button"
-          >
-            ثبت سابقه
-          </button>
+      <button
+        id="saveNote"
+        class="primary-btn"
+        type="button"
+      >
+        ثبت سابقه
+      </button>
 
-        </div>
-      `;
-    }
-
-
-    html += `
-      <div class="modal-footer">
-
-        <button
-          class="secondary-btn"
-          type="button"
-          onclick="closeModal()"
-        >
-          بستن
-        </button>
-
-      </div>
-    `;
-
-    modalBody.innerHTML =
-      html;
-
-
-    if(isAdmin){
-
-      bindDatePicker(
-        "noteDate",
-        "noteDateJalali",
-        "noteDateGregorian"
-      );
-
-      document
-        .getElementById("saveNote")
-        .addEventListener(
-          "click",
-          saveNote
-        );
-    }
-
-  }catch(error){
-
-    modalBody.innerHTML =
-      `
-      <div class="empty-state">
-        ${escapeHtml(
-          translateError(error)
-        )}
-      </div>
-      `;
-
-    toast(
-      translateError(error),
-      "error"
-    );
-  }
+    </div>
+  `;
 }
 
+
+html += `
+  <div class="modal-footer">
+
+    <button
+      class="secondary-btn"
+      type="button"
+      onclick="closeModal()"
+    >
+      بستن
+    </button>
+
+  </div>
+`;
+
+modalBody.innerHTML =
+  html;
+
+
+if(isAdmin){
+
+  bindDatePicker(
+    "noteDate",
+    "noteDateJalali",
+    "noteDateGregorian"
+  );
+
+  document
+    .getElementById("saveNote")
+    .addEventListener(
+      "click",
+      saveNote
+    );
+}
+
+}catch(error){
+
+modalBody.innerHTML =
+  `
+  <div class="empty-state">
+    ${escapeHtml(
+      translateError(error)
+    )}
+  </div>
+  `;
+
+toast(
+  translateError(error),
+  "error"
+);
+
+}
+}
 
 async function saveNote(){
 
-  if(currentUser?.role !== "admin"){
-    return;
-  }
-
-  const machineId =
-    currentNotesMachineId;
-
-  const noteDate =
-    document.getElementById(
-      "noteDate"
-    )?.value;
-
-  const noteText =
-    document.getElementById(
-      "noteText"
-    )?.value.trim();
-
-  if(!machineId){
-
-    toast(
-      "ماشین مشخص نیست.",
-      "error"
-    );
-
-    return;
-  }
-
-  if(!noteDate){
-
-    toast(
-      "تاریخ را انتخاب کنید.",
-      "error"
-    );
-
-    return;
-  }
-
-  if(!noteText){
-
-    toast(
-      "توضیحات سابقه را وارد کنید.",
-      "error"
-    );
-
-    return;
-  }
-
-  const button =
-    document.getElementById(
-      "saveNote"
-    );
-
-  try{
-
-    if(button){
-      button.disabled = true;
-    }
-
-    await apiFetch(
-      "/api/notes",
-      {
-        method:"POST",
-        body:JSON.stringify({
-          machine_id:machineId,
-          note_date:noteDate,
-          note:noteText
-        })
-      }
-    );
-
-    toast(
-      "سابقه با موفقیت ثبت شد.",
-      "success"
-    );
-
-    await showMachineNotes(
-      machineId
-    );
-
-  }catch(error){
-
-    toast(
-      translateError(error),
-      "error"
-    );
-
-  }finally{
-
-    if(button){
-      button.disabled = false;
-    }
-  }
+if(currentUser?.role !== "admin"){
+return;
 }
 
+const machineId =
+currentNotesMachineId;
+
+const noteDate =
+document.getElementById(
+"noteDate"
+)?.value;
+
+const noteText =
+document.getElementById(
+"noteText"
+)?.value.trim();
+
+if(!machineId){
+
+toast(
+  "ماشین مشخص نیست.",
+  "error"
+);
+
+return;
+
+}
+
+if(!noteDate){
+
+toast(
+  "تاریخ را انتخاب کنید.",
+  "error"
+);
+
+return;
+
+}
+
+if(!noteText){
+
+toast(
+  "توضیحات سابقه را وارد کنید.",
+  "error"
+);
+
+return;
+
+}
+
+const button =
+document.getElementById(
+"saveNote"
+);
+
+try{
+
+if(button){
+  button.disabled = true;
+}
+
+await apiFetch(
+  "/api/notes",
+  {
+    method:"POST",
+    body:JSON.stringify({
+      machine_id:machineId,
+      note_date:noteDate,
+      note:noteText
+    })
+  }
+);
+
+toast(
+  "سابقه با موفقیت ثبت شد.",
+  "success"
+);
+
+await showMachineNotes(
+  machineId
+);
+
+}catch(error){
+
+toast(
+  translateError(error),
+  "error"
+);
+
+}finally{
+
+if(button){
+  button.disabled = false;
+}
+
+}
+}
 
 async function deleteNote(
-  noteId
+noteId
 ){
 
-  if(currentUser?.role !== "admin"){
-    return;
-  }
-
-  const confirmed =
-    confirm(
-      "آیا از حذف این سابقه مطمئن هستید؟"
-    );
-
-  if(!confirmed){
-    return;
-  }
-
-  const machineId =
-    currentNotesMachineId;
-
-  try{
-
-    await apiFetch(
-      "/api/notes/" +
-      encodeURIComponent(noteId),
-      {
-        method:"DELETE"
-      }
-    );
-
-    toast(
-      "سابقه حذف شد.",
-      "success"
-    );
-
-    if(machineId){
-
-      await showMachineNotes(
-        machineId
-      );
-
-    }else{
-
-      closeModal();
-    }
-
-  }catch(error){
-
-    toast(
-      translateError(error),
-      "error"
-    );
-  }
+if(currentUser?.role !== "admin"){
+return;
 }
 
+const confirmed =
+confirm(
+"آیا از حذف این سابقه مطمئن هستید؟"
+);
+
+if(!confirmed){
+return;
+}
+
+const machineId =
+currentNotesMachineId;
+
+try{
+
+await apiFetch(
+  "/api/notes/" +
+  encodeURIComponent(noteId),
+  {
+    method:"DELETE"
+  }
+);
+
+toast(
+  "سابقه حذف شد.",
+  "success"
+);
+
+if(machineId){
+
+  await showMachineNotes(
+    machineId
+  );
+
+}else{
+
+  closeModal();
+}
+
+}catch(error){
+
+toast(
+  translateError(error),
+  "error"
+);
+
+}
+}
 
 /* =========================================================
-   REPORT
+REPORT
 ========================================================= */
 
 async function showReport(){
 
-  openModal(
-    "گزارش‌گیری سوابق",
-    `
-      <div class="report-controls">
+openModal(
+"گزارش‌گیری سوابق",
+`
+<div class="report-controls">
 
-        <div class="report-date-box">
+    <div class="report-date-box">
 
-          <label>
-            از تاریخ
-          </label>
+      <label>
+        از تاریخ
+      </label>
 
-          <div class="date-picker-wrap">
+      <div class="date-picker-wrap">
 
-            <div
-              id="reportFromDisplay"
-              class="date-display"
-            >
+        <div
+          id="reportFromDisplay"
+          class="date-display"
+        >
 
-              <span
-                id="reportFromJalali"
-                class="date-jalali"
-              >
-                انتخاب تاریخ
-              </span>
+          <span
+            id="reportFromJalali"
+            class="date-jalali"
+          >
+            انتخاب تاریخ
+          </span>
 
-              <span
-                id="reportFromGregorian"
-                class="date-gregorian"
-              ></span>
-
-            </div>
-
-            <span class="date-calendar-icon">
-              📅
-            </span>
-
-            <input
-              id="reportFrom"
-              class="native-date-input"
-              type="date"
-              value="${todayISO()}"
-            >
-
-          </div>
+          <span
+            id="reportFromGregorian"
+            class="date-gregorian"
+          ></span>
 
         </div>
 
+        <span class="date-calendar-icon">
+          📅
+        </span>
 
-        <div class="report-date-box">
+        <input
+          id="reportFrom"
+          class="native-date-input"
+          type="date"
+          value="${todayISO()}"
+        >
 
-          <label>
-            تا تاریخ
-          </label>
+      </div>
 
-          <div class="date-picker-wrap">
+    </div>
 
-            <div
-              id="reportToDisplay"
-              class="date-display"
-            >
 
-              <span
-                id="reportToJalali"
-                class="date-jalali"
-              >
-                انتخاب تاریخ
-              </span>
+    <div class="report-date-box">
 
-              <span
-                id="reportToGregorian"
-                class="date-gregorian"
-              ></span>
+      <label>
+        تا تاریخ
+      </label>
 
-            </div>
+      <div class="date-picker-wrap">
 
-            <span class="date-calendar-icon">
-              📅
-            </span>
+        <div
+          id="reportToDisplay"
+          class="date-display"
+        >
 
-            <input
-              id="reportTo"
-              class="native-date-input"
-              type="date"
-              value="${todayISO()}"
-            >
+          <span
+            id="reportToJalali"
+            class="date-jalali"
+          >
+            انتخاب تاریخ
+          </span>
 
-          </div>
+          <span
+            id="reportToGregorian"
+            class="date-gregorian"
+          ></span>
 
         </div>
 
+        <span class="date-calendar-icon">
+          📅
+        </span>
 
-        <button
-          id="loadReport"
-          class="primary-btn"
-          type="button"
+        <input
+          id="reportTo"
+          class="native-date-input"
+          type="date"
+          value="${todayISO()}"
         >
-          نمایش گزارش
-        </button>
 
       </div>
 
-
-      <div
-        id="reportResults"
-        class="report-list"
-      >
-      </div>
+    </div>
 
 
-      <div class="modal-footer">
+    <button
+      id="loadReport"
+      class="primary-btn"
+      type="button"
+    >
+      نمایش گزارش
+    </button>
 
-        <button
-          class="secondary-btn"
-          type="button"
-          onclick="closeModal()"
-        >
-          بستن
-        </button>
-
-      </div>
-    `
-  );
+  </div>
 
 
-  bindDatePicker(
-    "reportFrom",
-    "reportFromJalali",
-    "reportFromGregorian"
-  );
-
-  bindDatePicker(
-    "reportTo",
-    "reportToJalali",
-    "reportToGregorian"
-  );
+  <div
+    id="reportResults"
+    class="report-list"
+  >
+  </div>
 
 
-  document
-    .getElementById("loadReport")
-    .addEventListener(
-      "click",
-      loadReport
-    );
+  <div class="modal-footer">
 
+    <button
+      class="secondary-btn"
+      type="button"
+      onclick="closeModal()"
+    >
+      بستن
+    </button>
 
-  await loadReport();
+  </div>
+`
+
+);
+
+bindDatePicker(
+"reportFrom",
+"reportFromJalali",
+"reportFromGregorian"
+);
+
+bindDatePicker(
+"reportTo",
+"reportToJalali",
+"reportToGregorian"
+);
+
+document
+.getElementById("loadReport")
+.addEventListener(
+"click",
+loadReport
+);
+
+await loadReport();
 }
-
 
 async function loadReport(){
 
-  const from =
-    document.getElementById(
-      "reportFrom"
-    )?.value;
+const from =
+document.getElementById(
+"reportFrom"
+)?.value;
 
-  const to =
-    document.getElementById(
-      "reportTo"
-    )?.value;
+const to =
+document.getElementById(
+"reportTo"
+)?.value;
 
-  const result =
-    document.getElementById(
-      "reportResults"
+const result =
+document.getElementById(
+"reportResults"
+);
+
+if(!result){
+return;
+}
+
+if(!from || !to){
+
+result.innerHTML =
+  `
+  <div class="empty-state">
+    تاریخ شروع و پایان را انتخاب کنید.
+  </div>
+  `;
+
+return;
+
+}
+
+if(from > to){
+
+result.innerHTML =
+  `
+  <div class="empty-state">
+    تاریخ شروع نمی‌تواند بعد از تاریخ پایان باشد.
+  </div>
+  `;
+
+return;
+
+}
+
+result.innerHTML =
+"<div class="loading-state"> در حال دریافت گزارش... </div>";
+
+try{
+
+const data =
+  await apiFetch(
+    "/api/notes?from=" +
+    encodeURIComponent(from) +
+    "&to=" +
+    encodeURIComponent(to)
+  );
+
+const notes =
+  Array.isArray(data)
+    ? data
+    : (
+      data?.notes ||
+      data?.data ||
+      []
     );
 
-  if(!result){
-    return;
-  }
-
-  if(!from || !to){
-
-    result.innerHTML =
-      `
-      <div class="empty-state">
-        تاریخ شروع و پایان را انتخاب کنید.
-      </div>
-      `;
-
-    return;
-  }
-
-  if(from > to){
-
-    result.innerHTML =
-      `
-      <div class="empty-state">
-        تاریخ شروع نمی‌تواند بعد از تاریخ پایان باشد.
-      </div>
-      `;
-
-    return;
-  }
+if(!notes.length){
 
   result.innerHTML =
     `
-    <div class="loading-state">
-      در حال دریافت گزارش...
+    <div class="empty-state">
+      در این بازه سابقه‌ای ثبت نشده است.
     </div>
     `;
 
-  try{
-
-    const data =
-      await apiFetch(
-        "/api/notes?from=" +
-        encodeURIComponent(from) +
-        "&to=" +
-        encodeURIComponent(to)
-      );
-
-    const notes =
-      Array.isArray(data)
-        ? data
-        : (
-          data?.notes ||
-          data?.data ||
-          []
-        );
-
-    if(!notes.length){
-
-      result.innerHTML =
-        `
-        <div class="empty-state">
-          در این بازه سابقه‌ای ثبت نشده است.
-        </div>
-        `;
-
-      return;
-    }
-
-
-    result.innerHTML =
-      notes
-        .map(note=>{
-
-          const machine =
-            machines.find(
-              m =>
-                String(m.id) ===
-                String(note.machine_id)
-            );
-
-          const machineTypeValue =
-            note.machine_type ||
-            machine?.type ||
-            "-";
-
-          const company =
-            note.company_number ||
-            machine?.company_number ||
-            "-";
-
-          const yard =
-            note.yard_name ||
-            getYardName(
-              note.yard_id ||
-              machine?.yard_id
-            );
-
-
-          return `
-            <div class="report-item">
-
-              <div class="report-date">
-                📅 ${formatDate(
-                  note.note_date
-                )}
-              </div>
-
-              <div class="report-title">
-                ${escapeHtml(
-                  machineTypeValue
-                )}
-              </div>
-
-              <div class="report-meta">
-                شماره شرکت:
-                ${escapeHtml(company)}
-                &nbsp; | &nbsp;
-                یارد:
-                ${escapeHtml(yard)}
-              </div>
-
-              <div class="report-note">
-                ${escapeHtml(
-                  note.note || ""
-                )}
-              </div>
-
-            </div>
-          `;
-
-        })
-        .join("");
-
-  }catch(error){
-
-    result.innerHTML =
-      `
-      <div class="empty-state">
-        ${escapeHtml(
-          translateError(error)
-        )}
-      </div>
-      `;
-
-    toast(
-      translateError(error),
-      "error"
-    );
-  }
+  return;
 }
 
 
+result.innerHTML =
+  notes
+    .map(note=>{
+
+      const machine =
+        machines.find(
+          m =>
+            String(m.id) ===
+            String(note.machine_id)
+        );
+
+      const machineTypeValue =
+        note.machine_type ||
+        machine?.type ||
+        "-";
+
+      const company =
+        note.company_number ||
+        machine?.company_number ||
+        "-";
+
+      const yard =
+        note.yard_name ||
+        getYardName(
+          note.yard_id ||
+          machine?.yard_id
+        );
+
+
+      return `
+        <div class="report-item">
+
+          <div class="report-date">
+            📅 ${formatDate(
+              note.note_date
+            )}
+          </div>
+
+          <div class="report-title">
+            ${escapeHtml(
+              machineTypeValue
+            )}
+          </div>
+
+          <div class="report-meta">
+            شماره شرکت:
+            ${escapeHtml(company)}
+            &nbsp; | &nbsp;
+            یارد:
+            ${escapeHtml(yard)}
+          </div>
+
+          <div class="report-note">
+            ${escapeHtml(
+              note.note || ""
+            )}
+          </div>
+
+        </div>
+      `;
+
+    })
+    .join("");
+
+}catch(error){
+
+result.innerHTML =
+  `
+  <div class="empty-state">
+    ${escapeHtml(
+      translateError(error)
+    )}
+  </div>
+  `;
+
+toast(
+  translateError(error),
+  "error"
+);
+
+}
+}
+
 /* =========================================================
-   ESCAPE
+ESCAPE
 ========================================================= */
 
 function escapeHtml(
-  value
+value
 ){
 
-  return String(
-    value ?? ""
-  )
-  .replace(
-    /&/g,
-    "&amp;"
-  )
-  .replace(
-    /</g,
-    "&lt;"
-  )
-  .replace(
-    />/g,
-    "&gt;"
-  )
-  .replace(
-    /"/g,
-    "&quot;"
-  )
-  .replace(
-    /'/g,
-    "&#039;"
-  );
+return String(
+value ?? ""
+)
+.replace(
+/&/g,
+"&"
+)
+.replace(
+/</g,
+"<"
+)
+.replace(
+/>/g,
+">"
+)
+.replace(
+/"/g,
+"""
+)
+.replace(
+/'/g,
+"'"
+);
 }
-
 
 function escapeAttr(
-  value
+value
 ){
 
-  return escapeHtml(
-    value
-  );
+return escapeHtml(
+value
+);
 }
 
-
 /* =========================================================
-   EVENTS
+EVENTS
 ========================================================= */
 
 loginForm.addEventListener(
-  "submit",
-  async event=>{
+"submit",
+async event=>{
 
-    event.preventDefault();
+event.preventDefault();
 
-    const username =
-      loginUsername.value.trim();
+const username =
+  loginUsername.value.trim();
 
-    const password =
-      loginPassword.value;
+const password =
+  loginPassword.value;
 
-    if(!username || !password){
+if(!username || !password){
 
-      toast(
-        "نام کاربری و رمز عبور را وارد کنید.",
-        "error"
-      );
+  toast(
+    "نام کاربری و رمز عبور را وارد کنید.",
+    "error"
+  );
 
-      return;
-    }
+  return;
+}
 
-    try{
+try{
 
-      loginButton.disabled =
-        true;
+  loginButton.disabled =
+    true;
 
-      loginButton.textContent =
-        "در حال ورود...";
+  loginButton.textContent =
+    "در حال ورود...";
 
-      await login(
-        username,
-        password
-      );
+  await login(
+    username,
+    password
+  );
 
-    }catch(error){
+}catch(error){
 
-      toast(
-        translateError(error),
-        "error"
-      );
+  toast(
+    translateError(error),
+    "error"
+  );
 
-    }finally{
+}finally{
 
-      loginButton.disabled =
-        false;
+  loginButton.disabled =
+    false;
 
-      loginButton.textContent =
-        "ورود";
-    }
-  }
+  loginButton.textContent =
+    "ورود";
+}
+
+}
 );
-
 
 logoutButton.addEventListener(
-  "click",
-  logout
+"click",
+logout
 );
-
 
 reportButton.addEventListener(
-  "click",
-  showReport
+"click",
+showReport
 );
-
 
 searchInput.addEventListener(
-  "input",
-  renderMachines
+"input",
+renderMachines
 );
-
 
 yardFilter.addEventListener(
-  "change",
-  renderMachines
+"change",
+renderMachines
 );
-
 
 saveMachine.addEventListener(
-  "click",
-  saveMachineData
+"click",
+saveMachineData
 );
-
 
 cancelEdit.addEventListener(
-  "click",
-  clearMachineForm
+"click",
+clearMachineForm
 );
 
-
-/* باز و بسته کردن پنل افزودن ماشین */
 adminPanelHeader.addEventListener(
-  "click",
-  ()=>{
+"click",
+()=>{
 
-    adminPanel.classList.toggle(
-      "open"
-    );
-  }
+adminPanel.classList.toggle(
+  "open"
 );
 
+}
+);
 
 modalClose.addEventListener(
-  "click",
-  closeModal
+"click",
+closeModal
 );
-
 
 modal.addEventListener(
-  "click",
-  event=>{
+"click",
+event=>{
 
-    if(event.target === modal){
+if(event.target === modal){
 
-      closeModal();
-    }
-  }
+  closeModal();
+}
+
+}
 );
 
-
 /* =========================================================
-   START
+START
 ========================================================= */
 
-checkSession();
+(async function initApp(){
 
-</script>
+/*
+Telegram:
+ورود مستقیم و خودکار با initData
 
-</body>
+Web / APK:
+ورود معمولی با Session قبلی
+یا صفحه نام کاربری و رمز
+
+*/
+
+if(isTelegramWebApp()){
+
+prepareTelegramWebApp();
+
+const success =
+  await loginWithTelegram();
+
+if(success){
+  return;
+}
+
+/*
+  اگر ورود تلگرام ناموفق بود،
+  صفحه ورود عادی نمایش داده می‌شود
+  تا علت خطا باعث صفحه سفید نشود.
+*/
+
+showLogin();
+
+return;
+
+}
+
+await checkSession();
+
+})();
+
+</script></body>
   </html>
