@@ -1384,7 +1384,7 @@ textarea.form-control{
             </span>
 
             <span id="adminPanelTitle">
-              افزودن ماشین
+              افزودن ماشین / حذف ماشین
             </span>
 
           </span>
@@ -1401,7 +1401,7 @@ textarea.form-control{
           <div class="admin-section-box">
 
             <div class="admin-section-title">
-              ➕ افزودن / ویرایش ماشین
+              افزودن ماشین / حذف ماشین
             </div>
 
             <div class="admin-grid">
@@ -2197,16 +2197,17 @@ function formatDate(
 
   }
 
-  const parts =
-    String(
-      value
-    ).split("-");
+  const raw = String(value).trim();
+
+  const datePart = raw.split("T")[0];
+
+  const parts = datePart.split("-");
 
   if(
     parts.length !== 3
   ){
 
-    return value;
+    return raw;
 
   }
 
@@ -2217,6 +2218,28 @@ function formatDate(
     "/" +
     parts[2]
   );
+
+}
+
+function formatTehranTime(value){
+
+  if(!value){
+    return "";
+  }
+
+  const date = new Date(value);
+
+  if(Number.isNaN(date.getTime())){
+    return "";
+  }
+
+  return new Intl.DateTimeFormat("en-GB",{
+    timeZone:"Asia/Tehran",
+    hour:"2-digit",
+    minute:"2-digit",
+    second:"2-digit",
+    hour12:false
+  }).format(date);
 
 }
 
@@ -3848,10 +3871,6 @@ async function showMachineNotes(
 
               </div>
 
-              <span class="date-calendar-icon">
-                📅
-              </span>
-
               <input
                 id="noteDate"
                 class="native-date-input"
@@ -4273,7 +4292,7 @@ async function showReport(){
           id="reportSelectedInfo"
           class="report-selected-info"
         >
-          📅 در این حالت گزارش بر اساس بازه زمانی انتخاب‌شده نمایش داده می‌شود.
+          در این حالت گزارش بر اساس بازه زمانی انتخاب‌شده نمایش داده می‌شود.
         </div>
 
       </div>
@@ -4307,10 +4326,6 @@ async function showReport(){
               ></span>
 
             </div>
-
-            <span class="date-calendar-icon">
-              📅
-            </span>
 
             <input
               id="reportFrom"
@@ -4350,10 +4365,6 @@ async function showReport(){
               ></span>
 
             </div>
-
-            <span class="date-calendar-icon">
-              📅
-            </span>
 
             <input
               id="reportTo"
