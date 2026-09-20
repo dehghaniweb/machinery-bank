@@ -1,0 +1,3453 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+
+<title>بانک ماشین‌آلات شرکت</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
+}
+
+html,body{
+  margin:0;
+  padding:0;
+  width:100%;
+  min-height:100%;
+  font-family:Tahoma,Arial,sans-serif;
+  background:#f3f7f4;
+  color:#173c2c;
+}
+
+body{
+  padding:18px 12px 40px;
+}
+
+button,
+input,
+select,
+textarea{
+  font-family:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+.hidden{
+  display:none !important;
+}
+
+/* =========================
+   LOGIN
+========================= */
+
+.login-page{
+  min-height:calc(100vh - 40px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.login-box{
+  width:min(430px,100%);
+  background:#fff;
+  border-radius:24px;
+  padding:28px 22px;
+  box-shadow:0 12px 40px rgba(20,70,45,.12);
+  border:1px solid #dcebe2;
+}
+
+.login-logo{
+  width:78px;
+  height:78px;
+  margin:0 auto 15px;
+  border-radius:22px;
+  background:linear-gradient(145deg,#0b4b35,#27845a);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:36px;
+  box-shadow:0 8px 20px rgba(11,75,53,.25);
+}
+
+.login-title{
+  text-align:center;
+  font-size:22px;
+  font-weight:bold;
+  color:#0b4b35;
+  margin-bottom:7px;
+}
+
+.login-subtitle{
+  text-align:center;
+  color:#708277;
+  font-size:13px;
+  margin-bottom:24px;
+}
+
+.form-group{
+  margin-bottom:15px;
+}
+
+.form-group label{
+  display:block;
+  font-size:13px;
+  font-weight:bold;
+  margin-bottom:7px;
+  color:#315444;
+}
+
+.form-control{
+  width:100%;
+  height:46px;
+  border:1px solid #d5e3db;
+  border-radius:13px;
+  background:#f8fbf9;
+  padding:0 13px;
+  outline:none;
+  color:#173c2c;
+  font-size:14px;
+  transition:.2s;
+}
+
+.form-control:focus{
+  border-color:#27845a;
+  background:#fff;
+  box-shadow:0 0 0 3px rgba(39,132,90,.1);
+}
+
+.login-btn{
+  width:100%;
+  height:48px;
+  border:0;
+  border-radius:14px;
+  background:linear-gradient(135deg,#0b4b35,#27845a);
+  color:#fff;
+  font-size:15px;
+  font-weight:bold;
+  margin-top:5px;
+  box-shadow:0 7px 18px rgba(11,75,53,.2);
+}
+
+.login-btn:active{
+  transform:scale(.98);
+}
+
+.login-error{
+  background:#fff0f0;
+  border:1px solid #ffd0d0;
+  color:#b52b2b;
+  border-radius:12px;
+  padding:10px 12px;
+  font-size:12px;
+  margin-bottom:14px;
+  line-height:1.8;
+}
+
+/* =========================
+   APP
+========================= */
+
+.app{
+  width:min(1100px,100%);
+  margin:auto;
+}
+
+.header{
+  background:linear-gradient(135deg,#0b4b35,#176c49);
+  color:#fff;
+  border-radius:20px;
+  padding:18px;
+  box-shadow:0 10px 28px rgba(11,75,53,.18);
+  margin-bottom:14px;
+}
+
+.header-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+
+.header-title{
+  font-size:21px;
+  font-weight:bold;
+}
+
+.header-user{
+  font-size:11px;
+  opacity:.88;
+  margin-top:6px;
+}
+
+.header-actions{
+  display:flex;
+  gap:7px;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+}
+
+.header-btn{
+  border:1px solid rgba(255,255,255,.25);
+  background:rgba(255,255,255,.1);
+  color:#fff;
+  border-radius:10px;
+  padding:8px 11px;
+  font-size:11px;
+}
+
+.header-btn:hover{
+  background:rgba(255,255,255,.18);
+}
+
+/* =========================
+   STATS
+========================= */
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin-bottom:14px;
+}
+
+.stat{
+  background:#fff;
+  border:1px solid #dfebe4;
+  border-radius:16px;
+  padding:14px 10px;
+  text-align:center;
+  box-shadow:0 4px 15px rgba(20,70,45,.05);
+}
+
+.stat-number{
+  font-size:22px;
+  font-weight:bold;
+  color:#0b4b35;
+}
+
+.stat-label{
+  font-size:11px;
+  color:#78897f;
+  margin-top:4px;
+}
+
+/* =========================
+   TOOLBAR
+========================= */
+
+.toolbar{
+  background:#fff;
+  border:1px solid #dfebe4;
+  border-radius:18px;
+  padding:13px;
+  margin-bottom:14px;
+  box-shadow:0 4px 15px rgba(20,70,45,.05);
+}
+
+.search-row{
+  display:grid;
+  grid-template-columns:1fr 210px;
+  gap:10px;
+}
+
+.search-box{
+  position:relative;
+}
+
+.search-box input{
+  width:100%;
+  height:45px;
+  border:1px solid #d8e5de;
+  border-radius:13px;
+  background:#f8fbf9;
+  padding:0 42px 0 12px;
+  outline:none;
+  font-size:13px;
+  color:#173c2c;
+}
+
+.search-box input:focus{
+  border-color:#27845a;
+  background:#fff;
+}
+
+.search-icon{
+  position:absolute;
+  right:13px;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:18px;
+  color:#7a8c82;
+}
+
+.select-box{
+  position:relative;
+}
+
+.select-box select{
+  width:100%;
+  height:45px;
+  border:1px solid #d8e5de;
+  border-radius:13px;
+  background:#f8fbf9;
+  padding:0 12px;
+  outline:none;
+  color:#315444;
+  font-size:12px;
+}
+
+.filter-info{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  margin-top:10px;
+  color:#708277;
+  font-size:11px;
+}
+
+.admin-badge{
+  background:#fff3cd;
+  color:#896b00;
+  border:1px solid #f0d878;
+  border-radius:20px;
+  padding:5px 9px;
+  font-size:10px;
+  font-weight:bold;
+}
+
+/* =========================
+   ADMIN PANEL
+========================= */
+
+.admin-panel{
+  background:#fff;
+  border:1px solid #d9e9df;
+  border-radius:18px;
+  padding:14px;
+  margin-bottom:14px;
+  box-shadow:0 4px 15px rgba(20,70,45,.05);
+}
+
+.section-title{
+  color:#0b4b35;
+  font-size:15px;
+  font-weight:bold;
+  margin-bottom:12px;
+}
+
+.admin-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.admin-grid .full{
+  grid-column:1/-1;
+}
+
+.admin-actions{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:5px;
+}
+
+.btn{
+  border:0;
+  border-radius:11px;
+  padding:10px 14px;
+  font-size:12px;
+  font-weight:bold;
+}
+
+.btn-primary{
+  background:#0b4b35;
+  color:#fff;
+}
+
+.btn-secondary{
+  background:#e9f2ed;
+  color:#0b4b35;
+}
+
+.btn-danger{
+  background:#ffe9e9;
+  color:#b52b2b;
+}
+
+.btn-warning{
+  background:#fff3cd;
+  color:#856404;
+}
+
+/* =========================
+   MACHINES
+========================= */
+
+.machine-list{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.machine-card{
+  background:#fff;
+  border:1px solid #dfebe4;
+  border-radius:17px;
+  padding:14px;
+  box-shadow:0 4px 15px rgba(20,70,45,.045);
+  transition:.18s;
+}
+
+.machine-card:hover{
+  border-color:#bdd8ca;
+}
+
+.machine-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:10px;
+}
+
+.machine-type{
+  font-size:16px;
+  font-weight:bold;
+  color:#0b4b35;
+}
+
+.machine-company{
+  margin-top:5px;
+  font-size:12px;
+  color:#708277;
+}
+
+.machine-company strong{
+  color:#315444;
+}
+
+.machine-yard{
+  display:inline-flex;
+  align-items:center;
+  background:#edf7f1;
+  color:#176c49;
+  border-radius:20px;
+  padding:6px 9px;
+  font-size:10px;
+  white-space:nowrap;
+}
+
+.machine-details{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:8px;
+  margin-top:12px;
+}
+
+.detail-box{
+  background:#f7faf8;
+  border-radius:11px;
+  padding:9px 10px;
+}
+
+.detail-label{
+  color:#8a9991;
+  font-size:9px;
+  margin-bottom:4px;
+}
+
+.detail-value{
+  color:#315444;
+  font-size:12px;
+  font-weight:bold;
+}
+
+.machine-actions{
+  display:flex;
+  gap:7px;
+  flex-wrap:wrap;
+  margin-top:12px;
+  padding-top:11px;
+  border-top:1px solid #edf1ee;
+}
+
+.machine-actions button{
+  border:0;
+  border-radius:9px;
+  padding:7px 10px;
+  font-size:10px;
+}
+
+.notes-btn{
+  background:#edf4ff;
+  color:#315e99;
+}
+
+.edit-btn{
+  background:#fff3cd;
+  color:#856404;
+}
+
+.delete-btn{
+  background:#ffe9e9;
+  color:#b52b2b;
+}
+
+/* =========================
+   EMPTY / LOADING
+========================= */
+
+.state-box{
+  background:#fff;
+  border:1px solid #dfebe4;
+  border-radius:18px;
+  padding:35px 15px;
+  text-align:center;
+  color:#809087;
+}
+
+.loading-spinner{
+  width:30px;
+  height:30px;
+  border:3px solid #dcebe2;
+  border-top-color:#27845a;
+  border-radius:50%;
+  animation:spin .8s linear infinite;
+  margin:0 auto 12px;
+}
+
+@keyframes spin{
+  to{
+    transform:rotate(360deg);
+  }
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.modal-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(5,25,17,.58);
+  backdrop-filter:blur(4px);
+  z-index:1000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:15px;
+}
+
+.modal{
+  width:min(650px,100%);
+  max-height:92vh;
+  overflow:auto;
+  background:#fff;
+  border-radius:22px;
+  box-shadow:0 20px 60px rgba(0,0,0,.25);
+}
+
+.modal-header{
+  position:sticky;
+  top:0;
+  z-index:2;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  background:linear-gradient(135deg,#0b4b35,#176c49);
+  color:#fff;
+  padding:15px 17px;
+}
+
+.modal-title{
+  font-weight:bold;
+  font-size:15px;
+}
+
+.modal-close{
+  width:34px;
+  height:34px;
+  border:0;
+  border-radius:10px;
+  background:rgba(255,255,255,.13);
+  color:#fff;
+  font-size:20px;
+}
+
+.modal-body{
+  padding:16px;
+}
+
+/* =========================
+   NOTES
+========================= */
+
+.notes-list{
+  display:flex;
+  flex-direction:column;
+  gap:9px;
+}
+
+.note-item{
+  border:1px solid #e0ebe5;
+  background:#f9fbfa;
+  border-radius:13px;
+  padding:11px;
+}
+
+.note-date{
+  color:#176c49;
+  font-size:11px;
+  font-weight:bold;
+  margin-bottom:6px;
+}
+
+.note-text{
+  color:#315444;
+  font-size:12px;
+  line-height:2;
+  white-space:pre-wrap;
+}
+
+.note-author{
+  margin-top:7px;
+  color:#8a9991;
+  font-size:9px;
+}
+
+/* =========================
+   REPORT
+========================= */
+
+.report-controls{
+  display:grid;
+  grid-template-columns:1fr 1fr auto;
+  gap:8px;
+  margin-bottom:15px;
+}
+
+.report-controls input{
+  height:42px;
+  border:1px solid #d8e5de;
+  border-radius:11px;
+  padding:0 10px;
+  outline:none;
+  font-size:11px;
+}
+
+.report-result{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.report-item{
+  border:1px solid #dfebe4;
+  border-radius:13px;
+  padding:11px;
+  background:#fafcfb;
+}
+
+.report-item-head{
+  display:flex;
+  justify-content:space-between;
+  gap:8px;
+  font-size:11px;
+  font-weight:bold;
+  color:#0b4b35;
+}
+
+.report-machine{
+  margin-top:5px;
+  font-size:11px;
+  color:#53695d;
+}
+
+.report-note{
+  margin-top:7px;
+  font-size:11px;
+  color:#315444;
+  line-height:1.9;
+}
+
+/* =========================
+   TOAST
+========================= */
+
+.toast-container{
+  position:fixed;
+  left:15px;
+  right:15px;
+  bottom:18px;
+  z-index:3000;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+  pointer-events:none;
+}
+
+.toast{
+  width:min(430px,100%);
+  padding:11px 14px;
+  border-radius:13px;
+  background:#173c2c;
+  color:#fff;
+  font-size:11px;
+  box-shadow:0 10px 30px rgba(0,0,0,.18);
+  animation:toastIn .2s ease;
+  text-align:center;
+}
+
+.toast.success{
+  background:#176c49;
+}
+
+.toast.error{
+  background:#b52b2b;
+}
+
+@keyframes toastIn{
+  from{
+    opacity:0;
+    transform:translateY(10px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:650px){
+
+  body{
+    padding:10px 9px 30px;
+  }
+
+  .header{
+    border-radius:16px;
+    padding:14px;
+  }
+
+  .header-top{
+    align-items:flex-start;
+  }
+
+  .header-title{
+    font-size:17px;
+  }
+
+  .header-actions{
+    flex-direction:column;
+  }
+
+  .header-btn{
+    padding:7px 9px;
+  }
+
+  .stats{
+    gap:7px;
+  }
+
+  .stat{
+    padding:11px 5px;
+  }
+
+  .stat-number{
+    font-size:18px;
+  }
+
+  .search-row{
+    grid-template-columns:1fr;
+  }
+
+  .admin-grid{
+    grid-template-columns:1fr;
+  }
+
+  .admin-grid .full{
+    grid-column:auto;
+  }
+
+  .machine-details{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .report-controls{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .report-controls button{
+    grid-column:1/-1;
+  }
+}
+
+@media(max-width:380px){
+
+  .machine-details{
+    grid-template-columns:1fr;
+  }
+
+  .stats{
+    grid-template-columns:1fr 1fr 1fr;
+  }
+
+  .stat-label{
+    font-size:9px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =====================================================
+     LOGIN
+===================================================== -->
+
+<div id="loginPage" class="login-page">
+
+  <div class="login-box">
+
+    <div class="login-logo">
+      🚜
+    </div>
+
+    <div class="login-title">
+      بانک ماشین‌آلات شرکت
+    </div>
+
+    <div class="login-subtitle">
+      ورود به سامانه مدیریت ماشین‌آلات
+    </div>
+
+    <div id="loginError"
+         class="login-error hidden">
+    </div>
+
+    <div class="form-group">
+
+      <label>
+        نام کاربری
+      </label>
+
+      <input
+        id="loginUsername"
+        class="form-control"
+        type="text"
+        autocomplete="username"
+        placeholder="نام کاربری"
+      >
+
+    </div>
+
+    <div class="form-group">
+
+      <label>
+        رمز عبور
+      </label>
+
+      <input
+        id="loginPassword"
+        class="form-control"
+        type="password"
+        autocomplete="current-password"
+        placeholder="رمز عبور"
+      >
+
+    </div>
+
+    <button
+      id="loginBtn"
+      class="login-btn"
+      type="button"
+    >
+      ورود
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================================
+     APP
+===================================================== -->
+
+<div id="app"
+     class="app hidden">
+
+  <div class="header">
+
+    <div class="header-top">
+
+      <div>
+
+        <div class="header-title">
+          بانک ماشین‌آلات شرکت
+        </div>
+
+        <div id="headerUser"
+             class="header-user">
+        </div>
+
+      </div>
+
+      <div class="header-actions">
+
+        <button
+          id="reportBtn"
+          class="header-btn"
+        >
+          📊 گزارش
+        </button>
+
+        <button
+          id="logoutBtn"
+          class="header-btn"
+        >
+          خروج
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- STATS -->
+
+  <div class="stats">
+
+    <div class="stat">
+      <div id="totalCount"
+           class="stat-number">
+        ۰
+      </div>
+
+      <div class="stat-label">
+        کل ماشین‌آلات
+      </div>
+    </div>
+
+    <div class="stat">
+      <div id="filteredCount"
+           class="stat-number">
+        ۰
+      </div>
+
+      <div class="stat-label">
+        نمایش داده شده
+      </div>
+    </div>
+
+    <div class="stat">
+      <div id="yardCount"
+           class="stat-number">
+        ۶
+      </div>
+
+      <div class="stat-label">
+        محل استقرار
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- SEARCH -->
+
+  <div class="toolbar">
+
+    <div class="search-row">
+
+      <div class="search-box">
+
+        <span class="search-icon">
+          🔎
+        </span>
+
+        <input
+          id="searchInput"
+          type="text"
+          placeholder="جستجو بر اساس نوع، شماره شرکت یا پلاک..."
+        >
+
+      </div>
+
+      <div class="select-box">
+
+        <select id="yardFilter">
+
+          <option value="">
+            همه محل‌ها
+          </option>
+
+        </select>
+
+      </div>
+
+    </div>
+
+    <div class="filter-info">
+
+      <span id="filterText">
+        همه ماشین‌آلات
+      </span>
+
+      <span
+        id="adminBadge"
+        class="admin-badge hidden"
+      >
+        👑 مدیر سیستم
+      </span>
+
+    </div>
+
+  </div>
+
+
+  <!-- ADMIN PANEL -->
+
+  <div
+    id="adminPanel"
+    class="admin-panel hidden"
+  >
+
+    <div class="section-title">
+      ⚙️ مدیریت ماشین‌آلات
+    </div>
+
+    <div class="admin-grid">
+
+      <div class="form-group">
+
+        <label>
+          نوع ماشین
+        </label>
+
+        <input
+          id="machineType"
+          class="form-control"
+          type="text"
+          placeholder="مثلاً لودر"
+        >
+
+      </div>
+
+      <div class="form-group">
+
+        <label>
+          شماره شرکت
+        </label>
+
+        <input
+          id="machineCompany"
+          class="form-control"
+          type="text"
+          placeholder="شماره شرکت"
+        >
+
+      </div>
+
+      <div class="form-group">
+
+        <label>
+          پلاک
+        </label>
+
+        <input
+          id="machinePlate"
+          class="form-control"
+          type="text"
+          placeholder="پلاک"
+        >
+
+      </div>
+
+      <div class="form-group">
+
+        <label>
+          محل استقرار
+        </label>
+
+        <select
+          id="machineYard"
+          class="form-control"
+        >
+        </select>
+
+      </div>
+
+      <div class="admin-actions full">
+
+        <button
+          id="saveMachineBtn"
+          class="btn btn-primary"
+        >
+          ➕ افزودن ماشین
+        </button>
+
+        <button
+          id="cancelEditBtn"
+          class="btn btn-secondary hidden"
+        >
+          انصراف از ویرایش
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- MACHINE LIST -->
+
+  <div id="machineList"
+       class="machine-list">
+
+    <div class="state-box">
+
+      <div class="loading-spinner"></div>
+
+      در حال دریافت اطلاعات...
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================================
+     MODAL
+===================================================== -->
+
+<div
+  id="modalOverlay"
+  class="modal-overlay hidden"
+>
+
+  <div class="modal">
+
+    <div class="modal-header">
+
+      <div
+        id="modalTitle"
+        class="modal-title"
+      >
+        اطلاعات
+      </div>
+
+      <button
+        id="modalClose"
+        class="modal-close"
+      >
+        ×
+      </button>
+
+    </div>
+
+    <div
+      id="modalBody"
+      class="modal-body"
+    >
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================================
+     TOAST
+===================================================== -->
+
+<div
+  id="toastContainer"
+  class="toast-container"
+></div>
+
+
+<script>
+
+/* =========================================================
+   CONFIG
+========================================================= */
+
+const WORKER_URL =
+  "https://machinery-bank-api.dehghaniweb.workers.dev";
+
+
+/* =========================================================
+   STATE
+========================================================= */
+
+let sessionToken =
+  localStorage.getItem(
+    "machinery_session"
+  ) || "";
+
+let currentUser = null;
+
+let machines = [];
+
+let yards = [];
+
+let editingMachineId = null;
+
+
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const loginPage =
+  document.getElementById(
+    "loginPage"
+  );
+
+const app =
+  document.getElementById(
+    "app"
+  );
+
+const loginUsername =
+  document.getElementById(
+    "loginUsername"
+  );
+
+const loginPassword =
+  document.getElementById(
+    "loginPassword"
+  );
+
+const loginBtn =
+  document.getElementById(
+    "loginBtn"
+  );
+
+const loginError =
+  document.getElementById(
+    "loginError"
+  );
+
+const headerUser =
+  document.getElementById(
+    "headerUser"
+  );
+
+const adminPanel =
+  document.getElementById(
+    "adminPanel"
+  );
+
+const adminBadge =
+  document.getElementById(
+    "adminBadge"
+  );
+
+const searchInput =
+  document.getElementById(
+    "searchInput"
+  );
+
+const yardFilter =
+  document.getElementById(
+    "yardFilter"
+  );
+
+const machineList =
+  document.getElementById(
+    "machineList"
+  );
+
+const totalCount =
+  document.getElementById(
+    "totalCount"
+  );
+
+const filteredCount =
+  document.getElementById(
+    "filteredCount"
+  );
+
+const yardCount =
+  document.getElementById(
+    "yardCount"
+  );
+
+const filterText =
+  document.getElementById(
+    "filterText"
+  );
+
+const machineType =
+  document.getElementById(
+    "machineType"
+  );
+
+const machineCompany =
+  document.getElementById(
+    "machineCompany"
+  );
+
+const machinePlate =
+  document.getElementById(
+    "machinePlate"
+  );
+
+const machineYard =
+  document.getElementById(
+    "machineYard"
+  );
+
+const saveMachineBtn =
+  document.getElementById(
+    "saveMachineBtn"
+  );
+
+const cancelEditBtn =
+  document.getElementById(
+    "cancelEditBtn"
+  );
+
+const logoutBtn =
+  document.getElementById(
+    "logoutBtn"
+  );
+
+const reportBtn =
+  document.getElementById(
+    "reportBtn"
+  );
+
+const modalOverlay =
+  document.getElementById(
+    "modalOverlay"
+  );
+
+const modalTitle =
+  document.getElementById(
+    "modalTitle"
+  );
+
+const modalBody =
+  document.getElementById(
+    "modalBody"
+  );
+
+const modalClose =
+  document.getElementById(
+    "modalClose"
+  );
+
+const toastContainer =
+  document.getElementById(
+    "toastContainer"
+  );
+
+
+/* =========================================================
+   API
+========================================================= */
+
+async function api(
+  path,
+  options = {}
+) {
+
+  const headers = {
+    "Content-Type":
+      "application/json",
+
+    ...(options.headers || {}),
+  };
+
+
+  if (sessionToken) {
+
+    headers.Authorization =
+      `Bearer ${sessionToken}`;
+  }
+
+
+  const response =
+    await fetch(
+      WORKER_URL + path,
+      {
+        ...options,
+        headers,
+      }
+    );
+
+
+  let data = null;
+
+  const text =
+    await response.text();
+
+
+  try {
+
+    data =
+      text
+        ? JSON.parse(text)
+        : {};
+
+  } catch {
+
+    data = {
+      ok: false,
+      error:
+        "invalid_server_response",
+
+      raw:
+        text,
+    };
+  }
+
+
+  if (
+    response.status === 401
+  ) {
+
+    sessionToken = "";
+
+    localStorage.removeItem(
+      "machinery_session"
+    );
+
+    showLogin();
+
+  }
+
+
+  if (!response.ok) {
+
+    const message =
+      data.message ||
+      data.error ||
+      "خطا در ارتباط با سرور";
+
+    throw new Error(
+      message
+    );
+  }
+
+
+  return data;
+}
+
+
+/* =========================================================
+   LOGIN
+========================================================= */
+
+async function login() {
+
+  const username =
+    loginUsername.value.trim();
+
+  const password =
+    loginPassword.value;
+
+
+  loginError.classList.add(
+    "hidden"
+  );
+
+
+  if (!username || !password) {
+
+    showLoginError(
+      "نام کاربری و رمز عبور را وارد کنید."
+    );
+
+    return;
+  }
+
+
+  loginBtn.disabled = true;
+
+  loginBtn.textContent =
+    "در حال ورود...";
+
+
+  try {
+
+    const result =
+      await api(
+        "/api/auth/login",
+        {
+          method: "POST",
+
+          body:
+            JSON.stringify({
+              username,
+              password,
+            }),
+        }
+      );
+
+
+    sessionToken =
+      result.session_token;
+
+
+    localStorage.setItem(
+      "machinery_session",
+      sessionToken
+    );
+
+
+    currentUser =
+      result.user;
+
+
+    await showApp();
+
+
+  } catch (error) {
+
+    showLoginError(
+      translateError(
+        error.message
+      )
+    );
+
+  } finally {
+
+    loginBtn.disabled = false;
+
+    loginBtn.textContent =
+      "ورود";
+  }
+}
+
+
+function showLoginError(
+  message
+) {
+
+  loginError.textContent =
+    message;
+
+  loginError.classList.remove(
+    "hidden"
+  );
+}
+
+
+/* =========================================================
+   SESSION
+========================================================= */
+
+async function checkSession() {
+
+  if (!sessionToken) {
+
+    showLogin();
+
+    return;
+  }
+
+
+  try {
+
+    const result =
+      await api(
+        "/api/auth/me"
+      );
+
+
+    currentUser =
+      result.user;
+
+
+    await showApp();
+
+
+  } catch {
+
+    showLogin();
+  }
+}
+
+
+/* =========================================================
+   SHOW LOGIN / APP
+========================================================= */
+
+function showLogin() {
+
+  app.classList.add(
+    "hidden"
+  );
+
+  loginPage.classList.remove(
+    "hidden"
+  );
+
+  loginUsername.focus();
+}
+
+
+async function showApp() {
+
+  loginPage.classList.add(
+    "hidden"
+  );
+
+  app.classList.remove(
+    "hidden"
+  );
+
+
+  const fullName =
+    [
+      currentUser?.first_name,
+      currentUser?.last_name
+    ]
+    .filter(Boolean)
+    .join(" ");
+
+
+  headerUser.textContent =
+    `کاربر: ${
+      fullName ||
+      currentUser?.web_username ||
+      "کاربر"
+    }`;
+
+
+  if (
+    currentUser?.role ===
+    "admin"
+  ) {
+
+    adminPanel.classList.remove(
+      "hidden"
+    );
+
+    adminBadge.classList.remove(
+      "hidden"
+    );
+
+  } else {
+
+    adminPanel.classList.add(
+      "hidden"
+    );
+
+    adminBadge.classList.add(
+      "hidden"
+    );
+  }
+
+
+  await loadYards();
+
+  await loadMachines();
+}
+
+
+/* =========================================================
+   LOAD YARDS
+========================================================= */
+
+async function loadYards() {
+
+  const result =
+    await api(
+      "/api/yards"
+    );
+
+
+  yards =
+    result.yards || [];
+
+
+  yardCount.textContent =
+    toPersianNumber(
+      yards.length
+    );
+
+
+  renderYardFilters();
+
+  renderAdminYards();
+}
+
+
+/* =========================================================
+   YARD FILTERS
+========================================================= */
+
+function renderYardFilters() {
+
+  const current =
+    yardFilter.value;
+
+
+  yardFilter.innerHTML = "";
+
+  yardFilter.appendChild(
+    new Option(
+      "همه محل‌ها",
+      ""
+    )
+  );
+
+
+  yards.forEach(
+    yard => {
+
+      yardFilter.appendChild(
+        new Option(
+          yard.name,
+          yard.id
+        )
+      );
+
+    }
+  );
+
+
+  yardFilter.value =
+    current;
+}
+
+
+function renderAdminYards() {
+
+  machineYard.innerHTML = "";
+
+  yards.forEach(
+    yard => {
+
+      machineYard.appendChild(
+        new Option(
+          yard.name,
+          yard.id
+        )
+      );
+
+    }
+  );
+}
+
+
+/* =========================================================
+   LOAD MACHINES
+========================================================= */
+
+async function loadMachines() {
+
+  machineList.innerHTML = `
+    <div class="state-box">
+      <div class="loading-spinner"></div>
+      در حال دریافت اطلاعات...
+    </div>
+  `;
+
+
+  try {
+
+    const result =
+      await api(
+        "/api/machines"
+      );
+
+
+    machines =
+      result.machines || [];
+
+
+    totalCount.textContent =
+      toPersianNumber(
+        machines.length
+      );
+
+
+    renderMachines();
+
+
+  } catch (error) {
+
+    machineList.innerHTML = `
+      <div class="state-box">
+        ❌ خطا در دریافت اطلاعات
+        <br><br>
+        ${escapeHtml(
+          translateError(
+            error.message
+          )
+        )}
+      </div>
+    `;
+  }
+}
+
+
+/* =========================================================
+   RENDER MACHINES
+========================================================= */
+
+function renderMachines() {
+
+  const search =
+    searchInput.value
+      .trim()
+      .toLowerCase();
+
+
+  const selectedYard =
+    yardFilter.value;
+
+
+  const filtered =
+    machines.filter(
+      machine => {
+
+        const text =
+          [
+            machine.type,
+            machine.company_number,
+            machine.plate,
+            machine.yards?.name
+          ]
+          .filter(Boolean)
+          .join(" ")
+          .toLowerCase();
+
+
+        const searchOk =
+          !search ||
+          text.includes(search);
+
+
+        const yardOk =
+          !selectedYard ||
+          machine.yard_id ===
+            selectedYard;
+
+
+        return (
+          searchOk &&
+          yardOk
+        );
+      }
+    );
+
+
+  filteredCount.textContent =
+    toPersianNumber(
+      filtered.length
+    );
+
+
+  if (
+    !search &&
+    !selectedYard
+  ) {
+
+    filterText.textContent =
+      "همه ماشین‌آلات";
+
+  } else {
+
+    filterText.textContent =
+      `${toPersianNumber(
+        filtered.length
+      )} مورد یافت شد`;
+  }
+
+
+  if (!filtered.length) {
+
+    machineList.innerHTML = `
+      <div class="state-box">
+        🔍
+        <br><br>
+        موردی پیدا نشد.
+      </div>
+    `;
+
+    return;
+  }
+
+
+  machineList.innerHTML =
+    filtered
+      .map(
+        machine =>
+          machineCard(
+            machine
+          )
+      )
+      .join("");
+}
+
+
+/* =========================================================
+   MACHINE CARD
+========================================================= */
+
+function machineCard(
+  machine
+) {
+
+  const yardName =
+    machine.yards?.name ||
+    "بدون محل";
+
+
+  const company =
+    machine.company_number ||
+    "ثبت نشده";
+
+
+  const plate =
+    machine.plate ||
+    "ثبت نشده";
+
+
+  const admin =
+    currentUser?.role ===
+    "admin";
+
+
+  return `
+    <div class="machine-card">
+
+      <div class="machine-top">
+
+        <div>
+
+          <div class="machine-type">
+            ${escapeHtml(
+              machine.type ||
+              "بدون نوع"
+            )}
+          </div>
+
+          <div class="machine-company">
+            شماره شرکت:
+            <strong>
+              ${escapeHtml(
+                company
+              )}
+            </strong>
+          </div>
+
+        </div>
+
+        <div class="machine-yard">
+          📍
+          ${escapeHtml(
+            yardName
+          )}
+        </div>
+
+      </div>
+
+
+      <div class="machine-details">
+
+        <div class="detail-box">
+
+          <div class="detail-label">
+            نوع ماشین
+          </div>
+
+          <div class="detail-value">
+            ${escapeHtml(
+              machine.type ||
+              "-"
+            )}
+          </div>
+
+        </div>
+
+
+        <div class="detail-box">
+
+          <div class="detail-label">
+            پلاک
+          </div>
+
+          <div class="detail-value">
+            ${escapeHtml(
+              plate
+            )}
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="machine-actions">
+
+        <button
+          class="notes-btn"
+          onclick="showMachineNotes('${machine.id}')"
+        >
+          📝 سوابق
+        </button>
+
+        ${
+          admin
+          ? `
+            <button
+              class="edit-btn"
+              onclick="editMachine('${machine.id}')"
+            >
+              ✏️ ویرایش
+            </button>
+
+            <button
+              class="delete-btn"
+              onclick="deleteMachine('${machine.id}')"
+            >
+              🗑 حذف
+            </button>
+          `
+          : ""
+        }
+
+      </div>
+
+    </div>
+  `;
+}
+
+
+/* =========================================================
+   ADD / EDIT MACHINE
+========================================================= */
+
+async function saveMachine() {
+
+  if (
+    currentUser?.role !==
+    "admin"
+  ) {
+
+    return;
+  }
+
+
+  const type =
+    machineType.value.trim();
+
+  const company =
+    machineCompany.value.trim();
+
+  const plate =
+    machinePlate.value.trim();
+
+  const yardId =
+    machineYard.value;
+
+
+  if (!type) {
+
+    toast(
+      "نوع ماشین را وارد کنید.",
+      "error"
+    );
+
+    return;
+  }
+
+
+  if (!yardId) {
+
+    toast(
+      "محل استقرار را انتخاب کنید.",
+      "error"
+    );
+
+    return;
+  }
+
+
+  saveMachineBtn.disabled =
+    true;
+
+
+  try {
+
+    let result;
+
+
+    if (editingMachineId) {
+
+      result =
+        await api(
+          `/api/machines/${encodeURIComponent(
+            editingMachineId
+          )}`,
+          {
+            method:
+              "PATCH",
+
+            body:
+              JSON.stringify({
+                type,
+                company_number:
+                  company ||
+                  null,
+
+                plate:
+                  plate ||
+                  null,
+
+                yard_id:
+                  yardId,
+              }),
+          }
+        );
+
+
+      toast(
+        "ماشین با موفقیت ویرایش شد.",
+        "success"
+      );
+
+    } else {
+
+      result =
+        await api(
+          "/api/machines",
+          {
+            method:
+              "POST",
+
+            body:
+              JSON.stringify({
+                type,
+                company_number:
+                  company ||
+                  null,
+
+                plate:
+                  plate ||
+                  null,
+
+                yard_id:
+                  yardId,
+              }),
+          }
+        );
+
+
+      toast(
+        "ماشین با موفقیت اضافه شد.",
+        "success"
+      );
+    }
+
+
+    clearMachineForm();
+
+    await loadMachines();
+
+
+  } catch (error) {
+
+    toast(
+      translateError(
+        error.message
+      ),
+      "error"
+    );
+
+  } finally {
+
+    saveMachineBtn.disabled =
+      false;
+  }
+}
+
+
+/* =========================================================
+   EDIT
+========================================================= */
+
+function editMachine(
+  id
+) {
+
+  const machine =
+    machines.find(
+      item =>
+        item.id === id
+    );
+
+
+  if (!machine) {
+    return;
+  }
+
+
+  editingMachineId =
+    id;
+
+
+  machineType.value =
+    machine.type || "";
+
+
+  machineCompany.value =
+    machine.company_number ||
+    "";
+
+
+  machinePlate.value =
+    machine.plate || "";
+
+
+  machineYard.value =
+    machine.yard_id || "";
+
+
+  saveMachineBtn.textContent =
+    "💾 ذخیره تغییرات";
+
+
+  cancelEditBtn.classList.remove(
+    "hidden"
+  );
+
+
+  adminPanel.scrollIntoView({
+    behavior:"smooth",
+    block:"start"
+  });
+}
+
+
+function clearMachineForm() {
+
+  editingMachineId =
+    null;
+
+
+  machineType.value =
+    "";
+
+  machineCompany.value =
+    "";
+
+  machinePlate.value =
+    "";
+
+
+  if (yards.length) {
+
+    machineYard.value =
+      yards[0].id;
+  }
+
+
+  saveMachineBtn.textContent =
+    "➕ افزودن ماشین";
+
+
+  cancelEditBtn.classList.add(
+    "hidden"
+  );
+}
+
+
+/* =========================================================
+   DELETE
+========================================================= */
+
+async function deleteMachine(
+  id
+) {
+
+  if (
+    currentUser?.role !==
+    "admin"
+  ) {
+
+    return;
+  }
+
+
+  const machine =
+    machines.find(
+      item =>
+        item.id === id
+    );
+
+
+  if (!machine) {
+    return;
+  }
+
+
+  const ok =
+    confirm(
+      `آیا از حذف ماشین «${
+        machine.type ||
+        ""
+      }» با شماره شرکت «${
+        machine.company_number ||
+        "ثبت نشده"
+      }» مطمئن هستید؟`
+    );
+
+
+  if (!ok) {
+    return;
+  }
+
+
+  try {
+
+    await api(
+      `/api/machines/${encodeURIComponent(
+        id
+      )}`,
+      {
+        method:
+          "DELETE",
+      }
+    );
+
+
+    toast(
+      "ماشین با موفقیت حذف شد.",
+      "success"
+    );
+
+
+    await loadMachines();
+
+
+  } catch (error) {
+
+    toast(
+      translateError(
+        error.message
+      ),
+      "error"
+    );
+  }
+}
+
+
+/* =========================================================
+   MACHINE NOTES
+========================================================= */
+
+async function showMachineNotes(
+  machineId
+) {
+
+  const machine =
+    machines.find(
+      item =>
+        item.id ===
+        machineId
+    );
+
+
+  if (!machine) {
+    return;
+  }
+
+
+  modalTitle.textContent =
+    `📝 سوابق ${
+      machine.type ||
+      "ماشین"
+    }`;
+
+
+  modalBody.innerHTML = `
+    <div class="state-box">
+      <div class="loading-spinner"></div>
+      در حال دریافت سوابق...
+    </div>
+  `;
+
+
+  openModal();
+
+
+  try {
+
+    const result =
+      await api(
+        `/api/notes?machine_id=${encodeURIComponent(
+          machineId
+        )}`
+      );
+
+
+    const notes =
+      result.notes || [];
+
+
+    let addForm = "";
+
+
+    if (
+      currentUser?.role ===
+      "admin"
+    ) {
+
+      addForm = `
+        <div class="admin-panel"
+             style="margin-bottom:15px;">
+
+          <div class="section-title">
+            ➕ ثبت سابقه جدید
+          </div>
+
+          <div class="form-group">
+
+            <label>
+              تاریخ
+            </label>
+
+            <input
+              id="noteDate"
+              class="form-control"
+              type="date"
+              value="${todayISO()}"
+            >
+
+          </div>
+
+          <div class="form-group">
+
+            <label>
+              توضیحات
+            </label>
+
+            <textarea
+              id="noteText"
+              class="form-control"
+              style="height:100px;padding-top:10px;resize:vertical;"
+              placeholder="شرح وضعیت، تعمیرات، انتقال، خرابی و..."
+            ></textarea>
+
+          </div>
+
+          <button
+            class="btn btn-primary"
+            onclick="addNote('${machineId}')"
+          >
+            💾 ثبت سابقه
+          </button>
+
+        </div>
+      `;
+    }
+
+
+    if (!notes.length) {
+
+      modalBody.innerHTML =
+        addForm +
+        `
+          <div class="state-box">
+            هنوز سابقه‌ای برای این ماشین ثبت نشده است.
+          </div>
+        `;
+
+      return;
+    }
+
+
+    const notesHtml =
+      notes
+        .map(
+          note => {
+
+            const author =
+              note.app_users
+                ?.web_username ||
+              [
+                note.app_users
+                  ?.first_name,
+
+                note.app_users
+                  ?.last_name
+              ]
+              .filter(Boolean)
+              .join(" ") ||
+              "کاربر";
+
+
+            return `
+              <div class="note-item">
+
+                <div class="note-date">
+                  📅
+                  ${formatDate(
+                    note.note_date
+                  )}
+                </div>
+
+                <div class="note-text">
+                  ${escapeHtml(
+                    note.note
+                  )}
+                </div>
+
+                <div class="note-author">
+                  ثبت توسط:
+                  ${escapeHtml(
+                    author
+                  )}
+
+                  ${
+                    currentUser?.role ===
+                    "admin"
+                    ? `
+                      <button
+                        onclick="deleteNote('${note.id}')"
+                        style="
+                          float:left;
+                          border:0;
+                          background:#ffe9e9;
+                          color:#b52b2b;
+                          border-radius:7px;
+                          padding:4px 7px;
+                          font-size:9px;
+                        "
+                      >
+                        حذف
+                      </button>
+                    `
+                    : ""
+                  }
+
+                </div>
+
+              </div>
+            `;
+          }
+        )
+        .join("");
+
+
+    modalBody.innerHTML =
+      addForm +
+      `
+        <div class="notes-list">
+          ${notesHtml}
+        </div>
+      `;
+
+
+  } catch (error) {
+
+    modalBody.innerHTML = `
+      <div class="state-box">
+        ❌ خطا در دریافت سوابق
+        <br><br>
+        ${escapeHtml(
+          translateError(
+            error.message
+          )
+        )}
+      </div>
+    `;
+  }
+}
+
+
+/* =========================================================
+   ADD NOTE
+========================================================= */
+
+async function addNote(
+  machineId
+) {
+
+  if (
+    currentUser?.role !==
+    "admin"
+  ) {
+
+    return;
+  }
+
+
+  const dateInput =
+    document.getElementById(
+      "noteDate"
+    );
+
+  const textInput =
+    document.getElementById(
+      "noteText"
+    );
+
+
+  const noteDate =
+    dateInput?.value || "";
+
+  const note =
+    textInput?.value.trim() ||
+    "";
+
+
+  if (!noteDate) {
+
+    toast(
+      "تاریخ را انتخاب کنید.",
+      "error"
+    );
+
+    return;
+  }
+
+
+  if (!note) {
+
+    toast(
+      "توضیحات سابقه را وارد کنید.",
+      "error"
+    );
+
+    return;
+  }
+
+
+  try {
+
+    await api(
+      "/api/notes",
+      {
+        method:
+          "POST",
+
+        body:
+          JSON.stringify({
+            machine_id:
+              machineId,
+
+            note_date:
+              noteDate,
+
+            note:
+              note,
+          }),
+      }
+    );
+
+
+    toast(
+      "سابقه با موفقیت ثبت شد.",
+      "success"
+    );
+
+
+    await showMachineNotes(
+      machineId
+    );
+
+
+  } catch (error) {
+
+    toast(
+      translateError(
+        error.message
+      ),
+      "error"
+    );
+  }
+}
+
+
+/* =========================================================
+   DELETE NOTE
+========================================================= */
+
+async function deleteNote(
+  noteId
+) {
+
+  if (
+    currentUser?.role !==
+    "admin"
+  ) {
+
+    return;
+  }
+
+
+  if (
+    !confirm(
+      "آیا از حذف این سابقه مطمئن هستید؟"
+    )
+  ) {
+
+    return;
+  }
+
+
+  try {
+
+    await api(
+      `/api/notes?id=${encodeURIComponent(
+        noteId
+      )}`,
+      {
+        method:
+          "DELETE",
+      }
+    );
+
+
+    toast(
+      "سابقه حذف شد.",
+      "success"
+    );
+
+
+    /*
+      چون modal باز است،
+      دوباره سوابق را می‌گیریم.
+    */
+
+    const machineId =
+      findCurrentMachineFromModal();
+
+
+    if (machineId) {
+
+      await showMachineNotes(
+        machineId
+      );
+    }
+
+
+  } catch (error) {
+
+    toast(
+      translateError(
+        error.message
+      ),
+      "error"
+    );
+  }
+}
+
+
+/* =========================================================
+   REPORT
+========================================================= */
+
+async function showReport() {
+
+  modalTitle.textContent =
+    "📊 گزارش سوابق";
+
+
+  modalBody.innerHTML = `
+
+    <div class="report-controls">
+
+      <input
+        id="reportFrom"
+        type="date"
+        value="${todayISO()}"
+      >
+
+      <input
+        id="reportTo"
+        type="date"
+        value="${todayISO()}"
+      >
+
+      <button
+        id="loadReportBtn"
+        class="btn btn-primary"
+        onclick="loadReport()"
+      >
+        نمایش گزارش
+      </button>
+
+    </div>
+
+    <div
+      id="reportResult"
+      class="report-result"
+    >
+
+      <div class="state-box">
+        تاریخ را انتخاب کنید و
+        «نمایش گزارش» را بزنید.
+      </div>
+
+    </div>
+
+  `;
+
+
+  openModal();
+
+
+  await loadReport();
+}
+
+
+async function loadReport() {
+
+  const from =
+    document.getElementById(
+      "reportFrom"
+    )?.value || "";
+
+
+  const to =
+    document.getElementById(
+      "reportTo"
+    )?.value || "";
+
+
+  const resultBox =
+    document.getElementById(
+      "reportResult"
+    );
+
+
+  if (!resultBox) {
+    return;
+  }
+
+
+  resultBox.innerHTML = `
+    <div class="state-box">
+      <div class="loading-spinner"></div>
+      در حال آماده‌سازی گزارش...
+    </div>
+  `;
+
+
+  try {
+
+    let url =
+      "/api/notes";
+
+
+    const params = [];
+
+
+    if (from) {
+
+      params.push(
+        `from=${encodeURIComponent(
+          from
+        )}`
+      );
+    }
+
+
+    if (to) {
+
+      params.push(
+        `to=${encodeURIComponent(
+          to
+        )}`
+      );
+    }
+
+
+    if (params.length) {
+
+      url +=
+        "?" +
+        params.join("&");
+    }
+
+
+    const result =
+      await api(url);
+
+
+    const notes =
+      result.notes || [];
+
+
+    if (!notes.length) {
+
+      resultBox.innerHTML = `
+        <div class="state-box">
+          📭
+          <br><br>
+          در این بازه سابقه‌ای ثبت نشده است.
+        </div>
+      `;
+
+      return;
+    }
+
+
+    resultBox.innerHTML =
+      notes
+        .map(
+          note => {
+
+            const machine =
+              machines.find(
+                item =>
+                  item.id ===
+                  note.machine_id
+              );
+
+
+            const machineName =
+              machine?.type ||
+              "ماشین";
+
+
+            const company =
+              machine?.company_number ||
+              "بدون شماره";
+
+
+            const yard =
+              machine?.yards?.name ||
+              "";
+
+
+            return `
+              <div class="report-item">
+
+                <div class="report-item-head">
+
+                  <span>
+                    📅
+                    ${formatDate(
+                      note.note_date
+                    )}
+                  </span>
+
+                  <span>
+                    ${escapeHtml(
+                      yard
+                    )}
+                  </span>
+
+                </div>
+
+                <div class="report-machine">
+                  🚜
+                  ${escapeHtml(
+                    machineName
+                  )}
+
+                  —
+                  شماره شرکت:
+                  ${escapeHtml(
+                    company
+                  )}
+                </div>
+
+                <div class="report-note">
+                  ${escapeHtml(
+                    note.note
+                  )}
+                </div>
+
+              </div>
+            `;
+          }
+        )
+        .join("");
+
+
+  } catch (error) {
+
+    resultBox.innerHTML = `
+      <div class="state-box">
+        ❌ خطا در دریافت گزارش
+        <br><br>
+        ${escapeHtml(
+          translateError(
+            error.message
+          )
+        )}
+      </div>
+    `;
+  }
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+function openModal() {
+
+  modalOverlay.classList.remove(
+    "hidden"
+  );
+
+  document.body.style.overflow =
+    "hidden";
+}
+
+
+function closeModal() {
+
+  modalOverlay.classList.add(
+    "hidden"
+  );
+
+  document.body.style.overflow =
+    "";
+}
+
+
+modalClose.addEventListener(
+  "click",
+  closeModal
+);
+
+
+modalOverlay.addEventListener(
+  "click",
+  event => {
+
+    if (
+      event.target ===
+      modalOverlay
+    ) {
+
+      closeModal();
+    }
+  }
+);
+
+
+/* =========================================================
+   FIND CURRENT MACHINE
+========================================================= */
+
+function findCurrentMachineFromModal() {
+
+  const title =
+    modalTitle.textContent;
+
+
+  for (
+    const machine of machines
+  ) {
+
+    if (
+      title.includes(
+        machine.type || ""
+      )
+    ) {
+
+      return machine.id;
+    }
+  }
+
+
+  return null;
+}
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+async function logout() {
+
+  try {
+
+    await api(
+      "/api/auth/logout",
+      {
+        method:
+          "POST",
+      }
+    );
+
+  } catch {
+    // خروج محلی حتی در صورت خطای سرور
+  }
+
+
+  sessionToken =
+    "";
+
+  currentUser =
+    null;
+
+
+  localStorage.removeItem(
+    "machinery_session"
+  );
+
+
+  machines =
+    [];
+
+
+  clearMachineForm();
+
+
+  closeModal();
+
+
+  showLogin();
+
+
+  loginPassword.value =
+    "";
+
+}
+
+
+/* =========================================================
+   EVENTS
+========================================================= */
+
+loginBtn.addEventListener(
+  "click",
+  login
+);
+
+
+loginPassword.addEventListener(
+  "keydown",
+  event => {
+
+    if (
+      event.key ===
+      "Enter"
+    ) {
+
+      login();
+    }
+  }
+);
+
+
+loginUsername.addEventListener(
+  "keydown",
+  event => {
+
+    if (
+      event.key ===
+      "Enter"
+    ) {
+
+      login();
+    }
+  }
+);
+
+
+logoutBtn.addEventListener(
+  "click",
+  logout
+);
+
+
+searchInput.addEventListener(
+  "input",
+  renderMachines
+);
+
+
+yardFilter.addEventListener(
+  "change",
+  renderMachines
+);
+
+
+saveMachineBtn.addEventListener(
+  "click",
+  saveMachine
+);
+
+
+cancelEditBtn.addEventListener(
+  "click",
+  clearMachineForm
+);
+
+
+reportBtn.addEventListener(
+  "click",
+  showReport
+);
+
+
+/* =========================================================
+   HELPERS
+========================================================= */
+
+function escapeHtml(
+  value
+) {
+
+  return String(
+    value ?? ""
+  )
+  .replace(
+    /&/g,
+    "&amp;"
+  )
+  .replace(
+    /</g,
+    "&lt;"
+  )
+  .replace(
+    />/g,
+    "&gt;"
+  )
+  .replace(
+    /"/g,
+    "&quot;"
+  )
+  .replace(
+    /'/g,
+    "&#039;"
+  );
+}
+
+
+function toPersianNumber(
+  value
+) {
+
+  return String(
+    value
+  )
+  .replace(
+    /\d/g,
+    d =>
+      "۰۱۲۳۴۵۶۷۸۹"[d]
+  );
+}
+
+
+function todayISO() {
+
+  const now =
+    new Date();
+
+
+  const year =
+    now.getFullYear();
+
+
+  const month =
+    String(
+      now.getMonth() + 1
+    )
+    .padStart(
+      2,
+      "0"
+    );
+
+
+  const day =
+    String(
+      now.getDate()
+    )
+    .padStart(
+      2,
+      "0"
+    );
+
+
+  return `${year}-${month}-${day}`;
+}
+
+
+function formatDate(
+  value
+) {
+
+  if (!value) {
+    return "-";
+  }
+
+
+  const parts =
+    String(
+      value
+    ).split("-");
+
+
+  if (
+    parts.length !== 3
+  ) {
+
+    return value;
+  }
+
+
+  return toPersianNumber(
+    `${parts[2]}/${parts[1]}/${parts[0]}`
+  );
+}
+
+
+function translateError(
+  message
+) {
+
+  const text =
+    String(
+      message || ""
+    );
+
+
+  const map = {
+
+    "invalid_credentials":
+      "نام کاربری یا رمز عبور اشتباه است.",
+
+    "invalid_or_expired_session":
+      "نشست شما منقضی شده است. دوباره وارد شوید.",
+
+    "unauthorized":
+      "دسترسی غیرمجاز.",
+
+    "admin_required":
+      "این عملیات فقط برای مدیر سیستم مجاز است.",
+
+    "username_password_required":
+      "نام کاربری و رمز عبور الزامی است.",
+
+    "password_not_configured":
+      "برای این حساب رمز عبور تنظیم نشده است.",
+
+    "type_and_yard_required":
+      "نوع ماشین و محل استقرار الزامی است.",
+
+    "machine_date_note_required":
+      "ماشین، تاریخ و متن سابقه الزامی است.",
+
+    "note_id_required":
+      "شناسه سابقه مشخص نشده است.",
+
+    "username_already_exists":
+      "این نام کاربری قبلاً استفاده شده است.",
+
+    "admin_already_exists":
+      "حساب مدیر قبلاً ساخته شده است.",
+  };
+
+
+  if (
+    map[text]
+  ) {
+
+    return map[text];
+  }
+
+
+  if (
+    text.includes(
+      "duplicate"
+    )
+  ) {
+
+    return "این اطلاعات قبلاً در سامانه ثبت شده است.";
+  }
+
+
+  if (
+    text.includes(
+      "invalid input syntax"
+    )
+  ) {
+
+    return "اطلاعات وارد شده معتبر نیست.";
+  }
+
+
+  return text ||
+    "خطای نامشخص در سرور.";
+}
+
+
+function toast(
+  message,
+  type = ""
+) {
+
+  const item =
+    document.createElement(
+      "div"
+    );
+
+
+  item.className =
+    `toast ${type}`;
+
+
+  item.textContent =
+    message;
+
+
+  toastContainer.appendChild(
+    item
+  );
+
+
+  setTimeout(
+    () => {
+
+      item.style.opacity =
+        "0";
+
+      item.style.transform =
+        "translateY(8px)";
+
+      setTimeout(
+        () =>
+          item.remove(),
+        250
+      );
+
+    },
+    2800
+  );
+}
+
+
+/* =========================================================
+   START
+========================================================= */
+
+checkSession();
+
+</script>
+
+</body>
+</html>
