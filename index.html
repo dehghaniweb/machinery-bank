@@ -776,10 +776,10 @@ textarea.form-control{
 }
 
 .report-title{
-  margin-top:5px;
-  font-size:14px;
-  font-weight:800;
-  color:#173c2c;
+  margin-top:7px;
+  font-size:15px;
+  font-weight:900;
+  color:#176c49;
 }
 
 .report-meta{
@@ -790,10 +790,10 @@ textarea.form-control{
 
 .report-note{
   margin-top:8px;
-  color:#173c2c;
-  font-size:13px;
-  line-height:1.9;
-  font-weight:800;
+  color:#5b4636;
+  font-size:14px;
+  line-height:1.95;
+  font-weight:700;
   text-align:right;
   direction:rtl;
   white-space:pre-wrap;
@@ -901,10 +901,11 @@ textarea.form-control{
 }
 
 .note-text{
-  margin-top:7px;
-  color:#42584c;
-  font-size:12px;
-  line-height:1.8;
+  margin-top:9px;
+  color:#173c2c;
+  font-size:15px;
+  line-height:1.95;
+  font-weight:900;
   white-space:pre-wrap;
 }
 
@@ -1456,39 +1457,7 @@ textarea.form-control{
 
           </div>
 
-          <div class="admin-section-box delete-machine-box">
 
-            <div class="admin-section-title delete-section-title">
-              🗑 حذف ماشین
-            </div>
-
-            <div class="form-group">
-              <label class="form-label">شماره شرکتی ماشین</label>
-              <select
-                id="deleteMachineSelect"
-                class="select-control"
-              >
-                <option value="">انتخاب شماره شرکتی</option>
-              </select>
-            </div>
-
-            <div
-              id="deleteMachineDetails"
-              class="delete-machine-details"
-            >
-              ابتدا یک شماره شرکتی را انتخاب کنید.
-            </div>
-
-            <button
-              id="deleteAdminMachine"
-              class="danger-btn delete-machine-confirm"
-              type="button"
-              disabled
-            >
-              🗑 حذف ماشین انتخاب‌شده
-            </button>
-
-          </div>
 
         </div>
 
@@ -3744,14 +3713,29 @@ async function showMachineNotes(
 
     notes =
       [...notes].sort(
-        (a,b)=>
-          String(
-            b.note_date || ""
-          ).localeCompare(
-            String(
-              a.note_date || ""
-            )
-          )
+        (a,b)=>{
+          const dateA = new Date(
+            a.note_date ||
+            a.created_at ||
+            0
+          ).getTime();
+
+          const dateB = new Date(
+            b.note_date ||
+            b.created_at ||
+            0
+          ).getTime();
+
+          if(dateB !== dateA){
+            return dateB - dateA;
+          }
+
+          return new Date(
+            b.created_at || 0
+          ).getTime() - new Date(
+            a.created_at || 0
+          ).getTime();
+        }
       );
 
     const isAdmin =
