@@ -749,6 +749,7 @@ textarea.form-control{
 }
 
 .report-date-row{
+  direction:rtl;
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -877,11 +878,23 @@ textarea.form-control{
 
 .note-date{
   color:#176c49;
-  font-size:13px;
+  font-size:14px;
   font-weight:800;
-  direction:ltr;
-  text-align:left;
+  direction:rtl;
+  text-align:right;
   unicode-bidi:isolate;
+}
+
+.note-date-jalali{
+  color:#8a6a13;
+  font-weight:900;
+  margin-left:7px;
+}
+
+.note-date-gregorian{
+  color:#176c49;
+  direction:ltr;
+  display:inline-block;
 }
 
 .note-delete{
@@ -1457,6 +1470,46 @@ textarea.form-control{
 
           </div>
 
+
+          <div class="admin-section-box delete-machine-box">
+
+            <div class="admin-section-title">
+              حذف ماشین
+            </div>
+
+            <div class="admin-grid">
+
+              <div class="form-group full">
+                <label class="form-label">شماره شرکتی ماشین</label>
+                <select
+                  id="deleteMachineSelect"
+                  class="select-control"
+                >
+                  <option value="">انتخاب شماره شرکتی</option>
+                </select>
+              </div>
+
+              <div
+                id="deleteMachineDetails"
+                class="delete-machine-details full"
+              >
+                ابتدا یک شماره شرکتی را انتخاب کنید.
+              </div>
+
+              <div class="admin-actions full">
+                <button
+                  id="deleteAdminMachine"
+                  class="delete-machine-confirm"
+                  type="button"
+                  disabled
+                >
+                  🗑 حذف ماشین انتخاب‌شده
+                </button>
+              </div>
+
+            </div>
+
+          </div>
 
 
         </div>
@@ -2558,6 +2611,10 @@ function openModal(
 
 function closeModal(){
 
+  if(!modal){
+    return;
+  }
+
   modal.classList.add(
     "hidden"
   );
@@ -2765,6 +2822,9 @@ function showApp(){
     adminPanel.classList.remove(
       "hidden"
     );
+
+    // پنل مدیریت برای مدیر همیشه آماده استفاده باشد.
+    adminPanel.classList.add("open");
 
     adminBadge.classList.remove(
       "hidden"
@@ -3761,9 +3821,12 @@ async function showMachineNotes(
               <div class="note-item-top">
 
                 <div class="note-date">
-                  ${formatDate(
-                    note.note_date
-                  )}
+                  <span class="note-date-jalali">
+                    ${formatJalaliDate(note.note_date)}
+                  </span>
+                  <span class="note-date-gregorian">
+                    ${formatDate(note.note_date)}
+                  </span>
                   ${formatTehranTime(note.created_at) ? ` <span class="note-time">| ${formatTehranTime(note.created_at)}</span>` : ""}
                 </div>
 
@@ -4938,35 +5001,66 @@ cancelEdit.addEventListener(
 );
 
 
-adminPanelHeader.addEventListener(
-  "click",
-  ()=>{
-    adminPanel.classList.toggle(
-      "open"
-    );
-  }
-);
+if(adminPanelHeader && adminPanel){
+  adminPanelHeader.addEventListener(
+    "click",
+    event=>{
+      event.preventDefault();
+      event.stopPropagation();
+      adminPanel.classList.toggle("open");
+    }
+  );
+}
+
+// اطمینان از اینکه دکمه ضربدر همیشه پنجره را می‌بندد.
+if(modalClose){
+  modalClose.onclick = function(event){
+    event.preventDefault();
+    event.stopPropagation();
+    closeModal();
+  };
+}
 
 
-modalClose.addEventListener(
-  "click",
-  closeModal
-);
+if(deleteMachineSelect){
+  deleteMachineSelect.addEventListener(
+    "change",
+    updateDeleteMachineDetails
+  );
+}
+
+if(deleteAdminMachine){
+  deleteAdminMachine.addEventListener(
+    "click",
+    deleteMachineFromAdmin
+  );
+}
 
 
-modal.addEventListener(
-  "click",
-  event=>{
+if(modal){
+  modal.addEventListener(
+    "click",
+    event=>{
 
-    if(
-      event.target ===
-      modal
-    ){
+      if(
+        event.target ===
+        modal
+      ){
 
-      closeModal();
+        closeModal();
+
+      }
 
     }
+  );
+}
 
+document.addEventListener(
+  "keydown",
+  event=>{
+    if(event.key === "Escape" && modal && !modal.classList.contains("hidden")){
+      closeModal();
+    }
   }
 );
 
