@@ -776,9 +776,9 @@ textarea.form-control{
 }
 
 .report-title{
-  margin-top:7px;
+  margin-top:5px;
   font-size:15px;
-  font-weight:900;
+  font-weight:800;
   color:#176c49;
 }
 
@@ -790,10 +790,10 @@ textarea.form-control{
 
 .report-note{
   margin-top:8px;
-  color:#5b4636;
+  color:#7a3e00;
   font-size:14px;
   line-height:1.95;
-  font-weight:700;
+  font-weight:800;
   text-align:right;
   direction:rtl;
   white-space:pre-wrap;
@@ -877,8 +877,8 @@ textarea.form-control{
 
 .note-date{
   color:#176c49;
-  font-size:11px;
-  font-weight:bold;
+  font-size:13px;
+  font-weight:800;
   direction:ltr;
   text-align:left;
   unicode-bidi:isolate;
@@ -901,11 +901,11 @@ textarea.form-control{
 }
 
 .note-text{
-  margin-top:9px;
-  color:#173c2c;
+  margin-top:8px;
+  color:#263f33;
   font-size:15px;
   line-height:1.95;
-  font-weight:900;
+  font-weight:800;
   white-space:pre-wrap;
 }
 
@@ -1402,7 +1402,7 @@ textarea.form-control{
           <div class="admin-section-box">
 
             <div class="admin-section-title">
-              افزودن ماشین / حذف ماشین
+              افزودن ماشین
             </div>
 
             <div class="admin-grid">
@@ -3711,30 +3711,24 @@ async function showMachineNotes(
           []
         );
 
+    // نزدیک‌ترین سابقه به امروز (جدیدترین تاریخ) در ابتدا نمایش داده شود.
     notes =
       [...notes].sort(
         (a,b)=>{
-          const dateA = new Date(
-            a.note_date ||
-            a.created_at ||
-            0
-          ).getTime();
+          const dateA = String(a.note_date || "");
+          const dateB = String(b.note_date || "");
 
-          const dateB = new Date(
-            b.note_date ||
-            b.created_at ||
-            0
-          ).getTime();
-
-          if(dateB !== dateA){
-            return dateB - dateA;
+          if(dateA !== dateB){
+            return dateB.localeCompare(dateA);
           }
 
-          return new Date(
-            b.created_at || 0
-          ).getTime() - new Date(
-            a.created_at || 0
-          ).getTime();
+          return String(
+            b.created_at || b.createdAt || ""
+          ).localeCompare(
+            String(
+              a.created_at || a.createdAt || ""
+            )
+          );
         }
       );
 
@@ -4600,7 +4594,7 @@ async function loadReport(){
 
 
     /*
-      جدیدترین سابقه همیشه بالاتر.
+      نزدیک‌ترین سابقه به امروز (جدیدترین تاریخ) همیشه بالاتر.
     */
 
     notes =
@@ -4941,18 +4935,6 @@ saveMachine.addEventListener(
 cancelEdit.addEventListener(
   "click",
   clearMachineForm
-);
-
-
-deleteAdminMachine.addEventListener(
-  "click",
-  deleteMachineFromAdmin
-);
-
-
-deleteMachineSelect.addEventListener(
-  "change",
-  updateDeleteMachineDetails
 );
 
 
